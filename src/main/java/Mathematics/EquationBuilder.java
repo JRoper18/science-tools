@@ -6,7 +6,6 @@ import Structures.Tree.Tree;
 import Structures.Tuples.Triplet;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Stack;
 
@@ -26,27 +25,17 @@ public class EquationBuilder {
      */
     private static List<Triplet<Integer, Integer, Integer>> findParen(List<MathSyntax> eq){
         List<Triplet<Integer, Integer, Integer>> result = new ArrayList<Triplet<Integer, Integer, Integer>>();
-        int level = 0;
         Stack<Integer> notClosedParens = new Stack<Integer>();
         for(int i = 0; i<eq.size(); i++){
             MathObject current = eq.get(i).mathObject;
             if(current instanceof Parenthesis){
                 if(((Parenthesis) current).open){
-                    level++;
                     notClosedParens.push(new Integer(i));
-                    Triplet<Integer, Integer, Integer> newTrip = new Triplet<Integer, Integer, Integer>(new Integer(i), null, null);
-                    result.add(newTrip);
                 }
                 else{
-                    level--;
-                    int nextParentIndex = notClosedParens.pop();
-                    for(int j = 0; j<result.length; j++){
-                        if(result.get(j).val1 == new Integer(j)){
-                            result.get(j).val2 = new Integer(i);
-                            result.get(j).val3 = new Integer(level);
-                            break;
-                        }
-                    }
+                    int nextParenIndex = notClosedParens.pop();
+                    Triplet<Integer, Integer, Integer> newTrip = new Triplet<Integer, Integer, Integer>(nextParenIndex, new Integer(i), notClosedParens.size() + 1);
+                    result.add(newTrip);
                 }
             }
         }
@@ -70,8 +59,8 @@ public class EquationBuilder {
                     throw new Exception("Your equation input is bad! You are putting an non-binary operator in-between 2 arguments. ");
                 }
                 toReturn.data = eq.get(1).mathObject;
-                toReturn.addChild(eq.get(0));
-                toReturn.addChild(eq.get(2));
+                toReturn.addChild(eq.get(0).mathObject);
+                toReturn.addChild(eq.get(2).mathObject);
             }
             else{ //Else, we have an operator that isn't binary. It could take 1 argument, like sin or cos, of more than 2, like summation or a limit.
                 //Either way, we are going to assume that the input looks like:
@@ -84,23 +73,40 @@ public class EquationBuilder {
                 }
             }
         }
-        else { //Recursively go down to the next parenthesis
-            //Find all the parenthesis on the next level. Run this function for each of those.
+        else {
+            int currentArgument = 0;
+            //First, find this equation's expression to evaluate. We know it's not constant, so the expression is either first or a binary second.
+            if(!eq.get(0).mathObject.isConstant()) { //First term is the expression.
+                toReturn.data = eq.get(0).mathObject;
+            }
+            else{ //Second term is the expression.
+                toReturn.data = eq.get(1).mathObject;
+            }
+            //Find all the parenthesis on the next level. Add their results as arguments of out current function.
             for(int i = 0; i<parenthesis.size(); i++){
                 Triplet<Integer,Integer, Integer> currentParenPair = parenthesis.get(i);
                 if(currentParenPair.val3 == 1){
                     //The underlined parenthesis are in level 1:
                     // ()((()))
                     // |||    |
-                    toReturn = makeEquationTree(eq.subList(currentParenPair.val1 + 1, currentParenPair.val2)); //Solves the equation in the parenthesis.
+                    currentArgument++;
+                    toReturn.addChild(makeEquationTree(eq.subList(currentParenPair.val1 + 1, currentParenPair.val2))); //Solves the equation in the parenthesis.
                 }
             }
         }
         return toReturn;
     }
     public static Equation makeEquation(List<MathSyntax> eq){
-        int firstParenIndex = parenthesis.values().toArray()[0];
-        makeEquationTree(eq.subList(firstParenIndex, parenthesis.get(firstParenIndex))); //Make an equation from first opening paren to the last closing paren
-        return new Equation(equation); //Change this
+        Tree equation;
+        try{
+            equation = makeEquationTree(eq);
+            return new Equation(equation); //Change this
+
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return null;
+
+        }
     }
 }
