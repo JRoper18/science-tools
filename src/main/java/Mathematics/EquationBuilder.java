@@ -74,27 +74,45 @@ public class EquationBuilder {
             }
         }
         else {
-            int currentArgument = 0;
-            //First, find this equation's expression to evaluate. We know it's not constant, so the expression is either first or a binary second.
-            if(!eq.get(0).mathObject.isConstant()) { //First term is the expression.
-                toReturn.data = eq.get(0).mathObject;
-            }
-            else{ //Second term is the expression.
-                toReturn.data = eq.get(1).mathObject;
-            }
             //Find all the parenthesis on the next level. Add their results as arguments of out current function.
-            for(int i = 0; i<parenthesis.size(); i++){
-                Triplet<Integer,Integer, Integer> currentParenPair = parenthesis.get(i);
-                if(currentParenPair.val3 == 1){
+            for (int i = 0; i < parenthesis.size(); i++) {
+                Triplet<Integer, Integer, Integer> currentParenPair = parenthesis.get(i);
+                if (currentParenPair.val3 == 1) {
                     //The underlined parenthesis are in level 1:
                     // ()((()))
                     // |||    |
-                    currentArgument++;
                     toReturn.addChild(makeEquationTree(eq.subList(currentParenPair.val1 + 1, currentParenPair.val2))); //Solves the equation in the parenthesis.
+                }
+            }
+            //Find out current function.
+            int level = 0;
+            for (int i = 0; i < eq.size(); i++) {
+                MathObject currentTerm = eq.get(i).mathObject;
+                if (currentTerm instanceof Parenthesis) {
+                    if (((Parenthesis) currentTerm).open) {
+                        level++;
+                    } else {
+                        level--;
+                    }
+                }
+                else if (level == 0) { //If we are on level 0, we are on the top level, and our expression is here somewhere.
+                    //Check for expression
+                    if (!currentTerm.isConstant()) { //Here's our expression!
+                        if (toReturn.data != null) { //We have more than one expression on this level. In the future we should allow this, like 1+2+3, but for now,
+                            //Just throw an error telling them to put parenthesis around it.
+                            //1+2+3 -> (1+2) + 3
+                            throw new Exception("You have more than one expression per level of parenthesis! Add more parenthesis!" + toReturn.data);
+                        }
+                        toReturn.data = currentTerm;
+                    }
+                    else{ //This is a constant not caught by the expression and equation finder above. Like 2*(sin(x)) instead of (sin(x)) + (cos(x))
+                        toReturn.addChild(currentTerm);
+                    }
                 }
             }
         }
         return toReturn;
+
     }
     public static Equation makeEquation(List<MathSyntax> eq){
         Tree equation;
@@ -103,7 +121,6 @@ public class EquationBuilder {
             return new Equation(equation); //Change this
 
         } catch(Exception e){
-            System.out.println(e.getMessage());
             e.printStackTrace();
             return null;
 

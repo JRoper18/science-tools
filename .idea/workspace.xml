@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9093854d-3db4-4d31-bfae-15bb99bd7313" name="Default" comment="Added tuples">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/Mathematics/EquationBuilderTest.class" afterPath="$PROJECT_DIR$/build/classes/test/Mathematics/EquationBuilderTest.class" />
+    <list default="true" id="9093854d-3db4-4d31-bfae-15bb99bd7313" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/Equation.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/Equation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Structures/Tree/Tree.class" afterPath="$PROJECT_DIR$/build/classes/main/Structures/Tree/Tree.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Structures/Tuples/Triplet.class" afterPath="$PROJECT_DIR$/build/classes/main/Structures/Tuples/Triplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" afterPath="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" afterPath="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java" afterPath="$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java" />
     </list>
     <ignored path="science-tools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,11 +44,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="EquationBuilder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EquationBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1072">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="1039">
+              <caret line="108" column="55" selection-start-line="108" selection-start-column="55" selection-end-line="108" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#833#842#0" expanded="true" />
@@ -56,23 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EquationBuilderTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EquationBuilderTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Equation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="874">
+              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -394,18 +384,18 @@
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathNumber.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntax.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Multiplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Parenthesis.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Variable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tuple.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Triplet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tuples/Tuple.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tuples/TupleInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tuples/Pair.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntaxExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
         <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
       </list>
@@ -1156,38 +1146,45 @@
       <option name="project" value="LOCAL" />
       <updated>1476413974038</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Equation buildling works for single-layered equations">
+      <created>1476676881207</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1476676881207</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 52m 07s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 12h 09m 02s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 53m 01s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 12h 09m 18s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 53m 11s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 12h 09m 46s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 53m 45s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 16h 27m 23s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 53m 50s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 16h 28m 08s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 54m 29s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 20h 17m 27s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 54m 54s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 20h 17m 47s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 56m 28s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 20h 18m 28s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 57m 34s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 20h 18m 45s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationBuilderTest_testCreation - 2016.10.16 at 21h 59m 25s.xml">
+    <history-entry file="EquationBuilderTest_testCreation - 2016.10.17 at 20h 20m 23s.xml">
       <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1203,7 +1200,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291757" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291757" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1258,14 +1255,15 @@
     <MESSAGE value="Worked on Equationbuilder, haven't tested it, I should be studying for Calc2 test and not this, fuck it's 10pm and Im going to fail, why do I write my woes here no one reads them but me" />
     <MESSAGE value="Still trying to find the best way of input for buildling equations.&#10;" />
     <MESSAGE value="Added tuples" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tuples" />
+    <MESSAGE value="Equation buildling works for single-layered equations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Equation buildling works for single-layered equations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1485,25 +1483,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#253#254#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-            <element signature="e#300#301#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Multiplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding>
-            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#185#186#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1538,16 +1523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#1123#1124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1556,23 +1531,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Addition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="12" column="5" selection-start-line="10" selection-start-column="21" selection-end-line="12" selection-end-column="5" />
           <folding>
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="false" />
+            <element signature="e#295#296#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1582,29 +1547,58 @@
         <state relative-caret-position="544">
           <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        <state relative-caret-position="396">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="false" />
+            <element signature="e#1229#1230#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1072">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="1039">
+          <caret line="108" column="55" selection-start-line="108" selection-start-column="55" selection-end-line="108" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#833#842#0" expanded="true" />
             <element signature="e#1279#1306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -8,7 +8,9 @@ public class Triplet<A, B, C> implements TupleInterface {
     public B val2;
     public C val3;
     public Triplet(A v1, B v2, C v3){
-        this.val1 = val1;
+        this.val1 = v1;
+        this.val2 = v2;
+        this.val3 = v3;
     }
     public int size(){
         return 3;

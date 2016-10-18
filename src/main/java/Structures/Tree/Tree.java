@@ -45,6 +45,10 @@ public class Tree<T> {
         this.children.add(newChild);
         return newChild;
     }
+    public Tree addChild(Tree newTree){
+        this.children.add(newTree);
+        return newTree;
+    }
     public Tree getChild(int index){
         return this.getChildren().get(index);
     }
