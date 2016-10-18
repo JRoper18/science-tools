@@ -11,4 +11,5 @@ public class Addition extends MathObject{
     public Addition(){
         this.arguments = 2;
     }
+
 }

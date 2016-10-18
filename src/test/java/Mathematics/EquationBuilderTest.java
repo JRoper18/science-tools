@@ -41,6 +41,7 @@ public class EquationBuilderTest {
          */
         Equation test1 = builder.makeEquation(input1);
         Equation test2 = builder.makeEquation(input2);
+        test1.print();
         assertEquals(true, test1.equationTerms.data instanceof Addition);
         assertEquals(true, test1.equationTerms.getChild(0).data instanceof MathNumber);
         assertEquals(true, test1.equationTerms.getChild(1).data instanceof MathNumber);

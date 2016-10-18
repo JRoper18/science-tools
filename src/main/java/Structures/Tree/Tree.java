@@ -69,7 +69,7 @@ public class Tree<T> {
         for (int i = 1; i < level; i++) {
             System.out.print("\t"); //Newline
         }
-        System.out.println(this.data);
+        System.out.println(this.data.getClass().getName());
         for (Tree child : this.children) {
             child.print(level + 1);
         }

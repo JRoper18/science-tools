@@ -11,4 +11,7 @@ public class Equation {
     public Equation(Tree equationTerms){
         this.equationTerms = equationTerms;
     }
+    public Equation substitute(Equation before, Equation after){
+        return new Equation(); //CHANGE THIS
+    }
 }
