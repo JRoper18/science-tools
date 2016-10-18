@@ -1,6 +1,7 @@
 package Mathematics;
 
 import Mathematics.MathObjects.Addition;
+import Mathematics.MathObjects.MathNumber;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -33,14 +34,19 @@ public class EquationBuilderTest {
               (*)
               /  \
              /    \
-            (2)    (+)
-                   / \
-                  /   \
-                (13)  (12)
+           (+)    (2)
+           / \
+          /   \
+       (13)  (12)
          */
         Equation test1 = builder.makeEquation(input1);
         Equation test2 = builder.makeEquation(input2);
-        test2.equationTerms.print();
         assertEquals(true, test1.equationTerms.data instanceof Addition);
+        assertEquals(true, test1.equationTerms.getChild(0).data instanceof MathNumber);
+        assertEquals(true, test1.equationTerms.getChild(1).data instanceof MathNumber);
+        assertEquals(true, test2.equationTerms.getChild(0).data instanceof Addition);
+        assertEquals(true, test2.equationTerms.getChild(1).data instanceof MathNumber);
+        assertEquals(true, test2.equationTerms.getChild(0).getChild(0).data instanceof MathNumber);
+        assertEquals(true, test2.equationTerms.getChild(0).getChild(1).data instanceof MathNumber);
     }
 }
