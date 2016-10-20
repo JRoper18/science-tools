@@ -49,6 +49,14 @@ public class Tree<T> {
         this.children.add(newTree);
         return newTree;
     }
+    public boolean hasChild(T data){
+        for(int i = 0; i<this.children.size(); i++){
+            if(this.getChild(i).data.equals(data)){
+                return true;
+            }
+        }
+        return false;
+    }
     public Tree getChild(int index){
         return this.getChildren().get(index);
     }

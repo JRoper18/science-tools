@@ -5,11 +5,19 @@ package Mathematics.MathObjects;
  */
 public abstract class MathObject {
     protected int arguments = 0;
+    protected boolean ordered;
     public int arguments(){
         return this.arguments;
     }
     public boolean isConstant(){
         return (this.arguments == 0);
+    }
+    public boolean isOrdered(){
+        return this.ordered;
+    }
+    public MathObject(int args, boolean ordered){
+        this.arguments = args;
+        this.ordered = ordered;
     }
 }
 
