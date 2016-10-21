@@ -36,16 +36,31 @@ public class Equation {
         //Check the data inside the children. To do this, we need to know if our current expression is ordered.
         if(tree2.data.isOrdered()){ //We have an ordered expression, like SUM. We need to check every term IN ORDER.
             for(int i = 0; i<tree1.getChildren().size(); i++){
-                if(!this.checkEquationTreesEqual(tree1.getChild(i), tree2.getChild(2))){ //If a single expression is wrong, return false.
+                if(!this.checkEquationTreesEqual(tree1.getChild(i), tree2.getChild(i))){ //If a single expression is wrong, return false.
                     return false;
                 }
             }
         }
-        else{ //The operators for our current expression are unordered, like + or -
+        else{ //The operators for our current expression are unordered, like + or -, where you can switch the order of the arguements without affecting outcome.
+            //However, their children might be ordered. We need to check them.
+            //To do this, we need to match
+            //Match each child with it's corresponding child in the other tree
             List<Tree> tree1Children = tree1.getChildren();
             List<Tree> tree2Children = tree2.getChildren();
-            //Match each child with it's corresponding child in the other tree
-            
+            for(int i = 0; i<tree2Children.size(); i++){
+                boolean foundMatch = false;
+                for(int j = 0; j<tree1Children.size(); j++){
+                    if(this.checkEquationTreesEqual(tree1Children.get(j), tree2Children.get((i)))){
+                        foundMatch = true;
+                        tree1Children.remove(j);
+                        tree2Children.remove(i);
+                        break;
+                    }
+                }
+                if(!foundMatch){
+                    return false;
+                }
+            }
         }
 
         //So we know our children, our data, and our children's children are equal. We must be the same.
