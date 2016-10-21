@@ -44,10 +44,23 @@ public class Equation {
         else{ //The operators for our current expression are unordered, like + or -
             List<Tree> tree1Children = tree1.getChildren();
             List<Tree> tree2Children = tree2.getChildren();
-            //Match each child with it's corresponding child in the other tree
-            
+            //Match each child with it's corresponding child in the other tree by comparing children. If we find a single match, we go on. If we don't find a single match,
+            //That means one term is not in the other, so we return false.
+            for(int i = 0; i<tree2Children.size(); i++){
+                boolean foundMatch = false;
+                for(int j = 0; j<tree1Children.size(); j++){
+                    if(checkEquationTreesEqual(tree2Children.get(i), tree1Children.get(j))){
+                        tree1Children.remove(j);
+                        tree2Children.remove(i);
+                        foundMatch = true;
+                        break;
+                    }
+                }
+                if(!foundMatch){
+                    return false;
+                }
+            }
         }
-
         //So we know our children, our data, and our children's children are equal. We must be the same.
         return true;
 
