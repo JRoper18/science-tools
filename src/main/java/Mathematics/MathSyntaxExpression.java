@@ -1,9 +1,6 @@
 package Mathematics;
 
-import Mathematics.MathObjects.Addition;
-import Mathematics.MathObjects.MathObject;
-import Mathematics.MathObjects.Multiplication;
-import Mathematics.MathObjects.Parenthesis;
+import Mathematics.MathObjects.*;
 
 /**
  * Created by jack on 10/12/2016.
@@ -11,6 +8,8 @@ import Mathematics.MathObjects.Parenthesis;
 public enum MathSyntaxExpression {
     CLOSE_PAREN,
     OPEN_PAREN,
+    NUMBER,
+    EXPRESSION,
     MULTIPLY,
     PLUS;
 
@@ -20,6 +19,10 @@ public enum MathSyntaxExpression {
                 return new Parenthesis(false);
             case OPEN_PAREN:
                 return new Parenthesis(true);
+            case NUMBER:
+                return new MathNumber();
+            case EXPRESSION:
+                return new Expression();
             case PLUS:
                 return new Addition();
             case MULTIPLY:

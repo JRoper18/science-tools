@@ -7,4 +7,7 @@ public class Expression extends MathObject {
     public Expression(int arguements, boolean ordered){
         super(arguements, ordered);
     }
+    public Expression(){
+        super(0, false);
+    }
 }

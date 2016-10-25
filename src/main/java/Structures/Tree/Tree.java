@@ -57,6 +57,14 @@ public class Tree<T> {
         }
         return false;
     }
+    public void addChildren(List<T> newChildren){
+        for(int i = 0; i<newChildren.size(); i++){
+            this.addChild(newChildren.get(i));
+        }
+    }
+    public void addTreeChildren(List<Tree> newChildren){
+        this.children.addAll(newChildren);
+    }
     public Tree getChild(int index){
         return this.getChildren().get(index);
     }
@@ -82,6 +90,7 @@ public class Tree<T> {
             child.print(level + 1);
         }
     }
+
 
 }
 

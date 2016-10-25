@@ -6,6 +6,7 @@ package Mathematics.MathObjects;
 public class Parenthesis extends MathObject {
     public final boolean open;
     public Parenthesis(boolean open){
+        super(0, false);
         this.open = open;
         this.arguments = -1;
     }
