@@ -1,13 +1,14 @@
 package Mathematics.MathObjects;
 
+import Mathematics.Equation;
+import Structures.Tree.Tree;
+
 /**
  * Created by Ulysses Howard Smith on 10/20/2016.
  */
-public class Expression extends MathObject {
+public abstract class Expression extends MathObject {
     public Expression(int arguements, boolean ordered){
         super(arguements, ordered);
     }
-    public Expression(){
-        super(0, false);
-    }
+    abstract public Equation eval();
 }

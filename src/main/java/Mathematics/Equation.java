@@ -1,6 +1,7 @@
 package Mathematics;
 
 import Mathematics.MathObjects.Expression;
+import Mathematics.MathObjects.GenericExpression;
 import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
 import Structures.Tree.*;
@@ -19,7 +20,7 @@ public class Equation {
     }
     private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2){
         //Tree1 is a regular equation, tree2 might contain empty expressions and numbers
-        if(tree2.data.equals(new Expression(0, false))){ //If we find an empty expression, we assume any generic expression can go into there.
+        if(tree2.data.equals(new GenericExpression())){ //If we find an empty expression, we assume any generic expression can go into there.
             return true; //This node is good, we don't need to check children.
         }
         if(tree2.data.equals(new MathNumber())){ //If we have a constant, check that tree1 also is just a generic constant
@@ -67,7 +68,7 @@ public class Equation {
     }
     public Tree<MathObject> buildNewEq(Tree<MathObject> current, Tree<MathObject> after, Tree<MathObject> building, Tree<MathObject> before){
         //This function assumes that we already know that current and before are equal.
-        if(before.data.equals(new Expression(0, false))){ //If we have an expression, add the current children to the equation.
+        if(before.data.equals(new GenericExpression())){ //If we have an expression, add the current children to the equation.
             return current;
         }
         if(before.data.equals(new MathNumber())){
