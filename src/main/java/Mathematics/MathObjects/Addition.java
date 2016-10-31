@@ -13,6 +13,9 @@ public class Addition extends Expression {
         this.term1 = term1;
         this.term2 = term2;
     }
+    public Addition(){
+        super(2, false);
+    }
     public Equation eval(){
         if(term1.isConstant() && term2.isConstant()){
 
@@ -26,5 +29,6 @@ public class Addition extends Expression {
         else{
 
         }
+        return null; //CHANGE THIS
     }
 }

@@ -27,7 +27,9 @@ public class TreeTest {
     public void testSearch() throws Exception {
         TreeSearchCallback callback = (node) -> node.addChild("ReChild");
         Tree testTree = new Tree();
+        testTree.addChild("ReChild");
         testTree.forEachNode(callback);
+        testTree.print();
         TreeSearchCallback testCallbac = (node) -> {
             assertEquals(true, (node.hasChildren())? node.getChild(0).equals("ReChild") : true);
         };

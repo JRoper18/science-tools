@@ -1,14 +1,15 @@
 package Mathematics;
 
-import Mathematics.MathObjects.Expression;
-import Mathematics.MathObjects.GenericExpression;
-import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
-import Structures.Tree.*;
+import Mathematics.MathObjects.PatternMatching.GenericConstant;
+import Mathematics.MathObjects.PatternMatching.GenericExpression;
+import Mathematics.MathObjects.PatternMatching.PatternEquation;
+import Structures.Tree.Tree;
+import Structures.Tree.TreeSearchCallback;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Ulysses Howard Smith on 10/7/2016.
@@ -18,12 +19,24 @@ public class Equation {
     public Equation(Tree equationTerms){
         this.equationTerms = equationTerms;
     }
+    public List<LinkedList<Integer>> patternMatch(PatternEquation pattern){
+        List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
+        TreeSearchCallback callback = (node) -> {
+            if(node.data.equals(pattern.equationTerms.data)){
+                if(this.checkEquationTreesEqual(node, pattern.equationTerms)){
+                    paths.add(node.getPathFromRoot());
+                }
+            }
+        };
+        this.equationTerms.forEachNode(callback);
+        return paths;
+    }
     private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2){
         //Tree1 is a regular equation, tree2 might contain empty expressions and numbers
         if(tree2.data.equals(new GenericExpression())){ //If we find an empty expression, we assume any generic expression can go into there.
             return true; //This node is good, we don't need to check children.
         }
-        if(tree2.data.equals(new MathNumber())){ //If we have a constant, check that tree1 also is just a generic constant
+        if(tree2.data.equals(new GenericConstant())){ //If we have a constant, check that tree1 also is just a generic constant
             return (tree1.data.isConstant())? true : null;
         }
         //We've checked for generic constants and expressions, now just compare the 2
@@ -66,36 +79,7 @@ public class Equation {
         return true;
 
     }
-    public Tree<MathObject> buildNewEq(Tree<MathObject> current, Tree<MathObject> after, Tree<MathObject> building, Tree<MathObject> before){
-        //This function assumes that we already know that current and before are equal.
-        if(before.data.equals(new GenericExpression())){ //If we have an expression, add the current children to the equation.
-            return current;
-        }
-        if(before.data.equals(new MathNumber())){
-            building.data = current.data;
-            return building;
-        }
-        if(!after.hasChildren()){ //If the after has no more children, it doesn't matter, just replace because we konw they are equal.
-            building.data = current.data;
-            return building;
-        }
-        if(after.hasChildren()){ //Just for extra clarity
-            //This means that we recursively replace, and the final equation is what we use as a child.
-            for(int i = 0; i<after.getChildren().size();i++){
-                building.addChild(this.buildNewEq(current.getChild(i), after.getChild(i), building.getChild(i), before.getChild(i)));
-            }
-        }
-        return building;
-    }
-    public Equation substitute(Equation before, Equation after){
-        this.equationTerms.forEachNode((node) -> {
-            if(node.data.equals(before.equationTerms.data)){
-                if(this.checkEquationTreesEqual(node, before.equationTerms)){
-                    this.buildNewEq(this.equationTerms, after.equationTerms, new Tree<>(), before.equationTerms).print();
-                    System.out.println(true);
-                }
-            }
-        });
-        return null; //CHANGE THIS
+    public PatternEquation toPatternEquation(){
+        return new PatternEquation(this.equationTerms);
     }
 }

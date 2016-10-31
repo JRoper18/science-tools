@@ -1,6 +1,7 @@
 package Structures.Tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -74,9 +75,44 @@ public class Tree<T> {
     private void recursiveNodeSearch(TreeSearchCallback callback, Tree<T> node){
         if(node.hasChildren()){
             for(Tree currentNode: node.getChildren()){
-                callback.forEachNode(currentNode);
+                this.recursiveNodeSearch(callback, currentNode);
             }
         }
+        else{
+            callback.forEachNode(node);
+        }
+    }
+    public LinkedList<Integer> getPathFromRoot(){
+        if(this.parent.equals(null)){
+            return new LinkedList<>();
+        }
+        for(int i = 0; i<parent.children.size(); i++){
+            if(parent.getChild(i).equals(this)){
+                LinkedList<Integer> parentPath = parent.getPathFromRoot();
+                parentPath.add(i);
+                return parentPath;
+            }
+        }
+        return new LinkedList<>();
+    }
+    public LinkedList<Integer> findPath(T toFind){ //Returns linked list of a route to take to find the said child
+        if (this.hasChildren()) {
+            for(int i = 0; i<this.getChildren().size(); i++){
+                if(this.getChild(i).equals(toFind)){
+                    LinkedList<Integer> toReturn = new LinkedList<Integer>();
+                    toReturn.add(new Integer(i));
+                    return toReturn;
+                }
+                LinkedList<Integer> possiblePath = this.getChild(i).findPath(toFind);
+                if (possiblePath != null) {
+                    LinkedList<Integer> path = new LinkedList<Integer>();
+                    path.add(new Integer(i));
+                    path.addAll(possiblePath);
+                    return possiblePath;
+                }
+            }
+        }
+        return null;
     }
     public void print(){
         this.print(1);
@@ -85,7 +121,12 @@ public class Tree<T> {
         for (int i = 1; i < level; i++) {
             System.out.print("\t"); //Newline
         }
-        System.out.println(this.data.getClass().getName());
+        if(this.data == null){
+            System.out.println("null");
+        }
+        else{
+            System.out.println(this.data.getClass().getName());
+        }
         for (Tree child : this.children) {
             child.print(level + 1);
         }

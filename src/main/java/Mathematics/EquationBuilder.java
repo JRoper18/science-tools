@@ -2,6 +2,7 @@ package Mathematics;
 
 import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.Parenthesis;
+import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import Structures.Tuples.Triplet;
 
@@ -125,5 +126,8 @@ public class EquationBuilder {
             return null;
 
         }
+    }
+    public static PatternEquation makePatternEquation(List<MathSyntax> eq){
+        return makeEquation(eq).toPatternEquation();
     }
 }

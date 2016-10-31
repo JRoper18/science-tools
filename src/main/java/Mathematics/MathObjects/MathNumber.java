@@ -17,7 +17,4 @@ public class MathNumber extends MathObject{
         super(0, false);
         this.number = new BigDecimal(num);
     }
-    public MathNumber(){ //Treated as just any generic constant
-        super(0, false);
-    }
 }

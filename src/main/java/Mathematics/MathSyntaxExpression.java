@@ -1,6 +1,8 @@
 package Mathematics;
 
 import Mathematics.MathObjects.*;
+import Mathematics.MathObjects.PatternMatching.GenericConstant;
+import Mathematics.MathObjects.PatternMatching.GenericExpression;
 
 /**
  * Created by jack on 10/12/2016.
@@ -20,9 +22,9 @@ public enum MathSyntaxExpression {
             case OPEN_PAREN:
                 return new Parenthesis(true);
             case NUMBER:
-                return new MathNumber();
+                return new GenericConstant();
             case EXPRESSION:
-                return new Expression();
+                return new GenericExpression();
             case PLUS:
                 return new Addition();
             case MULTIPLY:

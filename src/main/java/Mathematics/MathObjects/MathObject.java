@@ -19,5 +19,9 @@ public abstract class MathObject {
         this.arguments = args;
         this.ordered = ordered;
     }
+    @Override
+    public boolean equals(Object n){
+        return this.getClass().getName().equals(n.getClass().getName()); //Check class names. For expressions, have a seperate equals method that checks arguements.
+    }
 }
 
