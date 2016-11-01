@@ -74,7 +74,6 @@ public class Tree<T> {
     }
     private void recursiveNodeSearch(TreeSearchCallback callback){
         if(this.hasChildren()){
-            System.out.println(this.children.size());
             for(int i = 0; i<this.children.size(); i++){
                 this.getChild(i).recursiveNodeSearch(callback);
             }
@@ -85,7 +84,7 @@ public class Tree<T> {
         if(this.parent == null){
             return new LinkedList<>();
         }
-        for(int i = 0; i<parent.children.size(); i++){
+        for(int i = 0; i<parent.getChildren().size(); i++){
             if(parent.getChild(i).equals(this)){
                 LinkedList<Integer> parentPath = parent.getPathFromRoot();
                 parentPath.add(i);
