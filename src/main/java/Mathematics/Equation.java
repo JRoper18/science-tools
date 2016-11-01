@@ -22,10 +22,9 @@ public class Equation {
     public List<LinkedList<Integer>> patternMatch(PatternEquation pattern){
         List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
         TreeSearchCallback callback = (node) -> {
-            if(node.data.equals(pattern.equationTerms.data)){
-                if(this.checkEquationTreesEqual(node, pattern.equationTerms)){
-                    paths.add(node.getPathFromRoot());
-                }
+            System.out.println(this.checkEquationTreesEqual(node, pattern.equationTerms));
+            if(this.checkEquationTreesEqual(node, pattern.equationTerms)){
+                paths.add(node.getPathFromRoot());
             }
         };
         this.equationTerms.forEachNode(callback);
@@ -47,6 +46,7 @@ public class Equation {
         if(tree1.getChildren().size() != tree2.getChildren().size()){
             return false;
         }
+
         //Check the data inside the children. To do this, we need to know if our current expression is ordered.
         if(tree2.data.isOrdered()){ //We have an ordered expression, like SUM. We need to check every term IN ORDER.
             for(int i = 0; i<tree1.getChildren().size(); i++){

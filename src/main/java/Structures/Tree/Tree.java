@@ -30,7 +30,7 @@ public class Tree<T> {
     }
 
     public boolean hasChildren(){
-        return (this.children.size() == 0);
+        return (this.children.size() != 0);
     }
     public boolean isRoot(){
         return (this.parent == null);
@@ -70,20 +70,19 @@ public class Tree<T> {
         return this.getChildren().get(index);
     }
     public void forEachNode(TreeSearchCallback callback) {
-        this.recursiveNodeSearch(callback, this);
+        this.recursiveNodeSearch(callback);
     }
-    private void recursiveNodeSearch(TreeSearchCallback callback, Tree<T> node){
-        if(node.hasChildren()){
-            for(Tree currentNode: node.getChildren()){
-                this.recursiveNodeSearch(callback, currentNode);
+    private void recursiveNodeSearch(TreeSearchCallback callback){
+        if(this.hasChildren()){
+            System.out.println(this.children.size());
+            for(int i = 0; i<this.children.size(); i++){
+                this.getChild(i).recursiveNodeSearch(callback);
             }
         }
-        else{
-            callback.forEachNode(node);
-        }
+        callback.forEachNode(this);
     }
     public LinkedList<Integer> getPathFromRoot(){
-        if(this.parent.equals(null)){
+        if(this.parent == null){
             return new LinkedList<>();
         }
         for(int i = 0; i<parent.children.size(); i++){

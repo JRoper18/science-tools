@@ -1,5 +1,7 @@
 package Mathematics.MathObjects;
 
+import Mathematics.MathObjects.PatternMatching.GenericConstant;
+
 /**
  * Created by Ulysses Howard Smith on 10/11/2016.
  */
@@ -20,7 +22,7 @@ public abstract class MathObject {
         this.ordered = ordered;
     }
     @Override
-    public boolean equals(Object n){
+    public boolean equals(Object n){ //This equals method only checks if the mathobjects are of the same type. It does not check arguements.
         return this.getClass().getName().equals(n.getClass().getName()); //Check class names. For expressions, have a seperate equals method that checks arguements.
     }
 }

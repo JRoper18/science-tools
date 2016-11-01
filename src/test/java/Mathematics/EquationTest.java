@@ -19,6 +19,6 @@ public class EquationTest {
         PatternEquation test1 = builder.makePatternEquation(input3);
         Equation test2 = builder.makeEquation(input2);
         Equation test3 = builder.makeEquation(input1);
-        test3.patternMatch(test1);
+        test2.patternMatch(test1);
     }
 }

@@ -4,6 +4,8 @@ import Structures.Tree.Tree;
 import Structures.Tree.TreeSearchCallback;
 import org.junit.Test;
 
+import java.util.LinkedList;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -24,15 +26,33 @@ public class TreeTest {
     }
 
     @Test
+    public void testFindParent() throws Exception {
+        Tree<String> testTree = new Tree<String>();
+        testTree.addChild("2");
+        Tree nextBr = testTree.addChild("3");
+        nextBr.addChild("3.5");
+        nextBr = nextBr.addChild("4");
+        nextBr.addChild("5");
+        nextBr.addChild("6");
+        nextBr = nextBr.addChild("7");
+        LinkedList<Integer> path = (nextBr.getPathFromRoot()); //Gets a path to the "7" node
+        Tree currentlySelected = testTree.getChild(path.get(0));
+        for(int i = 1; i<path.size(); i++){
+            currentlySelected = currentlySelected.getChild(path.get(i));
+        }
+        assertEquals("Should be 7", currentlySelected.data, "7");
+    }
+
+    @Test
     public void testSearch() throws Exception {
-        TreeSearchCallback callback = (node) -> node.addChild("ReChild");
+        TreeSearchCallback callback = (node) -> {
+            node.addChild(3);
+        };
         Tree testTree = new Tree();
         testTree.addChild("ReChild");
         testTree.forEachNode(callback);
         testTree.print();
-        TreeSearchCallback testCallbac = (node) -> {
-            assertEquals(true, (node.hasChildren())? node.getChild(0).equals("ReChild") : true);
-        };
 
     }
+
 }
