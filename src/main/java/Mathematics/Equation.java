@@ -20,6 +20,11 @@ public class Equation {
     public Equation(Tree equationTerms){
         this.equationTerms = equationTerms;
     }
+    /**
+     *
+     * @param pattern A PatternEquation to check this equation agains
+     * @return A List of LinkedLists, each containing a set of numbers that points down the equation tree to the matching pattern.
+     */
     public List<LinkedList<Integer>> patternMatch(PatternEquation pattern){
         List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
         TreeSearchCallback callback = (node) -> {
@@ -80,8 +85,24 @@ public class Equation {
         }
         //So we know our children, our data, and our children's children are equal. We must be the same.
         return true;
-
     }
+    public void substitute(PatternEquation before, PatternEquation after){
+        List<LinkedList<Integer>> pathsToMatches = this.patternMatch(before);
+        if(pathsToMatches.isEmpty()){
+            return;
+        }
+        for(int i = 0; i<pathsToMatches.size(); i++){
+            LinkedList<Integer> currentPath = pathsToMatches.get(i);
+
+            for(int j = 0; j<currentPath.size(); j++){
+
+            }
+        }
+    }
+    /**
+     *
+     * @return A PatternEquation equivalent of this Equation
+     */
     public PatternEquation toPatternEquation(){
         return new PatternEquation(this.equationTerms);
     }

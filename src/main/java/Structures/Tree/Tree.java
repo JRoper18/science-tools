@@ -32,25 +32,58 @@ public class Tree<T> {
     public boolean hasChildren(){
         return (this.children.size() != 0);
     }
+
+    /**
+     * Returns whether or not this tree is the root and has no parent.
+     * @return Boolean returning true if this node has no parent.
+     */
     public boolean isRoot(){
         return (this.parent == null);
     }
+
+    /**
+     * Returns a list of this node's children
+     * @return A list of this node's children
+     */
     public List<Tree> getChildren() {
         return this.children;
     }
+
+    /**
+     * Returns this node's parent
+     * @return This node's parent
+     */
     public Tree getParent(){
         return this.parent;
     }
+
+    /**
+     * Creates a new tree with the data specified, and then add that new tree as a child of this one.
+     * @param data The data of the node you want to add as a child
+     * @return The child just added
+     */
     public Tree addChild(Object data) { //Returns just added child
         Tree newChild = new Tree(this, data);
         this.children.add(newChild);
         return newChild;
     }
+
+    /**
+     * Adds a tree as a child of this tree
+     * @param newTree Adds a tree as a child of this node
+     * @return The input
+     */
     public Tree addChild(Tree newTree){
         newTree.parent = this;
         this.children.add(newTree);
         return newTree;
     }
+
+    /**
+     * Returns true if one of our children has the child.
+     * @param data The data of the child you are looking for
+     * @return Boolean indicating if the child exists.
+     */
     public boolean hasChild(T data){
         for(int i = 0; i<this.children.size(); i++){
             if(this.getChild(i).data.equals(data)){
@@ -59,17 +92,32 @@ public class Tree<T> {
         }
         return false;
     }
+
+    /**
+     * Adds a list of children to this node.
+     * @param newChildren A list of children to add as children to this node
+     */
     public void addChildren(List<T> newChildren){
         for(int i = 0; i<newChildren.size(); i++){
             this.addChild(newChildren.get(i));
         }
     }
+
+    /**
+     * Adds multiple trees as children to this node.
+     * @param newChildren The trees to add as children.
+     */
     public void addTreeChildren(List<Tree> newChildren){
         this.children.addAll(newChildren);
     }
     public Tree getChild(int index){
         return this.getChildren().get(index);
     }
+
+    /**
+     * Does the callback for every node in this tree.
+     * @param callback The callback to execute on every node.
+     */
     public void forEachNode(TreeSearchCallback callback) {
         this.recursiveNodeSearch(callback);
     }
@@ -81,6 +129,11 @@ public class Tree<T> {
         }
         callback.forEachNode(this);
     }
+
+    /**
+     * Gets the path from the root node to this node.
+     * @return A LinkedList
+     */
     public LinkedList<Integer> getPathFromRoot(){
         if(this.parent == null){
             return new LinkedList<>();
@@ -94,6 +147,12 @@ public class Tree<T> {
         }
         return new LinkedList<>();
     }
+
+    /**
+     * Returns a LinkedList. If you iterate through the linked list, getting the nth child of the next node, you will come to the node you are looking for.
+     * @param toFind The object you are trying to find
+     * @return A LinkedList of children to follow to get to your child from this node.
+     */
     public LinkedList<Integer> findPath(T toFind){ //Returns linked list of a route to take to find the said child
         if (this.hasChildren()) {
             for(int i = 0; i<this.getChildren().size(); i++){
@@ -113,6 +172,10 @@ public class Tree<T> {
         }
         return null;
     }
+
+    /**
+     * Prints the tree to the console.
+     */
     public void print(){
         this.print(1);
     }
