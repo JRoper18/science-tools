@@ -6,6 +6,7 @@ import Mathematics.MathObjects.PatternMatching.GenericExpression;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import Structures.Tree.TreeSearchCallback;
+import com.rits.cloning.Cloner;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -56,8 +57,11 @@ public class Equation {
             }
         }
         else{ //The operators for our current expression are unordered, like + or -
-            List<Tree> tree1Children = tree1.getChildren();
-            List<Tree> tree2Children = tree2.getChildren();
+
+            Cloner cloner = new Cloner();
+
+            List<Tree> tree1Children = cloner.deepClone(tree1.getChildren());
+            List<Tree> tree2Children = cloner.deepClone(tree2.getChildren());
             //Match each child with it's corresponding child in the other tree by comparing children. If we find a single match, we go on. If we don't find a single match,
             //That means one term is not in the other, so we return false.
             for(int i = 0; i<tree2Children.size(); i++){

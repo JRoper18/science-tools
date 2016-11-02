@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="uk.com.robust-it:cloning:1.9.3" type="repository">
+    <properties maven-id="uk.com.robust-it:cloning:1.9.3" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/uk/com/robust-it/cloning/1.9.3/cloning-1.9.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/2.1/objenesis-2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
