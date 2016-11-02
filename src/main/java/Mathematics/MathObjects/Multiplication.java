@@ -10,6 +10,6 @@ public class Multiplication extends Expression {
         super(2, false);
     }
     public Equation eval(){
-        return null;
+        return null; //CHANGE THiS
     }
 }

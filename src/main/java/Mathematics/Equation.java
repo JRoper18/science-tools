@@ -41,7 +41,7 @@ public class Equation {
             return true; //This node is good, we don't need to check children.
         }
         if(tree2.data.equals(new GenericConstant())){ //If we have a constant, check that tree1 also is just a generic constant
-            return (tree1.data.isConstant())? true : null;
+            return tree1.data.isConstant();
         }
         //We've checked for generic constants and expressions, now just compare the 2
         if(!tree1.data.equals(tree2.data)){ //The root expression or constant isn't the same
@@ -88,15 +88,19 @@ public class Equation {
     }
     public void substitute(PatternEquation before, PatternEquation after){
         List<LinkedList<Integer>> pathsToMatches = this.patternMatch(before);
-        if(pathsToMatches.isEmpty()){
-            return;
-        }
+        List<LinkedList<Integer>> expressionLocations = before.equationTerms.findPaths(new GenericExpression());
         for(int i = 0; i<pathsToMatches.size(); i++){
             LinkedList<Integer> currentPath = pathsToMatches.get(i);
-
-            for(int j = 0; j<currentPath.size(); j++){
-
+            Tree<MathObject> currentEquation = this.equationTerms.getChildThroughPath(currentPath);
+            Cloner cloner = new Cloner();
+            Tree<MathObject> replaceTree = cloner.deepClone(after.equationTerms);
+            for(int j = 0; j<expressionLocations.size(); j++){
+                LinkedList<Integer> currentExpressionPath = expressionLocations.get(j);
+                Tree<MathObject> previousExpression = before.equationTerms.getChildThroughPath(currentExpressionPath);
+                Tree<MathObject> expressionLocation = replaceTree.getChildThroughPath(currentExpressionPath);
+                expressionLocation = previousExpression;
             }
+            currentEquation = replaceTree;
         }
     }
     /**

@@ -10,6 +10,9 @@ public class GenericVariable extends MathObject{
     public GenericVariable(String name){
         super(0, false);
         this.name = name;
-
+    }
+    public GenericVariable(){
+        super(0, false);
+        this.name = "x";
     }
 }

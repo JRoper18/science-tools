@@ -5,6 +5,7 @@ import Structures.Tree.TreeSearchCallback;
 import org.junit.Test;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,8 +52,8 @@ public class TreeTest {
         Tree testTree = new Tree();
         testTree.addChild("ReChild");
         testTree.forEachNode(callback);
-        testTree.print();
+        List<LinkedList<Integer>> paths = testTree.findPaths(3);
+        assertEquals(2, paths.size());
 
     }
-
 }
