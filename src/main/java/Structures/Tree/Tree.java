@@ -47,6 +47,7 @@ public class Tree<T> {
         return newChild;
     }
     public Tree addChild(Tree newTree){
+        newTree.parent = this;
         this.children.add(newTree);
         return newTree;
     }

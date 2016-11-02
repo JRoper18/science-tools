@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9093854d-3db4-4d31-bfae-15bb99bd7313" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/uk_com_robust_it_cloning_1_9_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/science-tools.iml" afterPath="$PROJECT_DIR$/.idea/modules/science-tools.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/science-tools_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/science-tools_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/science-tools_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/science-tools_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/Mathematics/EquationTest.class" afterPath="$PROJECT_DIR$/build/classes/test/Mathematics/EquationTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" afterPath="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java" afterPath="$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java" />
     </list>
     <ignored path="science-tools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,54 +35,7 @@
           <activation />
         </task>
         <projects_view>
-          <tree_state>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="science-tools" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="science-tools" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Source Sets" />
-                <option name="myItemType" value="org.jetbrains.plugins.gradle.service.project.view.GradleViewContributor$SourceSetsNode" />
-              </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="science-tools" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Source Sets" />
-                <option name="myItemType" value="org.jetbrains.plugins.gradle.service.project.view.GradleViewContributor$SourceSetsNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="main" />
-                <option name="myItemType" value="org.jetbrains.plugins.gradle.service.project.view.GradleViewContributor$SourceSetNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Dependencies" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </PATH_ELEMENT>
-            </PATH>
-          </tree_state>
+          <tree_state />
         </projects_view>
       </state>
     </system>
@@ -93,21 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="EquationTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EquationTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Equation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2013">
-              <caret line="63" column="76" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+            <state relative-caret-position="891">
+              <caret line="24" column="71" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,12 +57,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TreeSearchCallback.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/TreeSearchCallback.java">
+      <file leaf-file-name="Equation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="627">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,34 +72,9 @@
       <file leaf-file-name="Tree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#263#269#0" expanded="false" />
-                <element signature="e#306#307#0" expanded="false" />
-                <element signature="e#342#343#0" expanded="false" />
-                <element signature="e#553#554#0" expanded="false" />
-                <element signature="e#587#588#0" expanded="false" />
-                <element signature="e#622#623#0" expanded="false" />
-                <element signature="e#672#673#0" expanded="false" />
-                <element signature="e#701#702#0" expanded="false" />
-                <element signature="e#745#746#0" expanded="false" />
-                <element signature="e#783#784#0" expanded="false" />
-                <element signature="e#819#820#0" expanded="false" />
-                <element signature="e#848#849#0" expanded="false" />
-                <element signature="e#882#883#0" expanded="false" />
-                <element signature="e#1613#1614#0" expanded="false" />
-                <element signature="e#1662#1663#0" expanded="false" />
-                <element signature="e#1699#1700#0" expanded="false" />
-                <element signature="e#1751#1752#0" expanded="false" />
-                <element signature="e#1810#1811#0" expanded="false" />
-                <element signature="e#1860#1861#0" expanded="false" />
-                <element signature="e#2928#2937#0" expanded="false" />
-                <element signature="e#3237#3246#0" expanded="false" />
-                <element signature="e#3476#3477#0" expanded="false" />
-                <element signature="e#3505#3506#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="514">
+              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -493,9 +412,9 @@
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Addition.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathObject.java" />
         <option value="$PROJECT_DIR$/src/test/java/Structures/TreeTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
       </list>
     </option>
@@ -575,20 +494,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1122,44 +1027,51 @@
       <option name="project" value="LOCAL" />
       <updated>1478022114763</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added deep cloning to fix error">
+      <created>1478056423878</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1478056423878</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 11h 51m 04s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 11h 51m 33s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 11h 52m 26s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 11h 53m 00s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 11h 53m 29s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 11h 53m 58s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EquationTest_testPrint - 2016.11.01 at 17h 37m 31s.xml">
-      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="EquationTest_testPrint - 2016.11.01 at 20h 55m 14s.xml">
       <configuration name="EquationTest.testPrint" configurationId="JUnit" />
     </history-entry>
     <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 13m 01s.xml">
       <configuration name="EquationTest.testPrint" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TreeTest_testFindParent - 2016.11.01 at 11h 49m 36s.xml">
-      <configuration name="TreeTest.testFindParent" configurationId="JUnit" />
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 18m 23s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 27m 39s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 32m 25s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 33m 54s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 34m 22s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 34m 51s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 42m 26s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EquationTest_testPrint - 2016.11.01 at 21h 43m 59s.xml">
+      <configuration name="EquationTest.testPrint" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1169,11 +1081,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3275488" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3275488" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33020833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33020833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1236,7 +1148,8 @@
     <MESSAGE value="Tree matchfinding might be good now" />
     <MESSAGE value="Working on substitution algorithm" />
     <MESSAGE value="Fixed stupid errors in the Tree structure (I can't believe I'm so stupid)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed stupid errors in the Tree structure (I can't believe I'm so stupid)" />
+    <MESSAGE value="Added deep cloning to fix error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added deep cloning to fix error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1535,39 +1448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#263#269#0" expanded="false" />
-            <element signature="e#306#307#0" expanded="false" />
-            <element signature="e#342#343#0" expanded="false" />
-            <element signature="e#553#554#0" expanded="false" />
-            <element signature="e#587#588#0" expanded="false" />
-            <element signature="e#622#623#0" expanded="false" />
-            <element signature="e#672#673#0" expanded="false" />
-            <element signature="e#701#702#0" expanded="false" />
-            <element signature="e#745#746#0" expanded="false" />
-            <element signature="e#783#784#0" expanded="false" />
-            <element signature="e#819#820#0" expanded="false" />
-            <element signature="e#848#849#0" expanded="false" />
-            <element signature="e#882#883#0" expanded="false" />
-            <element signature="e#1613#1614#0" expanded="false" />
-            <element signature="e#1662#1663#0" expanded="false" />
-            <element signature="e#1699#1700#0" expanded="false" />
-            <element signature="e#1751#1752#0" expanded="false" />
-            <element signature="e#1810#1811#0" expanded="false" />
-            <element signature="e#1860#1861#0" expanded="false" />
-            <element signature="e#2928#2937#0" expanded="false" />
-            <element signature="e#3237#3246#0" expanded="false" />
-            <element signature="e#3476#3477#0" expanded="false" />
-            <element signature="e#3505#3506#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/TreeSearchCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1584,21 +1464,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2013">
-          <caret line="63" column="76" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+        <state relative-caret-position="514">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="24" column="71" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="627">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

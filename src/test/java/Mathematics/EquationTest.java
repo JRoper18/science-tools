@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by Ulysses Howard Smith on 10/10/2016.
  */
@@ -19,6 +21,7 @@ public class EquationTest {
         PatternEquation test1 = builder.makePatternEquation(input3);
         Equation test2 = builder.makeEquation(input2);
         Equation test3 = builder.makeEquation(input1);
-        test2.patternMatch(test1);
+        assertEquals(test2.patternMatch(test1).get(0).get(0), new Integer(0));
+        assertEquals(test3.patternMatch(test1).get(0).isEmpty(), true);
     }
 }
