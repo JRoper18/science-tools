@@ -33,10 +33,11 @@ public class Equation {
             }
         };
         this.equationTerms.forEachNode(callback);
+
         return paths;
     }
     private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2){
-        //Tree1 is a regular equation, tree2 might contain empty expressions and numbers
+        //Tree1 is a regular equation, tree2 might contain generic expressions and numbers
         if(tree2.data.equals(new GenericExpression())){ //If we find an empty expression, we assume any generic expression can go into there.
             return true; //This node is good, we don't need to check children.
         }
@@ -46,6 +47,7 @@ public class Equation {
         //We've checked for generic constants and expressions, now just compare the 2
         if(!tree1.data.equals(tree2.data)){ //The root expression or constant isn't the same
             return false;
+
         }
         //Now, check the children's sizes
         if(tree1.getChildren().size() != tree2.getChildren().size()){
@@ -71,7 +73,7 @@ public class Equation {
             for(int i = 0; i<tree2Children.size(); i++){
                 boolean foundMatch = false;
                 for(int j = 0; j<tree1Children.size(); j++){
-                    if(checkEquationTreesEqual(tree2Children.get(i), tree1Children.get(j))){
+                    if(checkEquationTreesEqual(tree1Children.get(j), tree2Children.get(i))){
                         tree1Children.remove(j);
                         tree2Children.remove(i);
                         foundMatch = true;
@@ -100,7 +102,7 @@ public class Equation {
                 Tree<MathObject> expressionLocation = replaceTree.getChildThroughPath(currentExpressionPath);
                 expressionLocation = previousExpression;
             }
-            currentEquation = replaceTree;
+            this.equationTerms.getChildThroughPath(currentPath).replaceThis(replaceTree);
         }
     }
     /**

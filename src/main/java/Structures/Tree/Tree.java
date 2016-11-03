@@ -110,10 +110,62 @@ public class Tree<T> {
     public void addTreeChildren(List<Tree> newChildren){
         this.children.addAll(newChildren);
     }
+
+    /**
+     * Gets the child
+     * @param index The index of the child you want
+     * @return The child at the specified index.
+     */
     public Tree getChild(int index){
+        if(index >= this.children.size()){
+            return null;
+        }
         return this.getChildren().get(index);
     }
 
+    /**
+     * Removes a child at the specified index
+     * @param index The index of the child you want removed.
+     */
+    public void removeChild(int index){
+        this.children.remove(index);
+    }
+
+    /**
+     * Replaces this node
+     * @param replace The new tree you want this to be
+     */
+    public void replaceThis(Tree<T> replace){
+        if(this.parent == null){
+            this.children = replace.getChildren();
+            this.data = replace.data;
+            return;
+        }
+        for(int i = 0; i<this.parent.getChildren().size(); i++){
+            if(this.parent.getChild(i).equals(this)){
+                this.parent.replaceChild(i, replace);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Replaces this node's data.
+     * @param replace The new data
+     */
+    public void replaceThis(T replace){
+        this.data = replace;
+    }
+
+    /**
+     * Replaces a child
+     * @param index The index of the child you want to replace
+     * @param replace What you want as your new child
+     */
+    public void replaceChild(int index, T replace){
+        this.children.remove(index);
+        this.children.add(index, new Tree(replace));
+    }
     /**
      * Does the callback for every node in this tree.
      * @param callback The callback to execute on every node.
@@ -175,6 +227,12 @@ public class Tree<T> {
         }
         return paths;
     }
+
+    /**
+     * Follows a path to return the child
+     * @param path The LinkedList path to follow
+     * @return The child node that is along your path. Returns null is path leads nowhere.
+     */
     public Tree getChildThroughPath(LinkedList<Integer> path){
         if(path.isEmpty()){
             return this;
@@ -182,6 +240,9 @@ public class Tree<T> {
         return this.continuePath(path, 0);
     }
     private Tree continuePath(LinkedList<Integer> path, int index){
+        if(index == path.size()-1){
+            return this;
+        }
         return this.getChild(path.get(index)).continuePath(path, index + 1);
     }
     /**
