@@ -5,9 +5,6 @@ package Mathematics;
  */
 public class Simplifier {
     public Simplifier(){
-
-    }
-    public static void together(){
-
+        
     }
 }

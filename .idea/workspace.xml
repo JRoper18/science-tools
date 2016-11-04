@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9093854d-3db4-4d31-bfae-15bb99bd7313" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Identifier.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntax.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntax.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression$1.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/Mathematics/EquationTest.class" afterPath="$PROJECT_DIR$/build/classes/test/Mathematics/EquationTest.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Identifier.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/PatternMatching/GenericConstant.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/PatternMatching/GenericConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/PatternMatching/GenericExpression.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/PatternMatching/GenericExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntax.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntax.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntaxExpression.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntaxExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" afterPath="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" />
     </list>
     <ignored path="science-tools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,7 +51,7 @@
       <file leaf-file-name="EquationTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
+            <state relative-caret-position="123">
               <caret line="16" column="90" selection-start-line="16" selection-start-column="90" selection-end-line="16" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -67,21 +60,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Simplifier.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java">
+      <file leaf-file-name="EquationBuilderTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
+            <state relative-caret-position="461">
+              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Identifier.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Identifier.java">
+      <file leaf-file-name="Simplifier.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            <state relative-caret-position="231">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EquationBuilder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="611">
+              <caret line="154" column="64" selection-start-line="154" selection-start-column="64" selection-end-line="154" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -450,12 +453,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tuples/Triplet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/TreeSearchCallback.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Parenthesis.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/GenericExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Expression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathNumber.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Variable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathObject.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Addition.java" />
@@ -471,7 +472,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntaxExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/PatternMatching/GenericConstant.java" />
         <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mathematics/Identifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
       </list>
     </option>
   </component>
@@ -672,36 +676,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Structures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -726,70 +700,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Mathematics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathObjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="science-tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mathematics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathObjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PatternMatching" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -820,7 +730,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EquationTest">
+  <component name="RunManager" selected="JUnit.EquationBuilderTest.testCreation">
     <configuration default="false" name="EquationTest.testPrint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -834,32 +744,6 @@
       <option name="PACKAGE_NAME" value="Mathematics" />
       <option name="MAIN_CLASS_NAME" value="Mathematics.EquationTest" />
       <option name="METHOD_NAME" value="testPrint" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="TreeTest.testSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="science-tools_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Structures" />
-      <option name="MAIN_CLASS_NAME" value="Structures.TreeTest" />
-      <option name="METHOD_NAME" value="testSearch" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -938,6 +822,32 @@
       <option name="PACKAGE_NAME" value="Mathematics" />
       <option name="MAIN_CLASS_NAME" value="Mathematics.EquationTest" />
       <option name="METHOD_NAME" value="testPatternMatch" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EquationBuilderTest.testCreation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Mathematics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="science-tools_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Mathematics" />
+      <option name="MAIN_CLASS_NAME" value="Mathematics.EquationBuilderTest" />
+      <option name="METHOD_NAME" value="testCreation" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1197,23 +1107,26 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.EquationTest.testPrint" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TreeTest.testSearch" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.EquationTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.EquationTest.testSubstitute" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.EquationTest.testPatternMatch" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.EquationTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.EquationTest.testSubstitute" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EquationTest.testPatternMatch" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EquationBuilderTest.testCreation" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EquationTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.EquationTest.testSubstitute" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.EquationTest.testPatternMatch" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.EquationTest.testPrint" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TreeTest.testSearch" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EquationBuilderTest.testCreation" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EquationTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.EquationTest.testSubstitute" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.EquationTest.testPatternMatch" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.EquationTest.testPrint" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -1356,24 +1269,31 @@
       <option name="project" value="LOCAL" />
       <updated>1478146123664</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Substitution working better, working on adding tags to generics">
+      <created>1478228889858</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1478228889858</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EquationTest - 2016.11.03 at 17h 25m 08s.xml">
-      <configuration name="EquationTest" configurationId="JUnit" />
+    <history-entry file="EquationBuilderTest_testCreation - 2016.11.03 at 21h 41m 59s.xml">
+      <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationTest_testSubstitute - 2016.11.03 at 17h 11m 39s.xml">
-      <configuration name="EquationTest.testSubstitute" configurationId="JUnit" />
+    <history-entry file="EquationBuilderTest_testCreation - 2016.11.03 at 21h 42m 49s.xml">
+      <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationTest_testSubstitute - 2016.11.03 at 17h 11m 57s.xml">
-      <configuration name="EquationTest.testSubstitute" configurationId="JUnit" />
+    <history-entry file="EquationBuilderTest_testCreation - 2016.11.03 at 21h 43m 09s.xml">
+      <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationTest_testSubstitute - 2016.11.03 at 17h 12m 57s.xml">
-      <configuration name="EquationTest.testSubstitute" configurationId="JUnit" />
+    <history-entry file="EquationBuilderTest_testCreation - 2016.11.03 at 21h 44m 46s.xml">
+      <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationTest_testSubstitute - 2016.11.03 at 17h 15m 12s.xml">
-      <configuration name="EquationTest.testSubstitute" configurationId="JUnit" />
+    <history-entry file="EquationBuilderTest_testCreation - 2016.11.03 at 21h 46m 31s.xml">
+      <configuration name="EquationBuilderTest.testCreation" configurationId="JUnit" />
     </history-entry>
     <history-entry file="EquationTest_testSubstitute - 2016.11.03 at 17h 18m 31s.xml">
       <configuration name="EquationTest.testSubstitute" configurationId="JUnit" />
@@ -1402,7 +1322,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275488" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3275488" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1475,7 +1395,8 @@
     <MESSAGE value="Added minor Tree javadoc" />
     <MESSAGE value="Still working on substitution" />
     <MESSAGE value="Tree now has replace and remove methods, equation substitute works at the basic level" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tree now has replace and remove methods, equation substitute works at the basic level" />
+    <MESSAGE value="Substitution working better, working on adding tags to generics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Substitution working better, working on adding tags to generics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1559,13 +1480,6 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/SigFigScientificTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/SigFigs/SigFigScientific.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Node.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/SigFigs/SigFigNumber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SigFigNumberTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1254">
@@ -1624,21 +1538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="941">
-          <caret line="130" column="15" selection-start-line="130" selection-start-column="15" selection-end-line="130" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Chemistry/AtomicElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1732,14 +1631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3300">
@@ -1798,9 +1689,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SigFigs/SigFigNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1159">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Chemistry/AtomicElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="123">
           <caret line="16" column="90" selection-start-line="16" selection-start-column="90" selection-end-line="16" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1810,16 +1725,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
+        <state relative-caret-position="231">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Identifier.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        <state relative-caret-position="611">
+          <caret line="154" column="64" selection-start-line="154" selection-start-column="64" selection-end-line="154" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationBuilderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
           <folding />
         </state>
       </provider>

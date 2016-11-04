@@ -115,11 +115,53 @@ public class EquationBuilder {
         return toReturn;
 
     }
+    private static MathSyntax stringToSyntax(String str){
+        switch(str){
+            case "+":
+                return new MathSyntax(MathSyntaxExpression.PLUS);
+            case "*":
+                return new MathSyntax(MathSyntaxExpression.MULTIPLY);
+            default:
+
+        }
+        //It's not an expression if we've made it here. Check for numbers
+        int intNum;
+        double doubNum;
+        try{
+            intNum = Integer.parseInt(str);
+            return new MathSyntax(intNum);
+        } catch (NumberFormatException e){ //Can't be an int. Try a double?
+            try{
+                doubNum = Double.parseDouble(str);
+                return new MathSyntax(doubNum);
+            } catch (NumberFormatException fin){
+                fin.printStackTrace();
+            }
+        }
+        return null; //IDK
+    }
+    public static Equation makeEquation(String eq){
+        List<MathSyntax> input = new ArrayList<>();
+        StringBuilder tokenBuild = new StringBuilder();
+        for(int i = 0; i<eq.length(); i++){
+            char currentChar = eq.charAt(i);
+            if(currentChar == ' '){ //If there's a space
+                input.add(stringToSyntax(tokenBuild.toString()));
+                tokenBuild.delete(0, tokenBuild.length());
+            }else{
+                tokenBuild.append(currentChar);
+            }
+            if(i == (eq.length() - 1)){ //Last character, process whatever we have
+                input.add(stringToSyntax(tokenBuild.toString()));
+            }
+        }
+        return makeEquation(input);
+    }
     public static Equation makeEquation(List<MathSyntax> eq){
         Tree equation;
         try{
             equation = makeEquationTree(eq);
-            return new Equation(equation); //Change this
+            return new Equation(equation);
 
         } catch(Exception e){
             e.printStackTrace();
