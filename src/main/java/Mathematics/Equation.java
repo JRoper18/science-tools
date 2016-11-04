@@ -96,11 +96,13 @@ public class Equation {
             Tree<MathObject> currentEquation = this.equationTerms.getChildThroughPath(currentPath);
             Cloner cloner = new Cloner();
             Tree<MathObject> replaceTree = cloner.deepClone(after.equationTerms);
-            for(int j = 0; j<expressionLocations.size(); j++){
-                LinkedList<Integer> currentExpressionPath = expressionLocations.get(j);
-                Tree<MathObject> previousExpression = before.equationTerms.getChildThroughPath(currentExpressionPath);
-                Tree<MathObject> expressionLocation = replaceTree.getChildThroughPath(currentExpressionPath);
-                expressionLocation = previousExpression;
+            if(!after.equationTerms.findPaths(new GenericExpression()).isEmpty()) {
+                for (int j = 0; j < expressionLocations.size(); j++) {
+                    LinkedList<Integer> currentExpressionPath = expressionLocations.get(j);
+                    Tree<MathObject> currentExpression = this.equationTerms.getChildThroughPath(currentExpressionPath);
+                    Tree<MathObject> expressionLocation = replaceTree.getChildThroughPath(currentExpressionPath);
+                    expressionLocation.replaceThis(currentExpression);
+                }
             }
             this.equationTerms.getChildThroughPath(currentPath).replaceThis(replaceTree);
         }

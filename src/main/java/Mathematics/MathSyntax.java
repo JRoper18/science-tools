@@ -3,6 +3,8 @@ package Mathematics;
 import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
 
+import java.util.List;
+
 /**
  * Created by Ulysses Howard Smith on 10/11/2016.
  */
@@ -15,6 +17,10 @@ public class MathSyntax {
     }
     public MathSyntax(double arg){
         this.mathObject = new MathNumber(arg);
+    }
+    public MathSyntax(MathSyntaxExpression ex, List<Object> args){
+        this.syntax = ex;
+        this.mathObject = ex.getMathObject(args);
     }
     public MathSyntax(MathSyntaxExpression ex){
         this.syntax = ex;

@@ -1,8 +1,13 @@
 package Mathematics;
 
-import Mathematics.MathObjects.*;
+import Mathematics.MathObjects.Addition;
+import Mathematics.MathObjects.MathObject;
+import Mathematics.MathObjects.Multiplication;
+import Mathematics.MathObjects.Parenthesis;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
 import Mathematics.MathObjects.PatternMatching.GenericExpression;
+
+import java.util.List;
 
 /**
  * Created by jack on 10/12/2016.
@@ -14,17 +19,25 @@ public enum MathSyntaxExpression {
     EXPRESSION,
     MULTIPLY,
     PLUS;
-
-    public MathObject getMathObject() {
+    public MathObject getMathObject(){
+        return this.getMathObject(null);
+    }
+    public MathObject getMathObject(List<Object> args) {
         switch (this) {
             case CLOSE_PAREN:
                 return new Parenthesis(false);
             case OPEN_PAREN:
                 return new Parenthesis(true);
             case NUMBER:
-                return new GenericConstant();
+                if(args.size() == 0){
+                    return new GenericConstant();
+                }
+                return new GenericConstant((String) args.get(0));
             case EXPRESSION:
-                return new GenericExpression();
+                if(args.size() == 0){
+                    return new GenericExpression();
+                }
+                return new GenericExpression((String) args.get(0));
             case PLUS:
                 return new Addition();
             case MULTIPLY:
