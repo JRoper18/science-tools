@@ -121,6 +121,8 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.PLUS);
             case "*":
                 return new MathSyntax(MathSyntaxExpression.MULTIPLY);
+            case "CONSTANT":
+                return new MathSyntax(MathSyntaxExpression.NUMBER);
             default:
 
         }
@@ -170,6 +172,9 @@ public class EquationBuilder {
         }
     }
     public static PatternEquation makePatternEquation(List<MathSyntax> eq){
+        return makeEquation(eq).toPatternEquation();
+    }
+    public static PatternEquation makePatternEquation(String eq){
         return makeEquation(eq).toPatternEquation();
     }
 }

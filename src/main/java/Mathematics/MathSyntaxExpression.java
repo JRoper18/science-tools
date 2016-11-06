@@ -7,6 +7,7 @@ import Mathematics.MathObjects.Parenthesis;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
 import Mathematics.MathObjects.PatternMatching.GenericExpression;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public enum MathSyntaxExpression {
     MULTIPLY,
     PLUS;
     public MathObject getMathObject(){
-        return this.getMathObject(null);
+        return this.getMathObject(new ArrayList<Object>());
     }
     public MathObject getMathObject(List<Object> args) {
         switch (this) {

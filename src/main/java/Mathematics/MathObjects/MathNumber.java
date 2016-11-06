@@ -11,7 +11,6 @@ public class MathNumber extends MathObject{
     public MathNumber(String arbitraryLengthNum){
         super(0, false);
         this.number = new BigDecimal(arbitraryLengthNum);
-        this.ordered = false;
     }
     public MathNumber(double num){
         super(0, false);

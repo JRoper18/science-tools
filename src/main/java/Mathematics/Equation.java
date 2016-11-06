@@ -8,9 +8,7 @@ import Structures.Tree.Tree;
 import Structures.Tree.TreeSearchCallback;
 import com.rits.cloning.Cloner;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Ulysses Howard Smith on 10/7/2016.
@@ -20,21 +18,43 @@ public class Equation {
     public Equation(Tree equationTerms){
         this.equationTerms = equationTerms;
     }
+    public Map<EquationType, Boolean> tags = new HashMap<>();
     /**
      *
      * @param pattern A PatternEquation to check this equation agains
      * @return A List of LinkedLists, each containing a set of numbers that points down the equation tree to the matching pattern.
      */
-    public List<LinkedList<Integer>> patternMatch(PatternEquation pattern){
+    public List<LinkedList<Integer>> patternMatch(PatternEquation pattern) {
         List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
         TreeSearchCallback callback = (node) -> {
-            if(this.checkEquationTreesEqual(node, pattern.equationTerms)){
+            if (this.checkEquationTreesEqual(node, pattern.equationTerms)) {
                 paths.add(node.getPathFromRoot());
             }
         };
         this.equationTerms.forEachNode(callback);
 
         return paths;
+    }
+
+    /**
+     * Returns if this equation matches the pattern
+     * @param pattern The pattern equation to match against
+     * @return If we match
+     */
+    public boolean isPattern(PatternEquation pattern){
+        List<LinkedList<Integer>> paths = this.patternMatch(pattern);
+        if(paths.isEmpty()){
+            return false;
+        } //Now we can reference first element in paths list
+        return paths.get(0).isEmpty();
+    }
+    public boolean isType(EquationType type){
+        if(!this.tags.containsKey(type)){
+            //If we're not sure if we fit that type of equation, compute it:
+            Identifier iden = new Identifier();
+            this.tags.putAll(iden.identify(this, type));
+        }
+        return this.tags.get(type);
     }
     private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2){
         //Tree1 is a regular equation, tree2 might contain generic expressions and numbers
@@ -88,6 +108,12 @@ public class Equation {
         //So we know our children, our data, and our children's children are equal. We must be the same.
         return true;
     }
+
+    /**
+     * Takes the before equation, finds all instances of it, and replaces it with the after equation.
+     * @param before
+     * @param after
+     */
     public void substitute(PatternEquation before, PatternEquation after){
         List<LinkedList<Integer>> pathsToMatches = this.patternMatch(before);
         List<LinkedList<Integer>> expressionLocations = before.equationTerms.findPaths(new GenericExpression());
