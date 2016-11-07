@@ -6,6 +6,7 @@ import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import com.rits.cloning.Cloner;
 
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,13 +41,28 @@ public class Simplifier {
                         temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.multiply(((MathNumber) temp.getChild(1).data).number))));
                         break;
                     case "/":
-                        temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.divide(((MathNumber) temp.getChild(1).data).number))));
+                        BigDecimal newNum;
+                        boolean isGood;
+                        try{
+                            newNum = ((MathNumber) temp.getChild(0).data).number.divide(((MathNumber) temp.getChild(1).data).number);
+                            if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
+                                //Try simplifying fraction here
+                            }
+                        } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
+                            //Keep it as fraction and simplify it.
+                        }
+                        temp.replaceThis(new Tree(new MathNumber(newNum));
                         break;
                     default:
                 }
             }
         }
         return eq;
+    }
+    public static Equation GCD(Equation eq1, Equation eq2){
+        if(eq1.isType(EquationType.CONSTANT) && eq2.isType(EquationType.CONSTANT)){
+            
+        }
     }
     public static Equation constantsAddition(Equation equation){
         return constantsOperation("+", equation);

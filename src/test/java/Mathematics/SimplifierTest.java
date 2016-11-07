@@ -55,8 +55,11 @@ public class SimplifierTest {
         Equation expected2 = builder.makeEquation("2");
         Equation input3 = builder.makeEquation("-4 / 2");
         Equation expected3 = builder.makeEquation("-2");
+        Equation input4 = builder.makeEquation("2 / 3");
+        Equation input5 = builder.makeEquation("2 / 0");
         assertEquals(expected1, simplifier.constantsDivision(input1));
         assertEquals(expected2, simplifier.constantsDivision(input2));
         assertEquals(expected3, simplifier.constantsDivision(input3));
+        assertEquals(input4, simplifier.constantsDivision(input4));
     }
 }

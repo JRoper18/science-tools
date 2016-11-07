@@ -28,11 +28,27 @@ public class Identifier {
     }
     public static Map<EquationType, Boolean> identify(Equation eq, EquationType type){
         HashMap<EquationType, Boolean> toReturn = new HashMap<>();
+        PatternEquation pattern;
         EquationBuilder builder = new EquationBuilder();
         switch(type){
             case CONSTANTPLUSCONSTANT:
-                PatternEquation pattern = builder.makePatternEquation("CONSTANT + CONSTANT");
+                pattern = builder.makePatternEquation("CONSTANT + CONSTANT");
                 toReturn.put(EquationType.CONSTANTPLUSCONSTANT, eq.isPattern(pattern));
+                break;
+            case CONSTANTMINUSCONSTANT:
+                pattern = builder.makePatternEquation("CONSTANT - CONSTANT");
+                toReturn.put(EquationType.CONSTANTMINUSCONSTANT, eq.isPattern(pattern));
+                break;
+            case CONSTANTTIMESCONSTANT:
+                pattern = builder.makePatternEquation("CONSTANT * CONSTANT");
+                toReturn.put(EquationType.CONSTANTTIMESCONSTANT, eq.isPattern(pattern));
+                break;
+            case CONSTANTDIVIDECONSTANT:
+                pattern = builder.makePatternEquation("CONSTANT / CONSTANT");
+                toReturn.put(EquationType.CONSTANTDIVIDECONSTANT, eq.isPattern(pattern));
+                break;
+            case CONSTANT:
+                toReturn.put(EquationType.CONSTANT, eq.equationTerms.data.isConstant());
             default:
          }
          return toReturn;

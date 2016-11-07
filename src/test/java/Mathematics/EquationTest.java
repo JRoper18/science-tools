@@ -1,5 +1,6 @@
 package Mathematics;
 
+import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import org.junit.Test;
 
@@ -33,6 +34,6 @@ public class EquationTest {
         List<MathSyntax> replaceInput = Arrays.asList(new MathSyntax(27));
         PatternEquation replace = builder.makePatternEquation(replaceInput);
         test3.substitute(pattern, replace);
-        test3.equationTerms.print();
+        assertEquals(true, test3.equationTerms.data.equals(new MathNumber(27)));
     }
 }
