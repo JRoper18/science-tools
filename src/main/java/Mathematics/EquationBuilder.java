@@ -121,6 +121,10 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.PLUS);
             case "*":
                 return new MathSyntax(MathSyntaxExpression.MULTIPLY);
+            case "-":
+                return new MathSyntax(MathSyntaxExpression.MINUS);
+            case "/":
+                return new MathSyntax(MathSyntaxExpression.DIVIDE);
             case "CONSTANT":
                 return new MathSyntax(MathSyntaxExpression.NUMBER);
             default:

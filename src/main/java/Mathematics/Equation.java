@@ -77,7 +77,7 @@ public class Equation {
         //Check the data inside the children. To do this, we need to know if our current expression is ordered.
         if(tree2.data.isOrdered()){ //We have an ordered expression, like SUM. We need to check every term IN ORDER.
             for(int i = 0; i<tree1.getChildren().size(); i++){
-                if(!this.checkEquationTreesEqual(tree1.getChild(i), tree2.getChild(2))){ //If a single expression is wrong, return false.
+                if(!this.checkEquationTreesEqual(tree1.getChild(i), tree2.getChild(i))){ //If a single expression is wrong, return false.
                     return false;
                 }
             }
@@ -108,7 +108,12 @@ public class Equation {
         //So we know our children, our data, and our children's children are equal. We must be the same.
         return true;
     }
-
+    public boolean equals(Object n){
+        if(n instanceof Equation){
+            return this.checkEquationTreesEqual(this.equationTerms, ((Equation) n).equationTerms);
+        }
+        return false;
+    }
     /**
      * Takes the before equation, finds all instances of it, and replaces it with the after equation.
      * @param before

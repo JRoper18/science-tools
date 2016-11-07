@@ -12,6 +12,10 @@ public class MathNumber extends MathObject{
         super(0, false);
         this.number = new BigDecimal(arbitraryLengthNum);
     }
+    public MathNumber(BigDecimal num){
+        super(0, false);
+        this.number = num;
+    }
     public MathNumber(double num){
         super(0, false);
         this.number = new BigDecimal(num);

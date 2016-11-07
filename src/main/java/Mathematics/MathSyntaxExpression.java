@@ -1,9 +1,6 @@
 package Mathematics;
 
-import Mathematics.MathObjects.Addition;
-import Mathematics.MathObjects.MathObject;
-import Mathematics.MathObjects.Multiplication;
-import Mathematics.MathObjects.Parenthesis;
+import Mathematics.MathObjects.*;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
 import Mathematics.MathObjects.PatternMatching.GenericExpression;
 
@@ -19,6 +16,8 @@ public enum MathSyntaxExpression {
     NUMBER,
     EXPRESSION,
     MULTIPLY,
+    MINUS,
+    DIVIDE,
     PLUS;
     public MathObject getMathObject(){
         return this.getMathObject(new ArrayList<Object>());
@@ -43,6 +42,10 @@ public enum MathSyntaxExpression {
                 return new Addition();
             case MULTIPLY:
                 return new Multiplication();
+            case MINUS:
+                return new Subtraction();
+            case DIVIDE:
+                return new Division();
             default:
                 return new Addition();
         }
