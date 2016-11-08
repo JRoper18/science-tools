@@ -56,10 +56,27 @@ public class Equation {
         }
         return this.tags.get(type);
     }
-    private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2){
+    private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2, HashMap<String, Tree<MathObject>> expressions){
         //Tree1 is a regular equation, tree2 might contain generic expressions and numbers
-        if(tree2.data.equals(new GenericExpression())){ //If we find an empty expression, we assume any generic expression can go into there.
-            return true; //This node is good, we don't need to check children.
+        if(tree2.data instanceof GenericExpression){ //If we find an empty expression, we assume any generic expression can go into there.
+            String currentTag = ((GenericExpression) tree2.data).tag;
+            EquationType currentType = ((GenericExpression) tree2.data).type;
+            Equation currentEq = new Equation(tree2);
+            //First, check that it fits the type.
+            if(currentType != null && !currentEq.isType(currentType)){ //If we're not null(any type) or we don't match the specified type, we don't match.
+                return false;
+            }
+            //Anything past here ia guaranteed to match in type.
+            if(currentTag == null){ //Any type of expression. Don't match with anything.
+                return true;
+            }
+            if(!expressions.containsKey(currentTag)){ //If we haven't encountered a generic expression with this tag yet, so set it as this tag.
+                expressions.put(currentTag, currentEq.equationTerms);
+                return true; //We match in tag and type
+            }
+            Tree<MathObject> currentExpression = expressions.get(currentTag);
+            //Now check that we are the same as the previous expression with this tag.
+            return (this.checkEquationTreesEqual(currentExpression, tree1, expressions));
         }
         if(tree2.data.equals(new GenericConstant())){ //If we have a constant, check that tree1 also is just a generic constant
             return tree1.data.isConstant();
@@ -77,7 +94,7 @@ public class Equation {
         //Check the data inside the children. To do this, we need to know if our current expression is ordered.
         if(tree2.data.isOrdered()){ //We have an ordered expression, like SUM. We need to check every term IN ORDER.
             for(int i = 0; i<tree1.getChildren().size(); i++){
-                if(!this.checkEquationTreesEqual(tree1.getChild(i), tree2.getChild(i))){ //If a single expression is wrong, return false.
+                if(!this.checkEquationTreesEqual(tree1.getChild(i), tree2.getChild(i), expressions)){ //If a single expression is wrong, return false.
                     return false;
                 }
             }
@@ -93,7 +110,7 @@ public class Equation {
             for(int i = 0; i<tree2Children.size(); i++){
                 boolean foundMatch = false;
                 for(int j = 0; j<tree1Children.size(); j++){
-                    if(checkEquationTreesEqual(tree1Children.get(j), tree2Children.get(i))){
+                    if(checkEquationTreesEqual(tree1Children.get(j), tree2Children.get(i), expressions)){
                         tree1Children.remove(j);
                         tree2Children.remove(i);
                         foundMatch = true;
@@ -110,7 +127,7 @@ public class Equation {
     }
     public boolean equals(Object n){
         if(n instanceof Equation){
-            return this.checkEquationTreesEqual(this.equationTerms, ((Equation) n).equationTerms);
+            return this.checkEquationTreesEqual(this.equationTerms, ((Equation) n).equationTerms, new HashMap<String, Tree<MathObject>>());
         }
         return false;
     }

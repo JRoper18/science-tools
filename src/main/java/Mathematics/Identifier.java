@@ -33,34 +33,13 @@ public class Identifier {
         PatternEquation pattern;
         EquationBuilder builder = new EquationBuilder();
         switch(type){
-            case CONSTANTPLUSCONSTANT:
-                pattern = builder.makePatternEquation("CONSTANT + CONSTANT");
-                toReturn.put(EquationType.CONSTANTPLUSCONSTANT, eq.isPattern(pattern));
-                break;
-            case CONSTANTMINUSCONSTANT:
-                pattern = builder.makePatternEquation("CONSTANT - CONSTANT");
-                toReturn.put(EquationType.CONSTANTMINUSCONSTANT, eq.isPattern(pattern));
-                break;
-            case CONSTANTTIMESCONSTANT:
-                pattern = builder.makePatternEquation("CONSTANT * CONSTANT");
-                toReturn.put(EquationType.CONSTANTTIMESCONSTANT, eq.isPattern(pattern));
-                break;
-            case CONSTANTDIVIDECONSTANT:
-                pattern = builder.makePatternEquation("CONSTANT / CONSTANT");
-                toReturn.put(EquationType.CONSTANTDIVIDECONSTANT, eq.isPattern(pattern));
-                break;
             case CONSTANT:
                 toReturn.put(EquationType.CONSTANT, eq.equationTerms.data.isConstant());
                 break;
             case RATIONALCONSTANT:
-                if(eq.equationTerms.data instanceof MathNumber){
-                    toReturn.put(EquationType.CONSTANT, true);
-                    toReturn.put(EquationType.RATIONALCONSTANT, true);
-                }
-                else{
-                    toReturn.put(EquationType.CONSTANT, false);
-                    toReturn.put(EquationType.RATIONALCONSTANT, false);
-                }
+                boolean isMathNumber = eq.equationTerms.data instanceof MathNumber;
+                toReturn.put(EquationType.CONSTANT, isMathNumber);
+                toReturn.put(EquationType.RATIONALCONSTANT, isMathNumber);
                 break;
             case INTEGERCONSTANT:
                 if (eq.isType(EquationType.RATIONALCONSTANT)) {
@@ -69,11 +48,8 @@ public class Identifier {
                         BigInteger test = ((MathNumber) eq.equationTerms.data).number.toBigIntegerExact();
                     } catch (ArithmeticException e) { //This means it's not an int.
                         foundEr = true;
-                        toReturn.put(EquationType.CONSTANT, false);
                     }
-                    if(!foundEr){
-                        toReturn.put(EquationType.CONSTANT, true);
-                    }
+                    toReturn.put(EquationType.CONSTANT, foundEr);
                 }
                 break;
             default:

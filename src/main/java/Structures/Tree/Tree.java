@@ -205,12 +205,38 @@ public class Tree<T> {
      * @param toFind The object you are trying to find
      * @return A LinkedList of children to follow to get to your child from this node.
      */
-
     public List<LinkedList<Integer>> findPaths(T toFind){ //Returns linked list of a route to take to find the said child
         List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
         if (this.hasChildren()) {
             for(int i = 0; i<this.getChildren().size(); i++){
                 if(this.getChild(i).data.equals(toFind)){
+                    LinkedList<Integer> toReturn = new LinkedList<Integer>();
+                    toReturn.add(new Integer(i));
+                    paths.add(toReturn);
+                }
+                List<LinkedList<Integer>> possiblePaths = this.getChild(i).findPaths(toFind);
+                if(!possiblePaths.isEmpty()){
+                    for(int j = 0; j<possiblePaths.size(); j++){
+                        LinkedList<Integer> currentPath = possiblePaths.get(j);
+                        currentPath.addFirst(i);
+                        paths.add(currentPath);
+                    }
+                }
+            }
+        }
+        return paths;
+    }
+
+    /**
+     * Finds paths to all objects that are the same type as obj
+     * @param obj The object to look for it's type
+     * @return A LinkedList of children to follow to get to your child from this node.
+     */
+    public List<LinkedList<Integer>> findPathsOfType(Object obj){
+        List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
+        if (this.hasChildren()) {
+            for(int i = 0; i<this.getChildren().size(); i++){
+                if(this.getChild(i).data.getClass().equals(obj.getClass())){
                     LinkedList<Integer> toReturn = new LinkedList<Integer>();
                     toReturn.add(new Integer(i));
                     paths.add(toReturn);

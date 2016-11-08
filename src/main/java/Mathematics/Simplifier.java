@@ -30,7 +30,7 @@ public class Simplifier {
 
             //We know that the first and second children are the only ones, and they are both MathNumbers.
             Tree eq1 = temp.getChild(0);
-            Tree eq2 = temp.getChild(2);
+            Tree eq2 = temp.getChild(1);
             if(temp.getChild(0).data instanceof MathNumber && temp.getChild(1).data instanceof MathNumber){
                 switch(operation){
                     case "+":
@@ -52,9 +52,8 @@ public class Simplifier {
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
                             //Keep it as fraction and simplify it.
-                            Equation gcd;
+                            Equation gcd = GCD(eq1, eq2);
                         }
-                        temp.replaceThis(new Tree(new MathNumber(newNum));
                         break;
                     default:
                 }
