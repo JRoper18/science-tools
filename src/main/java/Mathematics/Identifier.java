@@ -1,7 +1,9 @@
 package Mathematics;
 
+import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +51,31 @@ public class Identifier {
                 break;
             case CONSTANT:
                 toReturn.put(EquationType.CONSTANT, eq.equationTerms.data.isConstant());
+                break;
+            case RATIONALCONSTANT:
+                if(eq.equationTerms.data instanceof MathNumber){
+                    toReturn.put(EquationType.CONSTANT, true);
+                    toReturn.put(EquationType.RATIONALCONSTANT, true);
+                }
+                else{
+                    toReturn.put(EquationType.CONSTANT, false);
+                    toReturn.put(EquationType.RATIONALCONSTANT, false);
+                }
+                break;
+            case INTEGERCONSTANT:
+                if (eq.isType(EquationType.RATIONALCONSTANT)) {
+                    boolean foundEr = false;
+                    try{
+                        BigInteger test = ((MathNumber) eq.equationTerms.data).number.toBigIntegerExact();
+                    } catch (ArithmeticException e) { //This means it's not an int.
+                        foundEr = true;
+                        toReturn.put(EquationType.CONSTANT, false);
+                    }
+                    if(!foundEr){
+                        toReturn.put(EquationType.CONSTANT, true);
+                    }
+                }
+                break;
             default:
          }
          return toReturn;
