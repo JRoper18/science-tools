@@ -7,5 +7,6 @@ public enum EquationType {
     POLYNOMIAL,
     RATIONALCONSTANT,
     INTEGERCONSTANT,
+    FRACTION,
     CONSTANT;
 }

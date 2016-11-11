@@ -6,7 +6,11 @@ import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import com.rits.cloning.Cloner;
 
+import java.io.IOError;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,13 +18,13 @@ import java.util.List;
  * Created by jack on 11/3/2016.
  */
 public class Simplifier {
+    private static EquationBuilder builder = new EquationBuilder();
+    private static Cloner cloner = new Cloner();
     public Simplifier(){
 
     }
     private static Equation constantsOperation(String operation, Equation equation){
-        Cloner cloner = new Cloner();
         Equation eq = cloner.deepClone(equation);
-        EquationBuilder builder = new EquationBuilder();
         String patternIn = "CONSTANT " + operation + " CONSTANT";
 
         PatternEquation pattern = builder.makePatternEquation(patternIn);
@@ -52,7 +56,7 @@ public class Simplifier {
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
                             //Keep it as fraction and simplify it.
-                            Equation gcd = GCD(eq1, eq2);
+
                         }
                         break;
                     default:
@@ -60,6 +64,23 @@ public class Simplifier {
             }
         }
         return eq;
+    }
+    public static Equation simplifyFraction(Equation equation){
+        if(!equation.isType(EquationType.FRACTION)){
+            throw new UncheckedIOException(new IOException("Input is not a fraction!"));
+        }
+        Equation numerator = new Equation(equation.equationTerms.getChild(0));
+        Equation demoninator = new Equation(equation.equationTerms.getChild(1));
+        Equation gcd = GCD(numerator, demoninator);
+        if(((MathNumber) gcd.equationTerms.data).number.doubleValue() == 1){
+            return equation; //Already simplified. 
+        }
+        if(gcd.isType(EquationType.INTEGERCONSTANT)){ //We have a constant, so just divide the top and bottom by it.
+            BigDecimal newNumeratorDec = ((MathNumber) numerator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
+            BigDecimal newDenominatorDec = ((MathNumber) demoninator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
+            Equation newEq = builder.makeEquation(Arrays.asList(new MathSyntax(newNumeratorDec), new MathSyntax(MathSyntaxExpression.DIVIDE), new MathSyntax(newDenominatorDec)));
+            return newEq;
+        }
     }
     public static Equation GCD(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)){

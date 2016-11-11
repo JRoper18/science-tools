@@ -3,6 +3,7 @@ package Mathematics;
 import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -18,9 +19,16 @@ public class MathSyntax {
     public MathSyntax(double arg){
         this.mathObject = new MathNumber(arg);
     }
+    public MathSyntax(BigDecimal arg){
+        this.mathObject = new MathNumber(arg);
+    }
     public MathSyntax(MathSyntaxExpression ex, List<Object> args){
         this.syntax = ex;
         this.mathObject = ex.getMathObject(args);
+    }
+    public MathSyntax(MathObject obj){
+        this.syntax = null;
+        this.mathObject = obj;
     }
     public MathSyntax(MathSyntaxExpression ex){
         this.syntax = ex;
