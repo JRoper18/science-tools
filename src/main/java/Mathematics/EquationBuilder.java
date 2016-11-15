@@ -127,6 +127,12 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.DIVIDE);
             case "CONSTANT":
                 return new MathSyntax(MathSyntaxExpression.NUMBER);
+            case "EXPRESSION":
+                return new MathSyntax(MathSyntaxExpression.EXPRESSION);
+            case "(":
+                return new MathSyntax(MathSyntaxExpression.OPEN_PAREN);
+            case ")":
+                return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN);
             default:
 
         }

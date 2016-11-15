@@ -27,7 +27,7 @@ public class Equation {
     public List<LinkedList<Integer>> patternMatch(PatternEquation pattern) {
         List<LinkedList<Integer>> paths = new ArrayList<LinkedList<Integer>>();
         TreeSearchCallback callback = (node) -> {
-            if (this.checkEquationTreesEqual(node, pattern.equationTerms)) {
+            if (this.checkEquationTreesEqual(node, pattern.equationTerms, new HashMap<>())) {
                 paths.add(node.getPathFromRoot());
             }
         };

@@ -49,9 +49,12 @@ public class Identifier {
                     } catch (ArithmeticException e) { //This means it's not an int.
                         foundEr = true;
                     }
-                    toReturn.put(EquationType.CONSTANT, foundEr);
+                    toReturn.put(EquationType.INTEGERCONSTANT, !foundEr);
                 }
                 break;
+            case FRACTION:
+                pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION");
+                toReturn.put(EquationType.FRACTION, eq.isPattern(pattern));
             default:
          }
          return toReturn;

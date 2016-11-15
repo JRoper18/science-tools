@@ -241,7 +241,7 @@ public class Tree<T> {
                     toReturn.add(new Integer(i));
                     paths.add(toReturn);
                 }
-                List<LinkedList<Integer>> possiblePaths = this.getChild(i).findPaths(toFind);
+                List<LinkedList<Integer>> possiblePaths = this.getChild(i).findPathsOfType(obj);
                 if(!possiblePaths.isEmpty()){
                     for(int j = 0; j<possiblePaths.size(); j++){
                         LinkedList<Integer> currentPath = possiblePaths.get(j);

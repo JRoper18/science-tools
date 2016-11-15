@@ -6,7 +6,6 @@ import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import com.rits.cloning.Cloner;
 
-import java.io.IOError;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.math.BigDecimal;
@@ -81,6 +80,7 @@ public class Simplifier {
             Equation newEq = builder.makeEquation(Arrays.asList(new MathSyntax(newNumeratorDec), new MathSyntax(MathSyntaxExpression.DIVIDE), new MathSyntax(newDenominatorDec)));
             return newEq;
         }
+        return null;
     }
     public static Equation GCD(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)){
