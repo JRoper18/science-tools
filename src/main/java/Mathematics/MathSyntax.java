@@ -22,7 +22,7 @@ public class MathSyntax {
     public MathSyntax(BigDecimal arg){
         this.mathObject = new MathNumber(arg);
     }
-    public MathSyntax(MathSyntaxExpression ex, List<Object> args){
+    public MathSyntax(MathSyntaxExpression ex, List<String> args){
         this.syntax = ex;
         this.mathObject = ex.getMathObject(args);
     }

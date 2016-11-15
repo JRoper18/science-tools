@@ -28,6 +28,13 @@ public class Identifier {
         }
         return toReturn;
     }
+
+    /**
+     * Checks if an equation fits the specified EquationType
+     * @param eq The equation to check
+     * @param type The type of equation you want to check the equation for.
+     * @return A HashMap of all the equationtypes that the equation was found to match.
+     */
     public static Map<EquationType, Boolean> identify(Equation eq, EquationType type){
         HashMap<EquationType, Boolean> toReturn = new HashMap<>();
         PatternEquation pattern;
@@ -55,6 +62,13 @@ public class Identifier {
             case FRACTION:
                 pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION");
                 toReturn.put(EquationType.FRACTION, eq.isPattern(pattern));
+            case INTEGERFRACTION:
+                pattern = builder.makePatternEquation("INTEGERCONSTANT / INTEGERCONSTANT");
+                boolean isPattern = eq.isPattern(pattern);
+                if(isPattern){
+                    toReturn.put(EquationType.FRACTION, eq.isPattern(pattern));
+                }
+                toReturn.put(EquationType.INTEGERFRACTION, isPattern);
             default:
          }
          return toReturn;

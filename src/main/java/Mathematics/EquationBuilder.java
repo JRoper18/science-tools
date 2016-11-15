@@ -7,6 +7,7 @@ import Structures.Tree.Tree;
 import Structures.Tuples.Triplet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -102,7 +103,7 @@ public class EquationBuilder {
                         if (toReturn.data != null) { //We have more than one expression on this level. In the future we should allow this, like 1+2+3, but for now,
                             //Just throw an error telling them to put parenthesis around it.
                             //1+2+3 -> (1+2) + 3
-                            throw new Exception("You have more than one expression per level of parenthesis! Add more parenthesis!" + toReturn.data);
+                            throw new Exception("You have more than one expression per level of parenthesis! Add more parenthesis! " + toReturn.data);
                         }
                         toReturn.data = currentTerm;
                     }
@@ -116,23 +117,36 @@ public class EquationBuilder {
 
     }
     private static MathSyntax stringToSyntax(String str){
-        switch(str){
+        String processedString = str;
+        int startArgIndex = str.indexOf("{");
+        List<String> args = null;
+        if(startArgIndex != -1){ //We have a curly bracket, which we are using as a token that our expression has arguements.
+            int endArgIndex = str.lastIndexOf("}");
+            //Get the string before the arguements start
+            processedString = str.substring(0, startArgIndex + 1);
+            //Now, save the arguements for later.
+            String argsString = str.substring(startArgIndex, endArgIndex + 1);
+            args = Arrays.asList(argsString.split(",")); //Assumes args are comma-seperated.
+        }
+        switch(processedString){
             case "+":
-                return new MathSyntax(MathSyntaxExpression.PLUS);
+                return new MathSyntax(MathSyntaxExpression.PLUS, args);
             case "*":
-                return new MathSyntax(MathSyntaxExpression.MULTIPLY);
+                return new MathSyntax(MathSyntaxExpression.MULTIPLY, args);
             case "-":
-                return new MathSyntax(MathSyntaxExpression.MINUS);
+                return new MathSyntax(MathSyntaxExpression.MINUS, args);
             case "/":
-                return new MathSyntax(MathSyntaxExpression.DIVIDE);
+                return new MathSyntax(MathSyntaxExpression.DIVIDE, args);
             case "CONSTANT":
-                return new MathSyntax(MathSyntaxExpression.NUMBER);
+                return new MathSyntax(MathSyntaxExpression.NUMBER, args);
             case "EXPRESSION":
-                return new MathSyntax(MathSyntaxExpression.EXPRESSION);
+                return new MathSyntax(MathSyntaxExpression.EXPRESSION, args);
             case "(":
-                return new MathSyntax(MathSyntaxExpression.OPEN_PAREN);
+                return new MathSyntax(MathSyntaxExpression.OPEN_PAREN, args);
             case ")":
-                return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN);
+                return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN, args);
+            case "INTEGERCONSTANT":
+                return new MathSyntax(MathSyntaxExpression.NUMBER, )
             default:
 
         }

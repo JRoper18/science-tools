@@ -70,6 +70,5 @@ public class SimplifierTest {
         Equation expected2 = builder.makeEquation("1 / 1000000");
         assertEquals(expected1, simplifier.simplifyFraction(input1));
         assertEquals(expected2, simplifier.simplifyFraction(input2));
-
     }
 }

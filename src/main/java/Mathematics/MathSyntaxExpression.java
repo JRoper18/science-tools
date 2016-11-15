@@ -20,9 +20,9 @@ public enum MathSyntaxExpression {
     DIVIDE,
     PLUS;
     public MathObject getMathObject(){
-        return this.getMathObject(new ArrayList<Object>());
+        return this.getMathObject(new ArrayList<String>());
     }
-    public MathObject getMathObject(List<Object> args) {
+    public MathObject getMathObject(List<String> args) {
         switch (this) {
             case CLOSE_PAREN:
                 return new Parenthesis(false);

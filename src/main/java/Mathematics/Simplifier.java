@@ -52,10 +52,11 @@ public class Simplifier {
                             newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
                             if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
                                 //Try simplifying fraction here
+                                eq = simplifyFraction(equation);
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
                             //Keep it as fraction and simplify it.
-
+                            eq = simplifyFraction(equation);
                         }
                         break;
                     default:
@@ -70,9 +71,14 @@ public class Simplifier {
         }
         Equation numerator = new Equation(equation.equationTerms.getChild(0));
         Equation demoninator = new Equation(equation.equationTerms.getChild(1));
-        Equation gcd = GCD(numerator, demoninator);
+        Equation gcd;
+        try{
+            gcd = GCD(numerator, demoninator);
+        } catch (UncheckedIOException e){ //So we have a fraction of not integer constants.
+
+        }
         if(((MathNumber) gcd.equationTerms.data).number.doubleValue() == 1){
-            return equation; //Already simplified. 
+            return equation; //Already simplified.
         }
         if(gcd.isType(EquationType.INTEGERCONSTANT)){ //We have a constant, so just divide the top and bottom by it.
             BigDecimal newNumeratorDec = ((MathNumber) numerator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
@@ -91,7 +97,12 @@ public class Simplifier {
                 return GCD(eq2, new Equation(new Tree(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number))));
             }
         }
-        return null; //CHANGE THIS
+        throw new UncheckedIOException(new IOException("Equation inputs must be integer constants!"));
+    }
+    public static Equation decimalToFraction(Equation eq){
+        if(eq.isType(EquationType.RATIONALCONSTANT)){
+            
+        }
     }
     public static Equation LCM(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)) {
@@ -99,9 +110,7 @@ public class Simplifier {
             BigDecimal gcd = ((MathNumber) GCD(eq1, eq2).equationTerms.data).number;
             return new Equation(new Tree(abs.divide(gcd)));
         }
-        else{
-            return null; //CHANGE THIS
-        }
+        throw new UncheckedIOException(new IOException("Equation inputs must be integer constants!"));
     }
     public static Equation constantsAddition(Equation equation){
         return constantsOperation("+", equation);
