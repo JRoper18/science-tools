@@ -68,7 +68,7 @@ public class SimplifierTest {
         Equation expected1 = builder.makeEquation("2 / 3");
         Equation input2 = builder.makeEquation("1476 / 1476000000");
         Equation expected2 = builder.makeEquation("1 / 1000000");
-        assertEquals(expected1, simplifier.simplifyFraction(input1));
-        assertEquals(expected2, simplifier.simplifyFraction(input2));
+        assertEquals(expected1, simplifier.simplifyIntegerFraction(input1));
+        assertEquals(expected2, simplifier.simplifyIntegerFraction(input2));
     }
 }

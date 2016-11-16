@@ -30,4 +30,11 @@ public class IdentifierTest {
         assertEquals(true, test3.isType(EquationType.INTEGERCONSTANT));
 
     }
+
+    @Test
+    public void testIntegerFraction() throws Exception {
+        Equation test1 = builder.makeEquation("2 / 4");
+        test1.isType(EquationType.INTEGERFRACTION);
+
+    }
 }

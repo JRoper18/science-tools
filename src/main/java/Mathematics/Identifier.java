@@ -4,6 +4,7 @@ import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,8 +63,10 @@ public class Identifier {
             case FRACTION:
                 pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION");
                 toReturn.put(EquationType.FRACTION, eq.isPattern(pattern));
+            case RATIONALFRACTION:
+                break;
             case INTEGERFRACTION:
-                pattern = builder.makePatternEquation("INTEGERCONSTANT / INTEGERCONSTANT");
+                pattern = builder.makePatternEquation("EXPRESSION{INTEGERCONSTANT} / EXPRESSION{INTEGERCONSTANT}");
                 boolean isPattern = eq.isPattern(pattern);
                 if(isPattern){
                     toReturn.put(EquationType.FRACTION, eq.isPattern(pattern));

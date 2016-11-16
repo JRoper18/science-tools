@@ -145,8 +145,6 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.OPEN_PAREN, args);
             case ")":
                 return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN, args);
-            case "INTEGERCONSTANT":
-                return new MathSyntax(MathSyntaxExpression.NUMBER, )
             default:
 
         }
@@ -154,14 +152,14 @@ public class EquationBuilder {
         int intNum;
         double doubNum;
         try{
-            intNum = Integer.parseInt(str);
+            intNum = Integer.parseInt(processedString);
             return new MathSyntax(intNum);
         } catch (NumberFormatException e){ //Can't be an int. Try a double?
             try{
-                doubNum = Double.parseDouble(str);
+                doubNum = Double.parseDouble(processedString);
                 return new MathSyntax(doubNum);
             } catch (NumberFormatException fin){
-                fin.printStackTrace();
+                //Not a number. who knows?
             }
         }
         return null; //IDK

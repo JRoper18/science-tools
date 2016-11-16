@@ -24,6 +24,11 @@ public class GenericExpression extends Expression {
         this.tag = tag;
         this.type = type;
     }
+    public GenericExpression(EquationType type){
+        super(0, false);
+        this.tag = null;
+        this.type = type;
+    }
     public Equation eval(){
         return null;
     }

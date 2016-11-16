@@ -52,11 +52,11 @@ public class Simplifier {
                             newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
                             if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
                                 //Try simplifying fraction here
-                                eq = simplifyFraction(equation);
+                                eq = simplifyIntegerFraction(equation);
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
                             //Keep it as fraction and simplify it.
-                            eq = simplifyFraction(equation);
+                            eq = simplifyIntegerFraction(equation);
                         }
                         break;
                     default:
@@ -65,7 +65,7 @@ public class Simplifier {
         }
         return eq;
     }
-    public static Equation simplifyFraction(Equation equation){
+    public static Equation simplifyIntegerFraction(Equation equation){
         if(!equation.isType(EquationType.FRACTION)){
             throw new BadEquationTypeException(EquationType.FRACTION, equation);
         }
