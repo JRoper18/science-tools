@@ -67,15 +67,15 @@ public class Simplifier {
     }
     public static Equation simplifyFraction(Equation equation){
         if(!equation.isType(EquationType.FRACTION)){
-            throw new UncheckedIOException(new IOException("Input is not a fraction!"));
+            throw new BadEquationTypeException(EquationType.FRACTION, equation);
         }
         Equation numerator = new Equation(equation.equationTerms.getChild(0));
         Equation demoninator = new Equation(equation.equationTerms.getChild(1));
         Equation gcd;
         try{
-            gcd = GCD(numerator, demoninator);
-        } catch (UncheckedIOException e){ //So we have a fraction of not integer constants.
-
+            gcd = GCDIntegers(numerator, demoninator);
+        } catch (BadEquationTypeException e){ //So we have a fraction of not integer constants.
+            return null;
         }
         if(((MathNumber) gcd.equationTerms.data).number.doubleValue() == 1){
             return equation; //Already simplified.
@@ -88,29 +88,36 @@ public class Simplifier {
         }
         return null;
     }
-    public static Equation GCD(Equation eq1, Equation eq2){
+    public static Equation GCDIntegers(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)){
             if(eq2.equationTerms.data.equals(new MathNumber(0))){
                 return eq1;
             }
             else{
-                return GCD(eq2, new Equation(new Tree(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number))));
+                return GCDIntegers(eq2, new Equation(new Tree(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number))));
             }
         }
-        throw new UncheckedIOException(new IOException("Equation inputs must be integer constants!"));
+        throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
     public static Equation decimalToFraction(Equation eq){
         if(eq.isType(EquationType.RATIONALCONSTANT)){
             
         }
+        throw new BadEquationTypeException(EquationType.RATIONALCONSTANT, eq);
     }
-    public static Equation LCM(Equation eq1, Equation eq2){
+    public static Equation LCMIntegers(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)) {
             BigDecimal abs = ((MathNumber) eq1.equationTerms.data).number.multiply(((MathNumber) eq1.equationTerms.data).number).abs();
-            BigDecimal gcd = ((MathNumber) GCD(eq1, eq2).equationTerms.data).number;
+            BigDecimal gcd = ((MathNumber) GCDIntegers(eq1, eq2).equationTerms.data).number;
             return new Equation(new Tree(abs.divide(gcd)));
         }
-        throw new UncheckedIOException(new IOException("Equation inputs must be integer constants!"));
+        throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
+    }
+    private static BadEquationTypeException throwBadTypeException(EquationType type, Equation eq1, Equation eq2){
+        if(!eq1.isType(type)){
+            return new BadEquationTypeException(type, eq1);
+        }
+        return new BadEquationTypeException(type, eq2);
     }
     public static Equation constantsAddition(Equation equation){
         return constantsOperation("+", equation);
