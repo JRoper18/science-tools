@@ -123,9 +123,9 @@ public class EquationBuilder {
         if(startArgIndex != -1){ //We have a curly bracket, which we are using as a token that our expression has arguements.
             int endArgIndex = str.lastIndexOf("}");
             //Get the string before the arguements start
-            processedString = str.substring(0, startArgIndex + 1);
+            processedString = str.substring(0, startArgIndex);
             //Now, save the arguements for later.
-            String argsString = str.substring(startArgIndex, endArgIndex + 1);
+            String argsString = str.substring(startArgIndex + 1, endArgIndex);
             args = Arrays.asList(argsString.split(",")); //Assumes args are comma-seperated.
         }
         switch(processedString){

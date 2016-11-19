@@ -42,11 +42,8 @@ public class Equation {
      * @return If we match
      */
     public boolean isPattern(PatternEquation pattern){
-        List<LinkedList<Integer>> paths = this.patternMatch(pattern);
-        if(paths.isEmpty()){
-            return false;
-        } //Now we can reference first element in paths list
-        return paths.get(0).isEmpty();
+        boolean isPattern = this.checkEquationTreesEqual(this.equationTerms, pattern.equationTerms, new HashMap<>());
+        return isPattern;
     }
     public boolean isType(EquationType type){
         if(!this.tags.containsKey(type)){
@@ -61,11 +58,12 @@ public class Equation {
         if(tree2.data instanceof GenericExpression){ //If we find an empty expression, we assume any generic expression can go into there.
             String currentTag = ((GenericExpression) tree2.data).tag;
             EquationType currentType = ((GenericExpression) tree2.data).type;
-            Equation currentEq = new Equation(tree2);
+            Equation currentEq = new Equation(tree1);
             //First, check that it fits the type.
             if(currentType != null && !currentEq.isType(currentType)){ //If we're not null(any type) or we don't match the specified type, we don't match.
                 return false;
             }
+
             //Anything past here ia guaranteed to match in type.
             if(currentTag == null){ //Any type of expression. Don't match with anything.
                 return true;

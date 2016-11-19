@@ -33,8 +33,10 @@ public class IdentifierTest {
 
     @Test
     public void testIntegerFraction() throws Exception {
-        Equation test1 = builder.makeEquation("2 / 4");
-        test1.isType(EquationType.INTEGERFRACTION);
 
+        Equation test1 = builder.makeEquation("2 / 4");
+        Equation test2 = builder.makeEquation("2.1 / 4.2");
+        assertEquals(true,test1.isType(EquationType.INTEGERFRACTION));
+        assertEquals(false,test2.isType(EquationType.INTEGERFRACTION));
     }
 }

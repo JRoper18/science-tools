@@ -5,6 +5,7 @@ import Mathematics.MathObjects.MathNumberInteger;
 import Mathematics.MathObjects.MathObject;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,12 @@ public class MathSyntax {
     }
     public MathSyntax(MathSyntaxExpression ex, List<String> args){
         this.syntax = ex;
-        this.mathObject = ex.getMathObject(args);
+        if(args == null){
+            this.mathObject = ex.getMathObject(new ArrayList<>());
+        }
+        else{
+            this.mathObject = ex.getMathObject(args);
+        }
     }
     public MathSyntax(MathObject obj){
         this.syntax = null;
@@ -33,6 +39,5 @@ public class MathSyntax {
     }
     public MathSyntax(MathSyntaxExpression ex){
         this.syntax = ex;
-        this.mathObject = ex.getMathObject();
     }
 }
