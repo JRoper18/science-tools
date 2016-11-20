@@ -63,6 +63,16 @@ public class SimplifierTest {
     }
 
     @Test
+    public void testDecimalToFraction() throws Exception {
+        Equation input1 = builder.makeEquation(".023");
+        Equation expected1 = builder.makeEquation("23 / 1000");
+        Equation input2 = builder.makeEquation("34.2");
+        Equation expected2 = builder.makeEquation("342 / 10");
+        assertEquals(expected1, simplifier.decimalsToFractions(input1));
+        assertEquals(expected2, simplifier.decimalsToFractions(input2));
+    }
+
+    @Test
     public void testFractionSimplification() throws Exception {
         Equation input1 = builder.makeEquation("4 / 6");
         Equation expected1 = builder.makeEquation("2 / 3");

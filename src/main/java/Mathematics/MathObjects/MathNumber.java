@@ -18,6 +18,8 @@ public class MathNumber extends MathObject{
     }
     public MathNumber(double num){
         super(0, false);
-        this.number = new BigDecimal(num);
+        this.number = BigDecimal.valueOf(num); //NOTE: ValueOf for double values is VERY IMPORTANT instead of using new BigDecimal. Check here:
+        //http://stackoverflow.com/questions/7186204/bigdecimal-to-use-new-or-valueof
+
     }
 }

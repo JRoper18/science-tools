@@ -1,13 +1,13 @@
 package Mathematics;
 
+import Mathematics.MathObjects.Division;
 import Mathematics.MathObjects.MathNumber;
+import Mathematics.MathObjects.MathNumberInteger;
 import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import com.rits.cloning.Cloner;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -52,6 +52,7 @@ public class Simplifier {
                             newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
                             if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
                                 //Try simplifying fraction here
+
                                 eq = simplifyIntegerFraction(equation);
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
@@ -65,6 +66,11 @@ public class Simplifier {
         }
         return eq;
     }
+    /**
+     * Simplifies a fraction with integer denominator and numerator.
+     * @param equation The fraction
+     * @return A simplified fraction.
+     */
     public static Equation simplifyIntegerFraction(Equation equation){
         if(!equation.isType(EquationType.FRACTION)){
             throw new BadEquationTypeException(EquationType.FRACTION, equation);
@@ -88,6 +94,13 @@ public class Simplifier {
         }
         return null;
     }
+
+    /**
+     * Finds the greatest common divisor between two integers.
+     * @param eq1 The first integer.
+     * @param eq2 The second integer.
+     * @return The Greatest Common Denominator.
+     */
     public static Equation GCDIntegers(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)){
             if(eq2.equationTerms.data.equals(new MathNumber(0))){
@@ -99,12 +112,13 @@ public class Simplifier {
         }
         throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
-    public static Equation decimalToFraction(Equation eq){
-        if(eq.isType(EquationType.RATIONALCONSTANT)){
-            
-        }
-        throw new BadEquationTypeException(EquationType.RATIONALCONSTANT, eq);
-    }
+
+    /**
+     * Finds the least common multiple between two integers.
+     * @param eq1 The first integer.
+     * @param eq2 The second integer.
+     * @return
+     */
     public static Equation LCMIntegers(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)) {
             BigDecimal abs = ((MathNumber) eq1.equationTerms.data).number.multiply(((MathNumber) eq1.equationTerms.data).number).abs();
@@ -113,7 +127,30 @@ public class Simplifier {
         }
         throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
-    private static BadEquationTypeException throwBadTypeException(EquationType type, Equation eq1, Equation eq2){
+
+    /**
+     * Turns decimal numbers into fractions in the provided equation.
+     * @param equation The equation of mathnumbers to convert.
+     * @return The equation with converted numbers.
+     */
+    public static Equation decimalsToFractions(Equation equation){
+        Equation newEquation = cloner.deepClone(equation);
+        List<LinkedList<Integer>> paths = newEquation.patternMatch(builder.makePatternEquation("EXPRESSION{DECIMALCONSTANT}"));
+        for(LinkedList<Integer> path : paths){
+            Tree currentTree =  newEquation.equationTerms.getChildThroughPath(path);
+            MathNumber currentNum = ((MathNumber) currentTree.data);
+            int scale = currentNum.number.stripTrailingZeros().scale();
+            BigDecimal newNumDec = currentNum.number.movePointLeft(scale);
+            Tree fraction = new Tree();
+            fraction.data = new Division();
+            fraction.addChild(new MathNumberInteger(scale));
+            fraction.addChild(new MathNumberInteger(newNumDec.toString()));
+            currentTree.replaceThis(fraction);
+        }
+        return newEquation;
+    }
+    private static BadEquationTypeException throwBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
+        //And throws an error for whichever one is the bad type. It's really not too complicated.
         if(!eq1.isType(type)){
             return new BadEquationTypeException(type, eq1);
         }

@@ -43,13 +43,13 @@ public class Identifier {
             case CONSTANT:
                 toReturn.put(EquationType.CONSTANT, eq.equationTerms.data.isConstant());
                 break;
-            case RATIONALCONSTANT:
+            case DECIMALCONSTANT:
                 boolean isMathNumber = eq.equationTerms.data instanceof MathNumber;
                 toReturn.put(EquationType.CONSTANT, isMathNumber);
-                toReturn.put(EquationType.RATIONALCONSTANT, isMathNumber);
+                toReturn.put(EquationType.DECIMALCONSTANT, isMathNumber);
                 break;
             case INTEGERCONSTANT:
-                if (eq.isType(EquationType.RATIONALCONSTANT)) {
+                if (eq.isType(EquationType.DECIMALCONSTANT)) {
                     boolean foundEr = false;
                     try{
                         BigInteger test = ((MathNumber) eq.equationTerms.data).number.toBigIntegerExact();
@@ -62,8 +62,6 @@ public class Identifier {
             case FRACTION:
                 pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION");
                 toReturn.put(EquationType.FRACTION, eq.isPattern(pattern));
-            case RATIONALFRACTION:
-                break;
             case INTEGERFRACTION:
                 pattern = builder.makePatternEquation("EXPRESSION{INTEGERCONSTANT} / EXPRESSION{INTEGERCONSTANT}");
                 boolean isPattern = eq.isPattern(pattern);

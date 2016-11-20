@@ -136,7 +136,7 @@ public class Equation {
      */
     public void substitute(PatternEquation before, PatternEquation after){
         List<LinkedList<Integer>> pathsToMatches = this.patternMatch(before);
-        List<LinkedList<Integer>> expressionLocations = before.equationTerms.findPaths(new GenericExpression());
+        List<LinkedList<Integer>> expressionLocations = before.equationTerms.findPathsOfType(new GenericExpression());
         for(int i = 0; i<pathsToMatches.size(); i++){
             LinkedList<Integer> currentPath = pathsToMatches.get(i);
             Tree<MathObject> currentEquation = this.equationTerms.getChildThroughPath(currentPath);

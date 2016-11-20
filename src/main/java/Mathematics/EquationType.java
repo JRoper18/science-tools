@@ -5,7 +5,7 @@ package Mathematics;
  */
 public enum EquationType {
     CONSTANT,
-    RATIONALCONSTANT,
+    DECIMALCONSTANT,
     INTEGERCONSTANT,
     FRACTION,
     RATIONALFRACTION,
