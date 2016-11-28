@@ -1,5 +1,6 @@
 package Mathematics;
 
+import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
 import Mathematics.MathObjects.PatternMatching.GenericExpression;
@@ -8,6 +9,7 @@ import Structures.Tree.Tree;
 import Structures.Tree.TreeSearchCallback;
 import com.rits.cloning.Cloner;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -79,6 +81,15 @@ public class Equation {
         if(tree2.data.equals(new GenericConstant())){ //If we have a constant, check that tree1 also is just a generic constant
             return tree1.data.isConstant();
         }
+        //If two math numbers are being compared, ignore their type.
+        if(tree1.data instanceof MathNumber && tree2.data instanceof MathNumber){
+            BigDecimal num1 = ((MathNumber) tree1.data).number;
+            BigDecimal num2 = ((MathNumber) tree2.data).number;
+            if(num1.compareTo(num2) == 0) { //If they're the same
+                return true;
+            }
+            return false; //They're not the same
+        }
         //We've checked for generic constants and expressions, now just compare the 2
         if(!tree1.data.equals(tree2.data)){ //The root expression or constant isn't the same
             return false;
@@ -123,6 +134,7 @@ public class Equation {
         //So we know our children, our data, and our children's children are equal. We must be the same.
         return true;
     }
+    @Override
     public boolean equals(Object n){
         if(n instanceof Equation){
             return this.checkEquationTreesEqual(this.equationTerms, ((Equation) n).equationTerms, new HashMap<String, Tree<MathObject>>());

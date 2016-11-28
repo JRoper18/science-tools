@@ -58,6 +58,9 @@ public class Identifier {
                     }
                     toReturn.put(EquationType.INTEGERCONSTANT, !foundEr);
                 }
+                else{
+                    toReturn.put(EquationType.INTEGERCONSTANT, false);
+                }
                 break;
             case FRACTION:
                 pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION");

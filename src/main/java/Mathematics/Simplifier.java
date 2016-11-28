@@ -1,9 +1,6 @@
 package Mathematics;
 
-import Mathematics.MathObjects.Division;
-import Mathematics.MathObjects.MathNumber;
-import Mathematics.MathObjects.MathNumberInteger;
-import Mathematics.MathObjects.MathObject;
+import Mathematics.MathObjects.*;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import com.rits.cloning.Cloner;
@@ -52,7 +49,6 @@ public class Simplifier {
                             newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
                             if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
                                 //Try simplifying fraction here
-
                                 eq = simplifyIntegerFraction(equation);
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
@@ -94,7 +90,6 @@ public class Simplifier {
         }
         return null;
     }
-
     /**
      * Finds the greatest common divisor between two integers.
      * @param eq1 The first integer.
@@ -112,7 +107,6 @@ public class Simplifier {
         }
         throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
-
     /**
      * Finds the least common multiple between two integers.
      * @param eq1 The first integer.
@@ -127,7 +121,6 @@ public class Simplifier {
         }
         throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
-
     /**
      * Turns decimal numbers into fractions in the provided equation.
      * @param equation The equation of mathnumbers to convert.
@@ -148,6 +141,53 @@ public class Simplifier {
             currentTree.replaceThis(fraction);
         }
         return newEquation;
+    }
+
+    /**
+     * Removes nested fractions. Some examples are x / (y / z), or (x / y) / z.
+     * @param equation The equation you wanted nested fraction removed from.
+     * @return An equivilant equation with no nested fractions.
+     */
+    public static Equation removeNestedFractions(Equation equation){
+        Equation newEquation = cloner.deepClone(equation);
+        //First remove fractions in the denominator.
+        // (x / (y / z) = x * (z / y)
+        List<LinkedList<Integer>> paths = newEquation.patternMatch(builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}"));
+        for(LinkedList<Integer> path : paths){
+            Tree<MathObject> currentLocation = newEquation.equationTerms.getChildThroughPath(path);
+            Tree<MathObject> numerator = currentLocation.getChild(0);
+            Tree<MathObject> denomFraction = currentLocation.getChild(1);
+            Tree<MathObject> newTree = new Tree();
+            newTree.data = new Multiplication();
+            newTree.addChild(numerator);
+            newTree.addChild(denomFraction);
+            currentLocation.replaceThis(newTree);
+        }
+        //Removed fractions in the denominator. Now check for fractions in numerator.
+        // (x / y) / z = (x / (y * z))
+        paths = newEquation.patternMatch(builder.makePatternEquation("EXPRESSION{FRACTION} / EXPRESSION"));
+        for(LinkedList<Integer> path : paths) {
+            Tree<MathObject> currentLocation = newEquation.equationTerms.getChildThroughPath(path);
+            Tree<MathObject> denominator = currentLocation.getChild(1);
+            Tree<MathObject> numerator = currentLocation.getChild(0);
+            Tree<MathObject> newTree = new Tree();
+            newTree.data = new Division();
+            newTree.addChild(numerator.getChild(0));
+            Tree<MathObject> bottom = newTree.addChild(new Multiplication());
+            bottom.addChild(denominator);
+            bottom.addChild(numerator.getChild(1));
+            currentLocation.replaceThis(newTree);
+        }
+        return newEquation;
+    }
+    public static Equation simplifyFraction(Equation equation){
+        if(equation.isType(EquationType.INTEGERFRACTION)){
+            return simplifyIntegerFraction(equation);
+        }
+        else if(equation.isType(EquationType.RATIONALFRACTION)){
+
+        }
+        return null;
     }
     private static BadEquationTypeException throwBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
         //And throws an error for whichever one is the bad type. It's really not too complicated.

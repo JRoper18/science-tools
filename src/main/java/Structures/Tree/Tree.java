@@ -259,7 +259,7 @@ public class Tree<T> {
      * @param path The LinkedList path to follow
      * @return The child node that is along your path. Returns null is path leads nowhere.
      */
-    public Tree getChildThroughPath(LinkedList<Integer> path){
+    public Tree<T> getChildThroughPath(LinkedList<Integer> path){
         if(path.isEmpty()){
             return this;
         }

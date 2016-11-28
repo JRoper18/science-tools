@@ -56,11 +56,13 @@ public class SimplifierTest {
         Equation input3 = builder.makeEquation("-4 / 2");
         Equation expected3 = builder.makeEquation("-2");
         Equation input4 = builder.makeEquation("2 / 3");
+        simplifier.constantsDivision(input1).equationTerms.print();
         assertEquals(expected1, simplifier.constantsDivision(input1));
         assertEquals(expected2, simplifier.constantsDivision(input2));
         assertEquals(expected3, simplifier.constantsDivision(input3));
         assertEquals(input4, simplifier.constantsDivision(input4));
     }
+
 
     @Test
     public void testDecimalToFraction() throws Exception {
@@ -80,5 +82,12 @@ public class SimplifierTest {
         Equation expected2 = builder.makeEquation("1 / 1000000");
         assertEquals(expected1, simplifier.simplifyIntegerFraction(input1));
         assertEquals(expected2, simplifier.simplifyIntegerFraction(input2));
+    }
+
+    @Test
+    public void testNestedFractionRemoval() throws Exception {
+        Equation input1 = builder.makeEquation("2 / ( 3 / 4 )");
+        input1.isPattern(builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}"));
+        Equation expected1 = builder.makeEquation("( 2 * 4 ) / 3");
     }
 }

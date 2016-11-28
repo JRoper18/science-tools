@@ -39,5 +39,6 @@ public class MathSyntax {
     }
     public MathSyntax(MathSyntaxExpression ex){
         this.syntax = ex;
+        this.mathObject = ex.getMathObject();
     }
 }

@@ -2,7 +2,6 @@ package Mathematics;
 
 import Mathematics.MathObjects.Addition;
 import Mathematics.MathObjects.MathNumber;
-import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import org.junit.Test;
 
 import java.util.Arrays;
