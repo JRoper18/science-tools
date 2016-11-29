@@ -85,6 +85,19 @@ public class SimplifierTest {
     }
 
     @Test
+    public void testGCDIntegers() throws Exception {
+        Equation input1 = builder.makeEquation("60");
+        Equation input2 = builder.makeEquation("12");
+        Equation input3 = builder.makeEquation("4");
+        Equation input4 = builder.makeEquation("6");
+        Equation expected1 = builder.makeEquation("12");
+        Equation expected2 = builder.makeEquation("2");
+        assertEquals(expected1, simplifier.GCDIntegers(input1, input2));
+        assertEquals(expected2, simplifier.GCDIntegers(input3, input4));
+
+    }
+
+    @Test
     public void testNestedFractionRemoval() throws Exception {
         Equation input1 = builder.makeEquation("2 / ( 3 / 4 )");
         input1.isPattern(builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}"));

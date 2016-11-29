@@ -56,7 +56,7 @@ public class Equation {
         return this.tags.get(type);
     }
     private boolean checkEquationTreesEqual(Tree<MathObject> tree1, Tree<MathObject> tree2, HashMap<String, Tree<MathObject>> expressions){
-        //Tree1 is a regular equation, tree2 might contain generic expressions and numbers
+        //Tree1 is a regular equation, tree2 is the tree of a pattern equation.
         if(tree2.data instanceof GenericExpression){ //If we find an empty expression, we assume any generic expression can go into there.
             String currentTag = ((GenericExpression) tree2.data).tag;
             EquationType currentType = ((GenericExpression) tree2.data).type;
@@ -65,7 +65,6 @@ public class Equation {
             if(currentType != null && !currentEq.isType(currentType)){ //If we're not null(any type) or we don't match the specified type, we don't match.
                 return false;
             }
-
             //Anything past here ia guaranteed to match in type.
             if(currentTag == null){ //Any type of expression. Don't match with anything.
                 return true;

@@ -68,17 +68,12 @@ public class Simplifier {
      * @return A simplified fraction.
      */
     public static Equation simplifyIntegerFraction(Equation equation){
-        if(!equation.isType(EquationType.FRACTION)){
-            throw new BadEquationTypeException(EquationType.FRACTION, equation);
+        if(!equation.isType(EquationType.INTEGERFRACTION)){
+            throw new BadEquationTypeException(EquationType.INTEGERFRACTION, equation);
         }
         Equation numerator = new Equation(equation.equationTerms.getChild(0));
         Equation demoninator = new Equation(equation.equationTerms.getChild(1));
-        Equation gcd;
-        try{
-            gcd = GCDIntegers(numerator, demoninator);
-        } catch (BadEquationTypeException e){ //So we have a fraction of not integer constants.
-            return null;
-        }
+        Equation gcd = GCDIntegers(numerator, demoninator);
         if(((MathNumber) gcd.equationTerms.data).number.doubleValue() == 1){
             return equation; //Already simplified.
         }
@@ -98,11 +93,12 @@ public class Simplifier {
      */
     public static Equation GCDIntegers(Equation eq1, Equation eq2){
         if(eq1.isType(EquationType.INTEGERCONSTANT) && eq2.isType(EquationType.INTEGERCONSTANT)){
-            if(eq2.equationTerms.data.equals(new MathNumber(0))){
+            if(((MathNumber)eq2.equationTerms.data).number.compareTo(new BigDecimal(0)) == 0){
                 return eq1;
             }
             else{
-                return GCDIntegers(eq2, new Equation(new Tree(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number))));
+                Equation remainder = new Equation(new Tree(new MathNumber(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number))));
+                return GCDIntegers(eq2, remainder);
             }
         }
         throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
