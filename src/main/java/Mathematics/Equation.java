@@ -80,14 +80,9 @@ public class Equation {
         if(tree2.data.equals(new GenericConstant())){ //If we have a constant, check that tree1 also is just a generic constant
             return tree1.data.isConstant();
         }
-        //If two math numbers are being compared, ignore their type.
+        //If two math numbers are being compared, check their numbers for equality.
         if(tree1.data instanceof MathNumber && tree2.data instanceof MathNumber){
-            BigDecimal num1 = ((MathNumber) tree1.data).number;
-            BigDecimal num2 = ((MathNumber) tree2.data).number;
-            if(num1.compareTo(num2) == 0) { //If they're the same
-                return true;
-            }
-            return false; //They're not the same
+            return ((MathNumber) tree1.data).numericEquals((MathNumber) tree2.data);
         }
         //We've checked for generic constants and expressions, now just compare the 2
         if(!tree1.data.equals(tree2.data)){ //The root expression or constant isn't the same
@@ -163,6 +158,9 @@ public class Equation {
             }
             this.equationTerms.getChildThroughPath(currentPath).replaceThis(replaceTree);
         }
+    }
+    public void printTree(){
+        this.equationTerms.print();
     }
     /**
      *

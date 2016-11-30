@@ -44,12 +44,14 @@ public class Simplifier {
                         break;
                     case "/":
                         BigDecimal newNum;
-                        boolean isGood;
                         try{
                             newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
                             if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
                                 //Try simplifying fraction here
                                 eq = simplifyIntegerFraction(equation);
+                            }
+                            else{ //It simplifies to a normal number.
+                                return new Equation(new Tree(new MathNumber(newNum)));
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
                             //Keep it as fraction and simplify it.
@@ -129,11 +131,11 @@ public class Simplifier {
             Tree currentTree =  newEquation.equationTerms.getChildThroughPath(path);
             MathNumber currentNum = ((MathNumber) currentTree.data);
             int scale = currentNum.number.stripTrailingZeros().scale();
-            BigDecimal newNumDec = currentNum.number.movePointLeft(scale);
+            BigDecimal newNumDec = currentNum.number.movePointRight(scale);
             Tree fraction = new Tree();
             fraction.data = new Division();
-            fraction.addChild(new MathNumberInteger(scale));
-            fraction.addChild(new MathNumberInteger(newNumDec.toString()));
+            fraction.addChild(new MathNumber(newNumDec.toString()));
+            fraction.addChild(new MathNumber(Math.pow(10, scale)));
             currentTree.replaceThis(fraction);
         }
         return newEquation;

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class IdentifierTest {
     EquationBuilder builder = new EquationBuilder();
     @Test
-    public void testFraction() throws Exception {
+   public void testFraction() throws Exception {
         Equation test1 = builder.makeEquation("1 + 1");
         Equation test2 = builder.makeEquation("1 / 2");
         Equation test3 = builder.makeEquation("4 / 6");
@@ -33,7 +33,6 @@ public class IdentifierTest {
 
     @Test
     public void testIntegerFraction() throws Exception {
-
         Equation test1 = builder.makeEquation("2 / 4");
         Equation test2 = builder.makeEquation("2.1 / 4.2");
         assertEquals(true,test1.isType(EquationType.INTEGERFRACTION));

@@ -50,13 +50,7 @@ public class Identifier {
                 break;
             case INTEGERCONSTANT:
                 if (eq.isType(EquationType.DECIMALCONSTANT)) {
-                    boolean foundEr = false;
-                    try{
-                        BigInteger test = ((MathNumber) eq.equationTerms.data).number.toBigIntegerExact();
-                    } catch (ArithmeticException e) { //This means it's not an int.
-                        foundEr = true;
-                    }
-                    toReturn.put(EquationType.INTEGERCONSTANT, !foundEr);
+                    toReturn.put(EquationType.INTEGERCONSTANT, ((MathNumber) eq.equationTerms.data).isInteger());
                 }
                 else{
                     toReturn.put(EquationType.INTEGERCONSTANT, false);

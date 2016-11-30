@@ -1,7 +1,6 @@
 package Mathematics;
 
 import Mathematics.MathObjects.MathNumber;
-import Mathematics.MathObjects.MathNumberInteger;
 import Mathematics.MathObjects.MathObject;
 
 import java.math.BigDecimal;
@@ -16,7 +15,7 @@ public class MathSyntax {
     public MathObject mathObject;
     public MathSyntaxExpression syntax;
     public MathSyntax(int arg){
-        this.mathObject = new MathNumberInteger(arg);
+        this.mathObject = new MathNumber(arg);
     }
     public MathSyntax(double arg){
         this.mathObject = new MathNumber(arg);

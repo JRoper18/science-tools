@@ -52,11 +52,10 @@ public class SimplifierTest {
         Equation input1 = builder.makeEquation("1 / 1");
         Equation expected1 = builder.makeEquation("1");
         Equation input2 = builder.makeEquation("2 / 2");
-        Equation expected2 = builder.makeEquation("2");
+        Equation expected2 = builder.makeEquation("1");
         Equation input3 = builder.makeEquation("-4 / 2");
         Equation expected3 = builder.makeEquation("-2");
         Equation input4 = builder.makeEquation("2 / 3");
-        simplifier.constantsDivision(input1).equationTerms.print();
         assertEquals(expected1, simplifier.constantsDivision(input1));
         assertEquals(expected2, simplifier.constantsDivision(input2));
         assertEquals(expected3, simplifier.constantsDivision(input3));

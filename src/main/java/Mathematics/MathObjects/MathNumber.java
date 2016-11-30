@@ -20,6 +20,19 @@ public class MathNumber extends MathObject{
         super(0, false);
         this.number = BigDecimal.valueOf(num); //NOTE: ValueOf for double values is VERY IMPORTANT instead of using new BigDecimal. Check here:
         //http://stackoverflow.com/questions/7186204/bigdecimal-to-use-new-or-valueof
-
     }
+    public boolean isInteger(){
+        boolean isInt;
+        try {
+            this.number.toBigIntegerExact();
+            isInt = true;
+        } catch (ArithmeticException ex) {
+            isInt = false;
+        }
+        return isInt;
+    }
+    public boolean numericEquals(MathNumber number){
+        return (this.number.compareTo(number.number) == 0);
+    }
+
 }
