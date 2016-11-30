@@ -1,5 +1,7 @@
 package Mathematics;
 
+import Mathematics.MathObjects.PatternMatching.GenericExpression;
+import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -93,13 +95,13 @@ public class SimplifierTest {
         Equation expected2 = builder.makeEquation("2");
         assertEquals(expected1, simplifier.GCDIntegers(input1, input2));
         assertEquals(expected2, simplifier.GCDIntegers(input3, input4));
-
     }
 
     @Test
     public void testNestedFractionRemoval() throws Exception {
         Equation input1 = builder.makeEquation("2 / ( 3 / 4 )");
-        input1.isPattern(builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}"));
-        Equation expected1 = builder.makeEquation("( 2 * 4 ) / 3");
+        PatternEquation pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}");
+        System.out.println(input1.isPattern(pattern));
+        // Equation expected1 = builder.makeEquation("( 2 * 4 ) / 3");
     }
 }

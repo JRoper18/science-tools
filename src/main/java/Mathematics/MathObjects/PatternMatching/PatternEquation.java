@@ -31,4 +31,7 @@ public class PatternEquation {
         }
         return null;
     }
+    public void printTree(){
+        this.equationTerms.print();
+    }
 }

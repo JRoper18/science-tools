@@ -4,6 +4,7 @@ import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.Parenthesis;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
+import Structures.Tuples.Pair;
 import Structures.Tuples.Triplet;
 
 import java.util.ArrayList;
@@ -76,45 +77,53 @@ public class EquationBuilder {
             }
         }
         else {
+
             //Find all the parenthesis on the next level. Add their results as arguments of out current function.
+            List<Triplet<Integer, Integer, Integer>> topLevelParens = new ArrayList<>(); //A list of 1st parenthesis
             for (int i = 0; i < parenthesis.size(); i++) {
                 Triplet<Integer, Integer, Integer> currentParenPair = parenthesis.get(i);
                 if (currentParenPair.val3 == 1) {
                     //The underlined parenthesis are in level 1:
                     // ()((()))
                     // |||    |
-                    toReturn.addChild(makeEquationTree(eq.subList(currentParenPair.val1 + 1, currentParenPair.val2))); //Solves the equation in the parenthesis.
+                    topLevelParens.add(currentParenPair); //This way, the parenthesis are in order of when they appear.
                 }
             }
+
             //Find out current function.
             int level = 0;
             for (int i = 0; i < eq.size(); i++) {
                 MathObject currentTerm = eq.get(i).mathObject;
-                if (currentTerm instanceof Parenthesis) {
-                    if (((Parenthesis) currentTerm).open) {
-                        level++;
-                    } else {
-                        level--;
+                if(!topLevelParens.isEmpty()){
+                    if(topLevelParens.get(0).val1 == i){ //If we are at the location of an opening parenthesis
+                        //Add whatever is in the parenthesis as a child of this tree.
+                        int parenStart = topLevelParens.get(0).val1;
+                        int parenEnd = topLevelParens.get(0).val2;
+                        toReturn.addChild(makeEquationTree(eq.subList(parenStart + 1, parenEnd)));
+                        //Skip to the ending point. We don't need to process what's in the parenthesis
+                        i = parenEnd;
+                        //Now remove the paren locations from the list. We don't need them anymore.
+                        topLevelParens.remove(0);
+                        break;
                     }
                 }
-                else if (level == 0) { //If we are on level 0, we are on the top level, and our expression is here somewhere.
-                    //Check for expression
-                    if (!currentTerm.isConstant()) { //Here's our expression!
-                        if (toReturn.data != null) { //We have more than one expression on this level. In the future we should allow this, like 1+2+3, but for now,
-                            //Just throw an error telling them to put parenthesis around it.
-                            //1+2+3 -> (1+2) + 3
-                            throw new Exception("You have more than one expression per level of parenthesis! Add more parenthesis! " + toReturn.data);
-                        }
-                        toReturn.data = currentTerm;
+                //Check for expression
+                if (!currentTerm.isConstant()) { //Here's our expression!
+                    if (toReturn.data != null) { //We have more than one expression on this level. In the future we should allow this, like 1+2+3, but for now,
+                        //Just throw an error telling them to put parenthesis around it.
+                        //1+2+3 -> (1+2) + 3
+                        throw new Exception("You have more than one expression per level of parenthesis! Add more parenthesis! " + toReturn.data);
                     }
-                    else{ //This is a constant not caught by the expression and equation finder above. Like 2*(sin(x)) instead of (sin(x)) + (cos(x))
-                        toReturn.addChild(currentTerm);
-                    }
+                    toReturn.data = currentTerm;
+                }
+                else{ //This is a constant not caught by the expression and equation finder above. Like 2*(sin(x)) instead of (sin(x)) + (cos(x))
+                    toReturn.print();
+                    System.out.println("EY");
+                    toReturn.addChild(currentTerm);
                 }
             }
         }
         return toReturn;
-
     }
     private static MathSyntax stringToSyntax(String str){
         String processedString = str;
