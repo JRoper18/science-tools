@@ -151,30 +151,34 @@ public class Simplifier {
         //First remove fractions in the denominator.
         // (x / (y / z) = x * (z / y)
         List<LinkedList<Integer>> paths = newEquation.patternMatch(builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}"));
-        for(LinkedList<Integer> path : paths){
-            Tree<MathObject> currentLocation = newEquation.equationTerms.getChildThroughPath(path);
-            Tree<MathObject> numerator = currentLocation.getChild(0);
-            Tree<MathObject> denomFraction = currentLocation.getChild(1);
-            Tree<MathObject> newTree = new Tree();
-            newTree.data = new Multiplication();
-            newTree.addChild(numerator);
-            newTree.addChild(denomFraction);
-            currentLocation.replaceThis(newTree);
+        if(!paths.isEmpty()) {
+            for (LinkedList<Integer> path : paths) {
+                Tree<MathObject> currentLocation = newEquation.equationTerms.getChildThroughPath(path);
+                Tree<MathObject> numerator = currentLocation.getChild(0);
+                Tree<MathObject> denomFraction = currentLocation.getChild(1);
+                Tree<MathObject> newTree = new Tree();
+                newTree.data = new Multiplication();
+                newTree.addChild(numerator);
+                newTree.addChild(denomFraction);
+                currentLocation.replaceThis(newTree);
+            }
         }
         //Removed fractions in the denominator. Now check for fractions in numerator.
         // (x / y) / z = (x / (y * z))
         paths = newEquation.patternMatch(builder.makePatternEquation("EXPRESSION{FRACTION} / EXPRESSION"));
-        for(LinkedList<Integer> path : paths) {
-            Tree<MathObject> currentLocation = newEquation.equationTerms.getChildThroughPath(path);
-            Tree<MathObject> denominator = currentLocation.getChild(1);
-            Tree<MathObject> numerator = currentLocation.getChild(0);
-            Tree<MathObject> newTree = new Tree();
-            newTree.data = new Division();
-            newTree.addChild(numerator.getChild(0));
-            Tree<MathObject> bottom = newTree.addChild(new Multiplication());
-            bottom.addChild(denominator);
-            bottom.addChild(numerator.getChild(1));
-            currentLocation.replaceThis(newTree);
+        if(!paths.isEmpty()) {
+            for (LinkedList<Integer> path : paths) {
+                Tree<MathObject> currentLocation = newEquation.equationTerms.getChildThroughPath(path);
+                Tree<MathObject> denominator = currentLocation.getChild(1);
+                Tree<MathObject> numerator = currentLocation.getChild(0);
+                Tree<MathObject> newTree = new Tree();
+                newTree.data = new Division();
+                newTree.addChild(numerator.getChild(0));
+                Tree<MathObject> bottom = newTree.addChild(new Multiplication());
+                bottom.addChild(denominator);
+                bottom.addChild(numerator.getChild(1));
+                currentLocation.replaceThis(newTree);
+            }
         }
         return newEquation;
     }
