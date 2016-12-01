@@ -4,7 +4,6 @@ import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.Parenthesis;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
-import Structures.Tuples.Pair;
 import Structures.Tuples.Triplet;
 
 import java.util.ArrayList;
@@ -91,7 +90,6 @@ public class EquationBuilder {
             }
 
             //Find out current function.
-            int level = 0;
             for (int i = 0; i < eq.size(); i++) {
                 MathObject currentTerm = eq.get(i).mathObject;
                 if(!topLevelParens.isEmpty()){
@@ -101,10 +99,11 @@ public class EquationBuilder {
                         int parenEnd = topLevelParens.get(0).val2;
                         toReturn.addChild(makeEquationTree(eq.subList(parenStart + 1, parenEnd)));
                         //Skip to the ending point. We don't need to process what's in the parenthesis
+                        System.out.println(eq.get(i).mathObject);
                         i = parenEnd;
                         //Now remove the paren locations from the list. We don't need them anymore.
                         topLevelParens.remove(0);
-                        break;
+                        continue;
                     }
                 }
                 //Check for expression
@@ -114,11 +113,10 @@ public class EquationBuilder {
                         //1+2+3 -> (1+2) + 3
                         throw new Exception("You have more than one expression per level of parenthesis! Add more parenthesis! " + toReturn.data);
                     }
+
                     toReturn.data = currentTerm;
                 }
                 else{ //This is a constant not caught by the expression and equation finder above. Like 2*(sin(x)) instead of (sin(x)) + (cos(x))
-                    toReturn.print();
-                    System.out.println("EY");
                     toReturn.addChild(currentTerm);
                 }
             }
