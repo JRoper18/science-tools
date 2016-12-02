@@ -103,7 +103,7 @@ public class Simplifier {
                 return GCDIntegers(eq2, remainder);
             }
         }
-        throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
+        throw makeBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
     /**
      * Finds the least common multiple between two integers.
@@ -117,7 +117,7 @@ public class Simplifier {
             BigDecimal gcd = ((MathNumber) GCDIntegers(eq1, eq2).equationTerms.data).number;
             return new Equation(new Tree(abs.divide(gcd)));
         }
-        throw throwBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
+        throw makeBadTypeException(EquationType.INTEGERCONSTANT, eq1, eq2);
     }
     /**
      * Turns decimal numbers into fractions in the provided equation.
@@ -187,11 +187,11 @@ public class Simplifier {
             return simplifyIntegerFraction(equation);
         }
         else if(equation.isType(EquationType.RATIONALFRACTION)){
-
+            return removeNestedFractions(decimalsToFractions(equation));
         }
         return null;
     }
-    private static BadEquationTypeException throwBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
+    private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
         //And throws an error for whichever one is the bad type. It's really not too complicated.
         if(!eq1.isType(type)){
             return new BadEquationTypeException(type, eq1);
