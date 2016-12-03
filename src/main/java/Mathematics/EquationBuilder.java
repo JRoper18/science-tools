@@ -99,7 +99,6 @@ public class EquationBuilder {
                         int parenEnd = topLevelParens.get(0).val2;
                         toReturn.addChild(makeEquationTree(eq.subList(parenStart + 1, parenEnd)));
                         //Skip to the ending point. We don't need to process what's in the parenthesis
-                        System.out.println(eq.get(i).mathObject);
                         i = parenEnd;
                         //Now remove the paren locations from the list. We don't need them anymore.
                         topLevelParens.remove(0);
@@ -152,6 +151,8 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.OPEN_PAREN, args);
             case ")":
                 return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN, args);
+            case "VARIABLE":
+                return new MathSyntax(MathSyntaxExpression.VARIABLE, args);
             default:
 
         }

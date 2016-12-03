@@ -150,33 +150,50 @@ public class Tree<T> {
     }
 
     /**
-     * Replaces this node's data.
-     * @param replace The new data
-     */
-    public void replaceThis(T replace){
-        this.data = replace;
-    }
-
-    /**
-     * Replaces a child
+     * Replaces a child's data
      * @param index The index of the child you want to replace
-     * @param replace What you want as your new child
+     * @param replace What you want as your new child's data
      */
     public void replaceChild(int index, T replace){
         this.children.remove(index);
         this.children.add(index, new Tree(replace));
     }
     /**
+     * Replaces a child
+     * @param index The index of the child you want to replace
+     * @param replace What you want as your new child
+     */
+    public void replaceChild(int index, Tree<T> replace){
+        this.children.remove(index);
+        this.children.add(index, replace);
+    }
+    /**
      * Does the callback for every node in this tree.
      * @param callback The callback to execute on every node.
      */
-    public void forEachNode(TreeSearchCallback callback) {
-        this.recursiveNodeSearch(callback);
+    public void forEachNode(TreeSearchCallback callback, TreeSearchType type) {
+        switch(type){
+            case DEPTH_FIRST:
+                this.depthFirstSearch(callback);
+            case BOTTOM_UP:
+                this.bottomUpSearch(callback);
+            case BREATH_FIRST:
+                this.breadthFirstSearch(callback);
+        }
     }
-    private void recursiveNodeSearch(TreeSearchCallback callback){
+    public void forEachNode(TreeSearchCallback callback){
+        this.forEachNode(callback, TreeSearchType.BOTTOM_UP);
+    }
+    private void breadthFirstSearch(TreeSearchCallback callback){
+        //Add stuff
+    }
+    private void depthFirstSearch(TreeSearchCallback callback){
+        //Add stuff here
+    }
+    private void bottomUpSearch(TreeSearchCallback callback){
         if(this.hasChildren()){
             for(int i = 0; i<this.children.size(); i++){
-                this.getChild(i).recursiveNodeSearch(callback);
+                this.getChild(i).bottomUpSearch(callback);
             }
         }
         callback.forEachNode(this);

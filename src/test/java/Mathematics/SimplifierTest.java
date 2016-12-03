@@ -72,7 +72,6 @@ public class SimplifierTest {
         assertEquals(expected1, simplifier.decimalsToFractions(input1));
         assertEquals(expected2, simplifier.decimalsToFractions(input2));
     }
-
     @Test
     public void testFractionSimplification() throws Exception {
         Equation input1 = builder.makeEquation("4 / 6");
@@ -97,7 +96,6 @@ public class SimplifierTest {
 
     @Test
     public void testNestedFractionRemoval() throws Exception {
-
         Equation input1 = builder.makeEquation("2 / ( 3 / 4 )");
         Equation input2 = builder.makeEquation("( 1 / 3 ) / 4");
         Equation expected1 = builder.makeEquation("2 * ( 4 / 3 )");

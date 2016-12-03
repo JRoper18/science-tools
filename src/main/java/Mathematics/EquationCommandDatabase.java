@@ -1,7 +1,9 @@
 package Mathematics;
 
+import Mathematics.MathObjects.Division;
 import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
+import Mathematics.MathObjects.Multiplication;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 
@@ -12,10 +14,18 @@ import java.util.List;
 /**
  * Created by Ulysses Howard Smith on 12/2/2016.
  */
+
 public class EquationCommandDatabase {
+    public static final EquationCommandSimplifyConstants constantsAddition = new EquationCommandSimplifyConstants("+");
+    public static final EquationCommandSimplifyConstants constantsSubtraction = new EquationCommandSimplifyConstants("-");
+    public static final EquationCommandSimplifyConstants constantsMultiplication = new EquationCommandSimplifyConstants("*");
+    public static final EquationCommandSimplifyConstants constantsDivision = new EquationCommandSimplifyConstants("/");
+    public static final EquationCommandRemoveNestedFractionDenominator removeDenominatorFraction = new EquationCommandRemoveNestedFractionDenominator();
+    public static final EquationCommandRemoveNestedFractionNumerator removeNumeratorFraction = new EquationCommandRemoveNestedFractionNumerator();
+    public static final EquationCommandRemoveNestedFractions removeNestedFractions = new EquationCommandRemoveNestedFractions();
     public EquationCommandDatabase(){
     }
-    private class EquationCommandSimplifyConstants extends EquationCommand{
+    public static class EquationCommandSimplifyConstants extends EquationCommand{
         public final String operation;
         public EquationCommandSimplifyConstants(String operation){
             this.operation = operation;
@@ -61,6 +71,80 @@ public class EquationCommandDatabase {
             }
             return equation;
         }
+    }
+    public static class EquationCommandRemoveNestedFractionDenominator extends EquationCommand{
+        public EquationCommandRemoveNestedFractionDenominator(){
+        }
+        public Equation run(Equation equation) {
+            //First remove fractions in the denominator.
+            // (x / (y / z) = x * (z / y)
+            PatternEquation pattern = builder.makePatternEquation("EXPRESSION / EXPRESSION{FRACTION}");
+            if(!equation.isPattern(pattern)){
+                throw makeBadTypeException(pattern, equation);
+            };
+            Tree<MathObject> currentLocation = equation.equationTerms;
+            Tree<MathObject> numerator = currentLocation.getChild(0);
+            Tree<MathObject> denomFraction = currentLocation.getChild(1);
+            Tree<MathObject> newTree = new Tree();
+            newTree.data = new Multiplication();
+            newTree.addChild(numerator);
+            newTree.addChild(denomFraction);
+            currentLocation.replaceThis(newTree);
+            return equation;
+        }
+    }
+    public static class EquationCommandRemoveNestedFractionNumerator extends EquationCommand{
+        public EquationCommandRemoveNestedFractionNumerator(){
 
+        }
+        public Equation run(Equation equation){
+            // (x / y) / z = (x / (y * z))
+            PatternEquation pattern = builder.makePatternEquation("EXPRESSION{FRACTION} / EXPRESSION");
+            if(!equation.isPattern(pattern)){
+                throw makeBadTypeException(pattern, equation);
+            };
+            Tree<MathObject> currentLocation = equation.equationTerms;
+            Tree<MathObject> denominator = currentLocation.getChild(1);
+            Tree<MathObject> numerator = currentLocation.getChild(0);
+            Tree<MathObject> newTree = new Tree();
+            newTree.data = new Division();
+            newTree.addChild(numerator.getChild(0));
+            Tree<MathObject> bottom = newTree.addChild(new Multiplication());
+            bottom.addChild(denominator);
+            bottom.addChild(numerator.getChild(1));
+            currentLocation.replaceThis(newTree);
+            return equation;
+        }
+    }
+    public static class EquationCommandRemoveNestedFractions extends EquationCommand {
+        public EquationCommandRemoveNestedFractions(){
+
+        }
+        public Equation run(Equation equation){
+            try{
+                equation = removeNumeratorFraction.simplify(equation);
+            } catch (BadEquationTypeException e){
+                //Ignore it.
+            }
+            try{
+                equation = removeDenominatorFraction.simplify(equation);
+            } catch (BadEquationTypeException e){
+                //Ignore it.
+            }
+            return equation;
+        }
+    }
+    private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
+        //And throws an error for whichever one is the bad type. It's really not too complicated.
+        if(!eq1.isType(type)){
+            return new BadEquationTypeException(type, eq1);
+        }
+        return new BadEquationTypeException(type, eq2);
+    }
+    private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1){
+        return new BadEquationTypeException(type, eq1);
+    }
+    private static BadEquationTypeException makeBadTypeException(PatternEquation type, Equation eq1){
+        return new BadEquationTypeException(type, eq1);
     }
 }

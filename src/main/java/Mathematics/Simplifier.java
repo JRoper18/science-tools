@@ -140,7 +140,6 @@ public class Simplifier {
         }
         return newEquation;
     }
-
     /**
      * Removes nested fractions. Some examples are x / (y / z), or (x / y) / z.
      * @param equation The equation you wanted nested fraction removed from.

@@ -4,6 +4,8 @@ import Mathematics.MathObjects.*;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
 import Mathematics.MathObjects.PatternMatching.GenericExpression;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,8 @@ public enum MathSyntaxExpression {
     MULTIPLY,
     MINUS,
     DIVIDE,
-    PLUS;
+    PLUS,
+    VARIABLE;
     public MathObject getMathObject(){
         return this.getMathObject(new ArrayList<String>());
     }
@@ -74,6 +77,11 @@ public enum MathSyntaxExpression {
                 return new Subtraction();
             case DIVIDE:
                 return new Division();
+            case VARIABLE:
+                if(args.isEmpty()){
+                    throw new UncheckedIOException(new IOException("You need to give your variable a name!"));
+                }
+                return new Variable(args.get(0));
             default:
                 return new Addition();
         }

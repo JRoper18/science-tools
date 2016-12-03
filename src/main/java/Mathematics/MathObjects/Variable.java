@@ -5,11 +5,8 @@ package Mathematics.MathObjects;
  */
 public class Variable extends MathObject {
     public final String name;
-    public final String type;
-    public Variable(String name, String type){
+    public Variable(String name){
         super(0, false);
         this.name = name;
-        this.type = type;
-        this.arguments = 0; //A variable isn't an expression, and doesn't take arguments. You can't have the X(2), or 2X3. you have 2 * x * 3
     }
 }
