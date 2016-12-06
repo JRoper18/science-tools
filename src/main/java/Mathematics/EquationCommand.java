@@ -26,12 +26,6 @@ public abstract class EquationCommand{
             try{
                 Equation temp = new Equation(node);
                 Tree<MathObject> newTree = this.simplify(temp).equationTerms;
-                /*
-                if(temp.equals(new Equation(newTree))){
-                    System.out.println(builder.makeEquation("1 + 2").equals(temp));
-                    this.simplify(builder.makeEquation("1 + 2")).printTree();
-                }
-                */
                 node.replaceThis(newTree);
             } catch (BadEquationTypeException e){
                 //IGNORE IT
