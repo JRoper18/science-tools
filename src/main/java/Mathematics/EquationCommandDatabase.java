@@ -1,15 +1,10 @@
 package Mathematics;
 
-import Mathematics.MathObjects.Division;
-import Mathematics.MathObjects.MathNumber;
-import Mathematics.MathObjects.MathObject;
-import Mathematics.MathObjects.Multiplication;
+import Mathematics.MathObjects.*;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 
 import java.math.BigDecimal;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Ulysses Howard Smith on 12/2/2016.
@@ -23,6 +18,7 @@ public class EquationCommandDatabase {
     public static final EquationCommandRemoveNestedFractionDenominator removeDenominatorFraction = new EquationCommandRemoveNestedFractionDenominator();
     public static final EquationCommandRemoveNestedFractionNumerator removeNumeratorFraction = new EquationCommandRemoveNestedFractionNumerator();
     public static final EquationCommandRemoveNestedFractions removeNestedFractions = new EquationCommandRemoveNestedFractions();
+    public static final EquationCommandCondenceConstants condenceConstants = new EquationCommandCondenceConstants();
     public EquationCommandDatabase(){
     }
     public static class EquationCommandSimplifyConstants extends EquationCommand{
@@ -33,40 +29,44 @@ public class EquationCommandDatabase {
         public Equation run(Equation equation){
             String patternIn = "CONSTANT " + operation + " CONSTANT";
             PatternEquation pattern = builder.makePatternEquation(patternIn);
-            List<LinkedList<Integer>> paths = equation.patternMatch(pattern);
-            for(LinkedList<Integer> path : paths){
-                Tree<MathObject> temp = equation.equationTerms.getChildThroughPath(path);
+            if(!equation.isPattern(pattern)){
+                throw makeBadTypeException(pattern, equation);
+            }
+            Tree<MathObject> temp = equation.equationTerms;
+            //We know that the first and second children are the only ones, and they are both MathNumbers.
+            Tree eq1 = temp.getChild(0);
+            Tree eq2 = temp.getChild(1);
 
-                //We know that the first and second children are the only ones, and they are both MathNumbers.
-                Tree eq1 = temp.getChild(0);
-                Tree eq2 = temp.getChild(1);
-                if(temp.getChild(0).data instanceof MathNumber && temp.getChild(1).data instanceof MathNumber){
-                    switch(operation){
-                        case "+":
-                            temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.add(((MathNumber) temp.getChild(1).data).number))));
-                            break;
-                        case "-":
-                            temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.subtract(((MathNumber) temp.getChild(1).data).number))));
-                            break;
-                        case "*":
-                            temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.multiply(((MathNumber) temp.getChild(1).data).number))));
-                            break;
-                        case "/":
-                            BigDecimal newNum;
-                            try{
-                                newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
-                                if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
-                                    //Try simplifying fraction here
-                                }
-                                else{ //It simplifies to a normal number.
-                                    return new Equation(new Tree(new MathNumber(newNum)));
-                                }
-                            } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
-                                //Keep it as fraction and simplify it.
+            if(temp.getChild(0).data instanceof MathNumber && temp.getChild(1).data instanceof MathNumber){
+                switch(operation){
+                    case "+":
+                        BigDecimal num = ((MathNumber) temp.getChild(0).data).number.add(((MathNumber) temp.getChild(1).data).number);
+                        Tree<MathObject> newTree = new Tree<>();
+                        newTree.data = new MathNumber(num);
+                        temp.replaceThis(newTree);
+                        break;
+                    case "-":
+                        temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.subtract(((MathNumber) temp.getChild(1).data).number))));
+                        break;
+                    case "*":
+                        temp.replaceThis(new Tree(new MathNumber(((MathNumber) temp.getChild(0).data).number.multiply(((MathNumber) temp.getChild(1).data).number))));
+                        break;
+                    case "/":
+                        BigDecimal newNum;
+                        try{
+                            newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
+                            if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
+                                //Try simplifying fraction here
                             }
-                            break;
-                        default:
-                    }
+                            else{ //It simplifies to a normal number.
+                                return new Equation(new Tree(new MathNumber(newNum)));
+                            }
+                        } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
+                            //Keep it as fraction and simplify it.
+                        }
+                        break;
+                    default:
+
                 }
             }
             return equation;
@@ -130,6 +130,23 @@ public class EquationCommandDatabase {
                 equation = removeDenominatorFraction.simplify(equation);
             } catch (BadEquationTypeException e){
                 //Ignore it.
+            }
+            return equation;
+        }
+    }
+    public static class EquationCommandCondenceConstants extends EquationCommand {
+        public EquationCommandCondenceConstants(){
+
+        }
+        public Equation run(Equation equation){
+            if(equation.isPattern(builder.makePatternEquation("CONSTANT + CONSTANT"))){
+                equation = constantsAddition.simplify(equation);
+            }
+            else if(equation.isPattern(builder.makePatternEquation("CONSTANT - CONSTANT"))){
+                equation = constantsSubtraction.simplify(equation);
+            }
+            else if(equation.isPattern(builder.makePatternEquation("CONSTANT * CONSTANT"))){
+                equation = constantsMultiplication.simplify(equation);
             }
             return equation;
         }

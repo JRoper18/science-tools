@@ -12,7 +12,7 @@ public class EquationCommandDatabaseTest {
     EquationBuilder builder = new EquationBuilder();
 
     @Test
-    public void test1() throws Exception {
+    public void testConstantPlusConstant() throws Exception {
         Equation input1 = builder.makeEquation("1 + 1");
         Equation expected1 = builder.makeEquation("2");
         Equation input2 = builder.makeEquation("2.343 + 5.4");
@@ -72,25 +72,12 @@ public class EquationCommandDatabaseTest {
     }
 
     @Test
-    public void testMultipleNestedFractionRemoval() throws Exception {
-        Equation input1 = builder.makeEquation("( 1 / 2 ) / ( 3 / 4 )");
-        /*
-                1
-                -
-                2
-              -----
-                3
-                -
-                4
-               ---
-                5
-                -
-                6
-         */
-        database.removeNestedFractions.simplifyAll(input1).printTree();
-        Equation expected1 = builder.makeEquation("( 4 / 3 ) / ( 2 / 1 )");
-        assertEquals(expected1, database.removeNestedFractions.simplifyAll(input1));
-
-
+    public void testConstantCondensing() throws Exception {
+        Equation input1 = builder.makeEquation("( 1 + 2 ) - 3");
+        Equation input2 = builder.makeEquation("( 1 * 2 ) - ( 4 + ( 3 * 6 ) )");
+        Equation expected1 = builder.makeEquation("0");
+        Equation expected2 = builder.makeEquation("-20");
+        assertEquals(expected1, database.condenceConstants.simplifyAll(input1));
+        assertEquals(expected2, database.condenceConstants.simplifyAll(input2));
     }
 }

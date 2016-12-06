@@ -9,7 +9,6 @@ import Structures.Tree.Tree;
 import Structures.Tree.TreeSearchCallback;
 import com.rits.cloning.Cloner;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -46,6 +45,15 @@ public class Equation {
     public boolean isPattern(PatternEquation pattern){
         boolean isPattern = this.checkEquationTreesEqual(this.equationTerms, pattern.equationTerms, new HashMap<>());
         return isPattern;
+    }
+
+    /**
+     * Returns if this equation contains the pattern anywhere inside it.
+     * @param pattern The pattern to look for
+     * @return If there is a match
+     */
+    public boolean hasPattern(PatternEquation pattern){
+        return !this.patternMatch(pattern).isEmpty();
     }
     public boolean isType(EquationType type){
         if(!this.tags.containsKey(type)){

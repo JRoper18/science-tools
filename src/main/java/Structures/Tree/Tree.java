@@ -136,17 +136,12 @@ public class Tree<T> {
      * @param replace The new tree you want this to be
      */
     public void replaceThis(Tree<T> replace){
-        if(this.parent == null){
-            this.children = replace.getChildren();
-            this.data = replace.data;
-            return;
+        this.children.clear(); //DELETE IT
+        for(Tree tempChild : replace.getChildren()){
+            this.addChild(tempChild);
         }
-        for(int i = 0; i<this.parent.getChildren().size(); i++){
-            if(this.parent.getChild(i).equals(this)){
-                this.parent.replaceChild(i, replace);
-                break;
-            }
-        }
+        this.data = replace.data;
+        return;
     }
 
     /**

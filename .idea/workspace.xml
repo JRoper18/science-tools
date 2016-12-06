@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9093854d-3db4-4d31-bfae-15bb99bd7313" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Structures/Tree/TreeSearchType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandInterface.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/SubEquationCommand.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/MathObjects/Variable.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/MathObjects/Variable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression$1.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression.class" afterPath="$PROJECT_DIR$/build/classes/main/Mathematics/MathSyntaxExpression.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/EquationCondition.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/BadEquationTypeException.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/BadEquationTypeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommand.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntaxExpression.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/MathSyntaxExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" afterPath="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" afterPath="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Mathematics/SimplifierTest.java" afterPath="$PROJECT_DIR$/src/test/java/Mathematics/SimplifierTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java" afterPath="$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java" />
     </list>
     <ignored path="science-tools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,57 +50,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="Simplifier.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java">
+      <file leaf-file-name="EquationCommandDatabase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5610">
-              <caret line="178" column="43" selection-start-line="178" selection-start-column="43" selection-end-line="178" selection-end-column="43" />
+            <state relative-caret-position="731">
+              <caret line="147" column="78" selection-start-line="147" selection-start-column="78" selection-end-line="147" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimplifierTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/SimplifierTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3102">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="104" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EquationCommandDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EquationCommandDatabaseTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EquationCommandDatabaseTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1373">
-              <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EquationCommand.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1023">
-              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="1076">
+              <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,8 +79,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -409,7 +363,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/Math/EquationBuilderTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Math/MathSyntax.java" />
         <option value="$PROJECT_DIR$/src/main/java/Math/EquationBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/Structures/Tuple.java" />
@@ -448,7 +401,6 @@
         <option value="$PROJECT_DIR$/src/test/java/Mathematics/IdentifierTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/MathNumber.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/MathObjects/PatternMatching/PatternEquation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationSubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandInterface.java" />
         <option value="$PROJECT_DIR$/src/test/java/Mathematics/SimplifierTest.java" />
@@ -456,10 +408,12 @@
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/BadEquationTypeException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationCondition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mathematics/Equation.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java" />
       </list>
     </option>
   </component>
@@ -505,7 +459,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -719,6 +672,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -745,85 +699,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EquationCommandDatabaseTest.testMultipleNestedFractionRemoval">
-    <configuration default="false" name="SimplifierTest.testDecimalToFraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Mathematics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="science-tools_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Mathematics" />
-      <option name="MAIN_CLASS_NAME" value="Mathematics.SimplifierTest" />
-      <option name="METHOD_NAME" value="testDecimalToFraction" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="SimplifierTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Mathematics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="science-tools_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Mathematics" />
-      <option name="MAIN_CLASS_NAME" value="Mathematics.SimplifierTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="SimplifierTest.testNestedFractionRemoval" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Mathematics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="science-tools_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Mathematics" />
-      <option name="MAIN_CLASS_NAME" value="Mathematics.SimplifierTest" />
-      <option name="METHOD_NAME" value="testNestedFractionRemoval" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.EquationCommandDatabaseTest.testConstantCondensing">
     <configuration default="false" name="EquationCommandDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -863,6 +739,84 @@
       <option name="PACKAGE_NAME" value="Mathematics" />
       <option name="MAIN_CLASS_NAME" value="Mathematics.EquationCommandDatabaseTest" />
       <option name="METHOD_NAME" value="testMultipleNestedFractionRemoval" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EquationCommandDatabaseTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Mathematics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="science-tools_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Mathematics" />
+      <option name="MAIN_CLASS_NAME" value="Mathematics.EquationCommandDatabaseTest" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EquationCommandDatabaseTest.testConstantCondensing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Mathematics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="science-tools_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Mathematics" />
+      <option name="MAIN_CLASS_NAME" value="Mathematics.EquationCommandDatabaseTest" />
+      <option name="METHOD_NAME" value="testConstantCondensing" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EquationCommandDatabaseTest.testConstantPlusConstant" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Mathematics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="science-tools_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Mathematics" />
+      <option name="MAIN_CLASS_NAME" value="Mathematics.EquationCommandDatabaseTest" />
+      <option name="METHOD_NAME" value="testConstantPlusConstant" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1121,19 +1075,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.SimplifierTest.testDecimalToFraction" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.SimplifierTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SimplifierTest.testNestedFractionRemoval" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.test1" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testConstantCondensing" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testConstantPlusConstant" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.SimplifierTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.SimplifierTest.testNestedFractionRemoval" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.SimplifierTest.testDecimalToFraction" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testConstantCondensing" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testConstantPlusConstant" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.test1" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" />
       </list>
     </recent_temporary>
   </component>
@@ -1382,39 +1336,46 @@
       <option name="project" value="LOCAL" />
       <updated>1480533361045</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="More refactoring, moving all simplifications to a command design pattern so I can link them together">
+      <created>1480776496859</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1480776496859</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 21m 38s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 30m 11s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 23m 21s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 30m 53s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 24m 07s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 31m 15s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 24m 20s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 31m 23s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 24m 46s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 34m 04s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 25m 21s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 34m 14s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 25m 40s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 34m 31s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 26m 09s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 34m 38s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 26m 35s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 35m 02s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EquationCommandDatabaseTest_testMultipleNestedFractionRemoval - 2016.12.03 at 07h 26m 48s.xml">
-      <configuration name="EquationCommandDatabaseTest.testMultipleNestedFractionRemoval" configurationId="JUnit" />
+    <history-entry file="EquationCommandDatabaseTest_testConstantCondensing - 2016.12.05 at 21h 35m 10s.xml">
+      <configuration name="EquationCommandDatabaseTest.testConstantCondensing" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -1423,11 +1384,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32655245" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32655245" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32601714" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1443,7 +1405,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32655245" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32762313" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1482,7 +1443,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added tuples" />
     <MESSAGE value="Equation buildling works for single-layered equations" />
     <MESSAGE value="Maybe got equationbuilder working everywhere, but haven't gone through extensive testing to prove it." />
     <MESSAGE value="Started equation substitute" />
@@ -1507,14 +1467,15 @@
     <MESSAGE value="Ryan is here for portal again. I have to leave. Oh, and I fixed a shitton of bugs caused by the difference between MathNumber and MathNumberIntegers" />
     <MESSAGE value="Added MathNumber mathods and numeric equality, fixed decimal to fraction" />
     <MESSAGE value="Fixed bug where anything inside parenthesis would be put as a child before anything else while building equations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where anything inside parenthesis would be put as a child before anything else while building equations" />
+    <MESSAGE value="More refactoring, moving all simplifications to a command design pattern so I can link them together" />
+    <option name="LAST_COMMIT_MESSAGE" value="More refactoring, moving all simplifications to a command design pattern so I can link them together" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1523,7 +1484,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Math/MathObjects/MathSyntax.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/AtomicElementTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1557,13 +1517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/TreeSearchCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1749,16 +1702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/SimplifierTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3102">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="104" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Simplifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5610">
@@ -1775,25 +1718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="154" column="60" selection-start-line="154" selection-start-column="60" selection-end-line="154" selection-end-column="60" />
-          <folding>
-            <element signature="e#5063#5064#0" expanded="true" />
-            <element signature="e#5131#5132#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1687">
@@ -1802,20 +1726,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/TreeSearchCallback.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1373">
-          <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
+        <state relative-caret-position="99">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/Equation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1971#1972#0" expanded="false" />
+            <element signature="e#2031#2032#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/SimplifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
+        <state relative-caret-position="104">
+          <caret line="80" column="76" selection-start-line="80" selection-start-column="76" selection-end-line="80" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1824,8 +1763,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1023">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="845">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Structures/Tree/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mathematics/EquationCommandDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="147" column="78" selection-start-line="147" selection-start-column="78" selection-end-line="147" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Mathematics/EquationCommandDatabaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1076">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
