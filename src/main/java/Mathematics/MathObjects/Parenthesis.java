@@ -8,6 +8,5 @@ public class Parenthesis extends MathObject {
     public Parenthesis(boolean open){
         super(0, false);
         this.open = open;
-        this.arguments = -1;
     }
 }

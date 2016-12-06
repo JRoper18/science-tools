@@ -21,6 +21,7 @@ public enum MathSyntaxExpression {
     MINUS,
     DIVIDE,
     PLUS,
+    GCD,
     VARIABLE;
     public MathObject getMathObject(){
         return this.getMathObject(new ArrayList<String>());
@@ -82,6 +83,8 @@ public enum MathSyntaxExpression {
                     throw new UncheckedIOException(new IOException("You need to give your variable a name!"));
                 }
                 return new Variable(args.get(0));
+            case GCD:
+                return new GreatestCommonDenominator(args.get(0));
             default:
                 return new Addition();
         }

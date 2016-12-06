@@ -19,6 +19,7 @@ public class EquationCommandDatabase {
     public static final EquationCommandRemoveNestedFractionNumerator removeNumeratorFraction = new EquationCommandRemoveNestedFractionNumerator();
     public static final EquationCommandRemoveNestedFractions removeNestedFractions = new EquationCommandRemoveNestedFractions();
     public static final EquationCommandCondenceConstants condenceConstants = new EquationCommandCondenceConstants();
+    public static final EquationCommandGreatestCommonDenominatorInts gcdInts = new EquationCommandGreatestCommonDenominatorInts();
     public EquationCommandDatabase(){
     }
     public static class EquationCommandSimplifyConstants extends EquationCommand{
@@ -149,6 +150,30 @@ public class EquationCommandDatabase {
                 equation = constantsMultiplication.simplify(equation);
             }
             return equation;
+        }
+    }
+    public static class EquationCommandGreatestCommonDenominatorInts extends EquationCommand {
+        public EquationCommandGreatestCommonDenominatorInts(){
+
+        }
+        public Equation run(Equation equation){
+            PatternEquation pattern = builder.makePatternEquation("GCD{EXPRESSION{INTEGERCONSTANT}}");
+            if(!equation.isPattern(pattern)) {
+                throw makeBadTypeException(pattern, equation);
+            }
+            Equation eq1 = new Equation(equation.equationTerms.getChild(0));
+            Equation eq2 = new Equation(equation.equationTerms.getChild(1));
+            if(((MathNumber)eq2.equationTerms.data).number.compareTo(new BigDecimal(0)) == 0){
+                return eq1;
+            }
+            else{
+                MathNumber remainder = new MathNumber(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number));
+                Tree<MathObject> subEqTree = new Tree<>();
+                subEqTree.data = new GreatestCommonDenominator();
+                subEqTree.addChild(eq2.equationTerms.data);
+                subEqTree.addChild(remainder);
+                return this.simplify(new Equation(subEqTree));
+            }
         }
     }
     private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation

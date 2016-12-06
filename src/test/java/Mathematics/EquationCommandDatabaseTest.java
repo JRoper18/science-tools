@@ -80,4 +80,10 @@ public class EquationCommandDatabaseTest {
         assertEquals(expected1, database.condenceConstants.simplifyAll(input1));
         assertEquals(expected2, database.condenceConstants.simplifyAll(input2));
     }
+
+    @Test
+    public void testGCDInts() throws Exception {
+        Equation input1 = builder.makeEquation("1 + ( GCD 23 4 5 234 ( 1 + 2 ) 43 )");
+        input1.printTree();
+    }
 }

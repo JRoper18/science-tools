@@ -151,6 +151,8 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.OPEN_PAREN, args);
             case ")":
                 return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN, args);
+            case "GCD":
+                return new MathSyntax(MathSyntaxExpression.GCD, args);
             case "VARIABLE":
                 return new MathSyntax(MathSyntaxExpression.VARIABLE, args);
             default:
