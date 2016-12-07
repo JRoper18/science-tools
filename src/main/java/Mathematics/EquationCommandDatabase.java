@@ -5,6 +5,7 @@ import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by Ulysses Howard Smith on 12/2/2016.
@@ -157,6 +158,20 @@ public class EquationCommandDatabase {
 
         }
         public Equation run(Equation equation){
+
+            int argNum = equation.equationTerms.getChildren().size();
+            if(argNum > 2){ //OK, we have more than one arguement. Take the gcd of the first two, then that with the third, and so on.
+                //GCD(a, b, c, d) = GCD(GCD(GCD(a,b),c),d)
+                Tree<MathObject> subGCD = new Tree(new GreatestCommonDenominator());
+                List<Tree> otherChildren = equation.equationTerms.getChildren().subList(1, equation.equationTerms.getChildren().size());
+                subGCD.addTreeChildren(otherChildren);
+                Equation subGCDCalc = this.simplify(new Equation(subGCD));
+                Tree newEquationTree = new Tree();
+                newEquationTree.data = new GreatestCommonDenominator();
+                newEquationTree.addChild(subGCDCalc.equationTerms);
+                newEquationTree.addChild(equation.equationTerms.getChild(0));
+                return this.simplify(new Equation(newEquationTree));
+            }
             PatternEquation pattern = builder.makePatternEquation("GCD{EXPRESSION{INTEGERCONSTANT}}");
             if(!equation.isPattern(pattern)) {
                 throw makeBadTypeException(pattern, equation);

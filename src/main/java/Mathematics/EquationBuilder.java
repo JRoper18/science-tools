@@ -2,6 +2,7 @@ package Mathematics;
 
 import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.Parenthesis;
+import Mathematics.MathObjects.PatternMatching.InfiniteArgExpression;
 import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 import Structures.Tuples.Triplet;
@@ -49,7 +50,14 @@ public class EquationBuilder {
         if(parenthesis.isEmpty()){ //We are as far down as we can go into this part of the equation.
             if(eq.size() == 1){ //We only have one argument. Could just be a variable, or a constant.
                 if(!eq.get(0).mathObject.isConstant()) { //The fuck? Someone put in an expression as a root term. It's like trying to find sin(sin), or cos() * 3.
-                    throw new Exception("Your equation input is bad! You have an expression placed where a constant should be. ");
+                    //Acutally, for infinite arg functions, his might happen. Check if it's an infinite arg expression:
+                    MathObject infinArg = eq.get(0).mathObject;
+                    if(infinArg instanceof InfiniteArgExpression){
+                        toReturn.data = infinArg;
+                    }
+                    else{
+                        throw new Exception("Your equation input is bad! You have an expression placed where a constant should be. The symbol is: " + eq.get(0).syntax);
+                    }
                 }
                 else{
                     toReturn.data = eq.get(0).mathObject;

@@ -1,5 +1,6 @@
 package Mathematics;
 
+import Mathematics.MathObjects.PatternMatching.InfiniteArgExpression;
 import Mathematics.MathObjects.MathNumber;
 import Mathematics.MathObjects.MathObject;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
@@ -85,8 +86,22 @@ public class Equation {
             //Now check that we are the same as the previous expression with this tag.
             return (this.checkEquationTreesEqual(currentExpression, tree1, expressions));
         }
-        if(tree2.data.arguments() == -1){ //-1 Arguments means that it actually can take an infinite amount of arguments
+        if(tree2.data instanceof InfiniteArgExpression){
             //Check to see if it has any special requirements for those arguments, and check each of those arguments against those requirements.
+            InfiniteArgExpression infinArg = ((InfiniteArgExpression) tree2.data);
+            if(infinArg.pattern == null){ //If there's no specific pattern the arguemnets have to match, ignore it. Else...
+
+            }
+            else{
+                for(Tree<MathObject> argTree : tree1.getChildren()){
+
+                    if(!checkEquationTreesEqual(argTree, infinArg.pattern.equationTerms, new HashMap<>())){ //If any of them are wrong, return false
+                        return false;
+                    }
+                }
+            }
+            //Made it this far.
+            return true;
         }
         if(tree2.data.equals(new GenericConstant())){ //If we have a constant, check that tree1 also is just a generic constant
             return tree1.data.isConstant();

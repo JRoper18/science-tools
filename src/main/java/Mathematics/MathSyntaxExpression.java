@@ -3,6 +3,7 @@ package Mathematics;
 import Mathematics.MathObjects.*;
 import Mathematics.MathObjects.PatternMatching.GenericConstant;
 import Mathematics.MathObjects.PatternMatching.GenericExpression;
+import Mathematics.MathObjects.PatternMatching.InfiniteArgExpression;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -84,7 +85,10 @@ public enum MathSyntaxExpression {
                 }
                 return new Variable(args.get(0));
             case GCD:
-                return new GreatestCommonDenominator(args.get(0));
+                if(args.isEmpty()){
+                    return new GreatestCommonDenominator();
+                }
+                return new InfiniteArgExpression(false, args.get(0));
             default:
                 return new Addition();
         }
