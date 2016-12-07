@@ -1,6 +1,5 @@
 package Mathematics;
 
-import Mathematics.MathObjects.MathNumber;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -84,8 +83,11 @@ public class EquationCommandDatabaseTest {
 
     @Test
     public void testGCDInts() throws Exception {
-        Equation input1 = builder.makeEquation("GCD 45 15 25");
-        System.out.println(((MathNumber) database.gcdInts.simplify(input1).equationTerms.data).number);
-
+        Equation input1 = builder.makeEquation("GCD 45 15 25 10 10000");
+        Equation expected1 = builder.makeEquation("5");
+        Equation input2 = builder.makeEquation("GCD 9000000 10000");
+        Equation expected2 = builder.makeEquation("10000");
+        assertEquals(expected1, database.gcdInts.simplify(input1));
+        assertEquals(expected2, database.gcdInts.simplify(input2));
     }
 }

@@ -158,19 +158,9 @@ public class EquationCommandDatabase {
 
         }
         public Equation run(Equation equation){
-
-            int argNum = equation.equationTerms.getChildren().size();
-            if(argNum > 2){ //OK, we have more than one arguement. Take the gcd of the first two, then that with the third, and so on.
-                //GCD(a, b, c, d) = GCD(GCD(GCD(a,b),c),d)
-                Tree<MathObject> subGCD = new Tree(new GreatestCommonDenominator());
-                List<Tree> otherChildren = equation.equationTerms.getChildren().subList(1, equation.equationTerms.getChildren().size());
-                subGCD.addTreeChildren(otherChildren);
-                Equation subGCDCalc = this.simplify(new Equation(subGCD));
-                Tree newEquationTree = new Tree();
-                newEquationTree.data = new GreatestCommonDenominator();
-                newEquationTree.addChild(subGCDCalc.equationTerms);
-                newEquationTree.addChild(equation.equationTerms.getChild(0));
-                return this.simplify(new Equation(newEquationTree));
+            Equation recur = doRecursiveFunction(2, this, equation);
+            if(recur != null){
+                return recur;
             }
             PatternEquation pattern = builder.makePatternEquation("GCD{EXPRESSION{INTEGERCONSTANT}}");
             if(!equation.isPattern(pattern)) {
@@ -189,6 +179,23 @@ public class EquationCommandDatabase {
                 subEqTree.addChild(remainder);
                 return this.simplify(new Equation(subEqTree));
             }
+        }
+    }
+    private static Equation doRecursiveFunction(int depth, EquationCommand command, Equation equation){
+        int argNum = equation.equationTerms.getChildren().size();
+        if(argNum > depth){
+            Tree<MathObject> subEquationTree = new Tree(equation.equationTerms.data);
+            List<Tree> otherChildren = equation.equationTerms.getChildren().subList(1, equation.equationTerms.getChildren().size());
+            subEquationTree.addTreeChildren(otherChildren);
+            Equation subEquationCalc = command.simplify(new Equation(subEquationTree));
+            Tree newEquationTree = new Tree();
+            newEquationTree.data = equation.equationTerms.data;
+            newEquationTree.addChild(subEquationCalc.equationTerms);
+            newEquationTree.addChild(equation.equationTerms.getChild(0));
+            return command.simplify(new Equation(newEquationTree));
+        }
+        else{
+            return null;
         }
     }
     private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
