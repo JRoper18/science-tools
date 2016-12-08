@@ -75,6 +75,8 @@ public class EquationCommandDatabaseTest {
     public void testConstantCondensing() throws Exception {
         Equation input1 = builder.makeEquation("( 1 + 2 ) - 3");
         Equation input2 = builder.makeEquation("( 1 * 2 ) - ( 4 + ( 3 * 6 ) )");
+        Equation input3 = builder.makeEquation("( 2 + 3 ) - ( 2 / 4 )");
+        database.condenceConstants.simplifyAll(input3).printTree();
         Equation expected1 = builder.makeEquation("0");
         Equation expected2 = builder.makeEquation("-20");
         assertEquals(expected1, database.condenceConstants.simplifyAll(input1));
@@ -99,6 +101,25 @@ public class EquationCommandDatabaseTest {
         Equation expected2 = builder.makeEquation("6");
         assertEquals(expected1, database.lcmInts.simplify(input1));
         assertEquals(expected2, database.lcmInts.simplify(input2));
+    }
 
+    @Test
+    public void testIntegerFractionSimplification() throws Exception {
+        Equation input1 = builder.makeEquation("4 / 6");
+        Equation expected1 = builder.makeEquation("2 / 3");
+        Equation input2 = builder.makeEquation("90000 / 10000");
+        Equation expected2 = builder.makeEquation("9 / 1");
+        assertEquals(expected1, database.integerFractionSimplify.simplify(input1));
+        assertEquals(expected2, database.integerFractionSimplify.simplify(input2));
+    }
+
+    @Test
+    public void testDecimalToFraction() throws Exception {
+        Equation input1 = builder.makeEquation(".023");
+        Equation expected1 = builder.makeEquation("23 / 1000");
+        Equation input2 = builder.makeEquation("34.2");
+        Equation expected2 = builder.makeEquation("342 / 10");
+        assertEquals(expected1, database.decimalToFraction.simplify(input1));
+        assertEquals(expected2, database.decimalToFraction.simplify(input2));
     }
 }

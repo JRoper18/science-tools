@@ -5,7 +5,10 @@ import Mathematics.MathObjects.PatternMatching.PatternEquation;
 import Structures.Tree.Tree;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
+
+import static Mathematics.Simplifier.GCDIntegers;
 
 /**
  * Created by Ulysses Howard Smith on 12/2/2016.
@@ -22,6 +25,9 @@ public class EquationCommandDatabase {
     public static final EquationCommandCondenceConstants condenceConstants = new EquationCommandCondenceConstants();
     public static final EquationCommandGreatestCommonDenominatorInts gcdInts = new EquationCommandGreatestCommonDenominatorInts();
     public static final EquationCommandLeastCommonMultipleInts lcmInts = new EquationCommandLeastCommonMultipleInts();
+    public static final EquationCommandIntegerFractionSimplify integerFractionSimplify = new EquationCommandIntegerFractionSimplify();
+    public static final EquationCommandDecimalToFraction decimalToFraction = new EquationCommandDecimalToFraction();
+    public static final EquationCommandSimplifyDivideByOne divideByOne = new EquationCommandSimplifyDivideByOne();
     public EquationCommandDatabase(){
     }
     public static class EquationCommandSimplifyConstants extends EquationCommand{
@@ -60,12 +66,16 @@ public class EquationCommandDatabase {
                             newNum = ((MathNumber) eq1.data).number.divide(((MathNumber) eq2.data).number);
                             if(newNum.abs().compareTo(new BigDecimal("1")) == -1){ //Our number is between -1 and 1. We have a fraction - keep it that way.
                                 //Try simplifying fraction here
+                                equation = decimalToFraction.simplifyAll(equation);
+                                equation = integerFractionSimplify.simplify(equation);
                             }
                             else{ //It simplifies to a normal number.
                                 return new Equation(new Tree(new MathNumber(newNum)));
                             }
                         } catch (ArithmeticException excep){ //Something that doesn't end in decimal, like 2/3 = .66666666666666666666
                             //Keep it as fraction and simplify it.
+                            equation = decimalToFraction.simplifyAll(equation);
+                            equation = integerFractionSimplify.simplify(equation);
                         }
                         break;
                     default:
@@ -76,8 +86,6 @@ public class EquationCommandDatabase {
         }
     }
     public static class EquationCommandRemoveNestedFractionDenominator extends EquationCommand{
-        public EquationCommandRemoveNestedFractionDenominator(){
-        }
         public Equation run(Equation equation) {
             //First remove fractions in the denominator.
             // (x / (y / z) = x * (z / y)
@@ -97,9 +105,6 @@ public class EquationCommandDatabase {
         }
     }
     public static class EquationCommandRemoveNestedFractionNumerator extends EquationCommand{
-        public EquationCommandRemoveNestedFractionNumerator(){
-
-        }
         public Equation run(Equation equation){
             // (x / y) / z = (x / (y * z))
             PatternEquation pattern = builder.makePatternEquation("EXPRESSION{FRACTION} / EXPRESSION");
@@ -120,9 +125,6 @@ public class EquationCommandDatabase {
         }
     }
     public static class EquationCommandRemoveNestedFractions extends EquationCommand {
-        public EquationCommandRemoveNestedFractions(){
-
-        }
         public Equation run(Equation equation){
             try{
                 equation = removeNumeratorFraction.simplify(equation);
@@ -138,10 +140,9 @@ public class EquationCommandDatabase {
         }
     }
     public static class EquationCommandCondenceConstants extends EquationCommand {
-        public EquationCommandCondenceConstants(){
-
-        }
         public Equation run(Equation equation){
+            equation = removeNestedFractions.simplifyAll(equation);
+            equation = decimalToFraction.simplifyAll(equation);
             if(equation.isPattern(builder.makePatternEquation("CONSTANT + CONSTANT"))){
                 equation = constantsAddition.simplify(equation);
             }
@@ -151,13 +152,14 @@ public class EquationCommandDatabase {
             else if(equation.isPattern(builder.makePatternEquation("CONSTANT * CONSTANT"))){
                 equation = constantsMultiplication.simplify(equation);
             }
+            else if(equation.isPattern(builder.makePatternEquation("CONSTANT / CONSTANT"))){
+                equation = constantsDivision.simplify(equation);
+            }
+            equation = divideByOne.simplifyAll(equation);
             return equation;
         }
     }
     public static class EquationCommandGreatestCommonDenominatorInts extends EquationCommand {
-        public EquationCommandGreatestCommonDenominatorInts(){
-
-        }
         public Equation run(Equation equation){
             Equation recur = doRecursiveFunction(2, this, equation);
             if(recur != null){
@@ -183,9 +185,6 @@ public class EquationCommandDatabase {
         }
     }
     public static class EquationCommandLeastCommonMultipleInts extends EquationCommand {
-        public EquationCommandLeastCommonMultipleInts() {
-
-        }
         public Equation run(Equation equation){
             Equation recur = doRecursiveFunction(2, this, equation);
             if(recur != null){
@@ -200,6 +199,39 @@ public class EquationCommandDatabase {
             newTree.addChild(eq2.equationTerms);
             BigDecimal gcd = ((MathNumber) gcdInts.simplify(new Equation(newTree)).equationTerms.data).number;
             return new Equation(new Tree(new MathNumber(abs.divide(gcd))));
+        }
+    }
+    public static class EquationCommandIntegerFractionSimplify extends EquationCommand {
+        public Equation run(Equation equation){
+            if(!equation.isType(EquationType.INTEGERFRACTION)) {
+                throw makeBadTypeException(EquationType.INTEGERFRACTION, equation);
+            }
+            Equation numerator = new Equation(equation.equationTerms.getChild(0));
+            Equation demoninator = new Equation(equation.equationTerms.getChild(1));
+            Tree<MathObject> gcdTree = new Tree<>();
+            gcdTree.data = new GreatestCommonDenominator();
+            gcdTree.addChild(numerator.equationTerms);
+            gcdTree.addChild(demoninator.equationTerms);
+            Equation gcd = gcdInts.simplify(new Equation(gcdTree));
+            if(((MathNumber) gcd.equationTerms.data).number.doubleValue() == 1){
+                return equation; //Already simplified.
+            }
+            if(gcd.isType(EquationType.INTEGERCONSTANT)){ //We have a constant, so just divide the top and bottom by it.
+                BigDecimal newNumeratorDec = ((MathNumber) numerator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
+                BigDecimal newDenominatorDec = ((MathNumber) demoninator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
+                Equation newEq = builder.makeEquation(Arrays.asList(new MathSyntax(newNumeratorDec), new MathSyntax(MathSyntaxExpression.DIVIDE), new MathSyntax(newDenominatorDec)));
+                return newEq;
+            }
+            return null;
+        }
+    }
+    public static class EquationCommandSimplifyDivideByOne extends EquationCommand{
+        public Equation run(Equation equation){
+            PatternEquation pattern = builder.makePatternEquation("EXPRESSION / 1");
+            if(!equation.isPattern(pattern)){
+                throw makeBadTypeException(pattern, equation);
+            }
+            return new Equation(equation.equationTerms.getChild(0));
         }
     }
     private static Equation doRecursiveFunction(int depth, EquationCommand command, Equation equation){
@@ -217,6 +249,25 @@ public class EquationCommandDatabase {
         }
         else{
             return null;
+        }
+    }
+    public static class EquationCommandDecimalToFraction extends EquationCommand{
+        public Equation run(Equation equation){
+            if(!equation.isType(EquationType.CONSTANT)){
+                throw makeBadTypeException(EquationType.CONSTANT, equation);
+            }
+            if(equation.isType(EquationType.INTEGERCONSTANT)){
+                return equation; //All done
+            }
+            Tree currentTree =  equation.equationTerms;
+            MathNumber currentNum = ((MathNumber) currentTree.data);
+            int scale = currentNum.number.stripTrailingZeros().scale();
+            BigDecimal newNumDec = currentNum.number.movePointRight(scale);
+            Tree fraction = new Tree();
+            fraction.data = new Division();
+            fraction.addChild(new MathNumber(newNumDec.toString()));
+            fraction.addChild(new MathNumber(Math.pow(10, scale)));
+            return new Equation(fraction);
         }
     }
     private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
