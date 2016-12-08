@@ -23,6 +23,7 @@ public enum MathSyntaxExpression {
     DIVIDE,
     PLUS,
     GCD,
+    LCM,
     VARIABLE;
     public MathObject getMathObject(){
         return this.getMathObject(new ArrayList<String>());
@@ -89,6 +90,8 @@ public enum MathSyntaxExpression {
                     return new GreatestCommonDenominator();
                 }
                 return new InfiniteArgExpression(false, args.get(0));
+            case LCM:
+                return new LeastCommonMultiple();
             default:
                 return new Addition();
         }

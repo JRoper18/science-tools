@@ -90,4 +90,15 @@ public class EquationCommandDatabaseTest {
         assertEquals(expected1, database.gcdInts.simplify(input1));
         assertEquals(expected2, database.gcdInts.simplify(input2));
     }
+
+    @Test
+    public void testLCMInts() throws Exception {
+        Equation input1 = builder.makeEquation("LCM 2 3 5");
+        Equation expected1 = builder.makeEquation("30");
+        Equation input2 = builder.makeEquation("LCM 1 3 6 2");
+        Equation expected2 = builder.makeEquation("6");
+        assertEquals(expected1, database.lcmInts.simplify(input1));
+        assertEquals(expected2, database.lcmInts.simplify(input2));
+
+    }
 }

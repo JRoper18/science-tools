@@ -153,17 +153,16 @@ public class EquationBuilder {
                 return new MathSyntax(MathSyntaxExpression.DIVIDE, args);
             case "CONSTANT":
                 return new MathSyntax(MathSyntaxExpression.NUMBER, args);
-            case "EXPRESSION":
-                return new MathSyntax(MathSyntaxExpression.EXPRESSION, args);
             case "(":
                 return new MathSyntax(MathSyntaxExpression.OPEN_PAREN, args);
             case ")":
                 return new MathSyntax(MathSyntaxExpression.CLOSE_PAREN, args);
-            case "GCD":
-                return new MathSyntax(MathSyntaxExpression.GCD, args);
-            case "VARIABLE":
-                return new MathSyntax(MathSyntaxExpression.VARIABLE, args);
             default:
+                try{
+                    return new MathSyntax(MathSyntaxExpression.valueOf(processedString), args);
+                } catch(IllegalArgumentException ex){
+                    //Do nothing;
+                }
 
         }
         //It's not an expression if we've made it here. Check for numbers

@@ -21,6 +21,7 @@ public class EquationCommandDatabase {
     public static final EquationCommandRemoveNestedFractions removeNestedFractions = new EquationCommandRemoveNestedFractions();
     public static final EquationCommandCondenceConstants condenceConstants = new EquationCommandCondenceConstants();
     public static final EquationCommandGreatestCommonDenominatorInts gcdInts = new EquationCommandGreatestCommonDenominatorInts();
+    public static final EquationCommandLeastCommonMultipleInts lcmInts = new EquationCommandLeastCommonMultipleInts();
     public EquationCommandDatabase(){
     }
     public static class EquationCommandSimplifyConstants extends EquationCommand{
@@ -179,6 +180,26 @@ public class EquationCommandDatabase {
                 subEqTree.addChild(remainder);
                 return this.simplify(new Equation(subEqTree));
             }
+        }
+    }
+    public static class EquationCommandLeastCommonMultipleInts extends EquationCommand {
+        public EquationCommandLeastCommonMultipleInts() {
+
+        }
+        public Equation run(Equation equation){
+            Equation recur = doRecursiveFunction(2, this, equation);
+            if(recur != null){
+                return recur;
+            }
+            Equation eq1 = new Equation(equation.equationTerms.getChild(0));
+            Equation eq2 = new Equation(equation.equationTerms.getChild(1));
+            BigDecimal abs = ((MathNumber) eq2.equationTerms.data).number.multiply(((MathNumber) eq1.equationTerms.data).number).abs();
+            Tree<MathObject> newTree = new Tree<>();
+            newTree.data = new GreatestCommonDenominator();
+            newTree.addChild(eq1.equationTerms);
+            newTree.addChild(eq2.equationTerms);
+            BigDecimal gcd = ((MathNumber) gcdInts.simplify(new Equation(newTree)).equationTerms.data).number;
+            return new Equation(new Tree(new MathNumber(abs.divide(gcd))));
         }
     }
     private static Equation doRecursiveFunction(int depth, EquationCommand command, Equation equation){
