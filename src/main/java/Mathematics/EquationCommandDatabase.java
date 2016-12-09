@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 public class EquationCommandDatabase {
-    public static final SimplifyTwoConstantsConstants constantsAddition = new SimplifyTwoConstants("+");
+    public static final SimplifyTwoConstants constantsAddition = new SimplifyTwoConstants("+");
     public static final SimplifyTwoConstants constantsSubtraction = new SimplifyTwoConstants("-");
     public static final SimplifyTwoConstants constantsMultiplication = new SimplifyTwoConstants("*");
     public static final SimplifyTwoConstants constantsDivision = new SimplifyTwoConstants("/");
@@ -26,11 +26,12 @@ public class EquationCommandDatabase {
     public static final IntegerFractionSimplify integerFractionSimplify = new IntegerFractionSimplify();
     public static final DecimalToFraction decimalToFraction = new DecimalToFraction();
     public static final SimplifyDivideByOne divideByOne = new SimplifyDivideByOne();
+    public static final CondenceTwoConstants condenceTwoConstants = new CondenceTwoConstants();
     public EquationCommandDatabase(){
     }
     public static class SimplifyTwoConstants extends EquationCommand{
         public final String operation;
-        public EquationCommandSimplifyConstants(String operation){
+        public SimplifyTwoConstants(String operation){
             this.operation = operation;
         }
         public Equation run(Equation equation){
@@ -137,10 +138,8 @@ public class EquationCommandDatabase {
             return equation;
         }
     }
-    public static class CondenceConstants extends EquationCommand {
+    public static class CondenceTwoConstants extends EquationCommand{
         public Equation run(Equation equation){
-            equation = removeNestedFractions.simplifyAll(equation);
-            equation = decimalToFraction.simplifyAll(equation);
             if(equation.isPattern(builder.makePatternEquation("CONSTANT + CONSTANT"))){
                 equation = constantsAddition.simplify(equation);
             }
@@ -153,6 +152,14 @@ public class EquationCommandDatabase {
             else if(equation.isPattern(builder.makePatternEquation("CONSTANT / CONSTANT"))){
                 equation = constantsDivision.simplify(equation);
             }
+            return equation;
+        }
+    }
+    public static class CondenceConstants extends EquationCommand {
+        public Equation run(Equation equation){
+            equation = removeNestedFractions.simplifyAll(equation);
+            equation = decimalToFraction.simplifyAll(equation);
+            equation = condenceTwoConstants.simplifyAll(equation);
             equation = divideByOne.simplifyAll(equation);
             return equation;
         }
@@ -232,23 +239,6 @@ public class EquationCommandDatabase {
             return new Equation(equation.equationTerms.getChild(0));
         }
     }
-    private static Equation doRecursiveFunction(int depth, EquationCommand command, Equation equation){
-        int argNum = equation.equationTerms.getChildren().size();
-        if(argNum > depth){
-            Tree<MathObject> subEquationTree = new Tree(equation.equationTerms.data);
-            List<Tree> otherChildren = equation.equationTerms.getChildren().subList(1, equation.equationTerms.getChildren().size());
-            subEquationTree.addTreeChildren(otherChildren);
-            Equation subEquationCalc = command.simplify(new Equation(subEquationTree));
-            Tree newEquationTree = new Tree();
-            newEquationTree.data = equation.equationTerms.data;
-            newEquationTree.addChild(subEquationCalc.equationTerms);
-            newEquationTree.addChild(equation.equationTerms.getChild(0));
-            return command.simplify(new Equation(newEquationTree));
-        }
-        else{
-            return null;
-        }
-    }
     public static class DecimalToFraction extends EquationCommand{
         public Equation run(Equation equation){
             if(!equation.isType(EquationType.CONSTANT)){
@@ -266,6 +256,46 @@ public class EquationCommandDatabase {
             fraction.addChild(new MathNumber(newNumDec.toString()));
             fraction.addChild(new MathNumber(Math.pow(10, scale)));
             return new Equation(fraction);
+        }
+    }
+    public static class SimplifyTwoFractions extends EquationCommand {
+        public Equation run(Equation equation){
+            char[] operations = {'+', '-', '/', '*'};
+            for(char operation : operations){
+                if(equation.isPattern(builder.makePatternEquation("CONSTANT " + operation + " EXPRESSION{FRACTION}"))){
+                    equation.equationTerms.replaceChild(0, decimalToFraction.simplify(new Equation(equation.equationTerms.getChild(0))).equationTerms);
+                }
+                else if(equation.isPattern(builder.makePatternEquation("EXPRESSION{FRACTION} " + operation + " CONSTANT"))){
+                    equation.equationTerms.replaceChild(1, decimalToFraction.simplify(new Equation(equation.equationTerms.getChild(0))).equationTerms);
+                }
+                PatternEquation pattern = builder.makePatternEquation("EXPRESSION{FRACTION} " + operation + " EXPRESSION{FRACTION}");
+                if(!equation.isPattern(pattern)){
+                    continue;
+                }
+                //First, get the denominators and numerators.
+                Tree<MathObject> denomLeft = equation.equationTerms.getChild(0).getChild(1);
+                Tree<MathObject> numeratorLeft = equation.equationTerms.getChild(0).getChild(0);
+                Tree<MathObject> denomRight = equation.equationTerms.getChild(1).getChild(1);
+                Tree<MathObject> numeratorRight = equation.equationTerms.getChild(1).getChild(0);
+            }
+
+        }
+    }
+    private static Equation doRecursiveFunction(int depth, EquationCommand command, Equation equation){
+        int argNum = equation.equationTerms.getChildren().size();
+        if(argNum > depth){
+            Tree<MathObject> subEquationTree = new Tree(equation.equationTerms.data);
+            List<Tree> otherChildren = equation.equationTerms.getChildren().subList(1, equation.equationTerms.getChildren().size());
+            subEquationTree.addTreeChildren(otherChildren);
+            Equation subEquationCalc = command.simplify(new Equation(subEquationTree));
+            Tree newEquationTree = new Tree();
+            newEquationTree.data = equation.equationTerms.data;
+            newEquationTree.addChild(subEquationCalc.equationTerms);
+            newEquationTree.addChild(equation.equationTerms.getChild(0));
+            return command.simplify(new Equation(newEquationTree));
+        }
+        else{
+            return null;
         }
     }
     public static class CondenceFractions extends EquationCommand{
