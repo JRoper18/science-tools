@@ -8,29 +8,27 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import static Mathematics.Simplifier.GCDIntegers;
-
 /**
  * Created by Ulysses Howard Smith on 12/2/2016.
  */
 
 public class EquationCommandDatabase {
-    public static final EquationCommandSimplifyConstants constantsAddition = new EquationCommandSimplifyConstants("+");
-    public static final EquationCommandSimplifyConstants constantsSubtraction = new EquationCommandSimplifyConstants("-");
-    public static final EquationCommandSimplifyConstants constantsMultiplication = new EquationCommandSimplifyConstants("*");
-    public static final EquationCommandSimplifyConstants constantsDivision = new EquationCommandSimplifyConstants("/");
-    public static final EquationCommandRemoveNestedFractionDenominator removeDenominatorFraction = new EquationCommandRemoveNestedFractionDenominator();
-    public static final EquationCommandRemoveNestedFractionNumerator removeNumeratorFraction = new EquationCommandRemoveNestedFractionNumerator();
-    public static final EquationCommandRemoveNestedFractions removeNestedFractions = new EquationCommandRemoveNestedFractions();
-    public static final EquationCommandCondenceConstants condenceConstants = new EquationCommandCondenceConstants();
-    public static final EquationCommandGreatestCommonDenominatorInts gcdInts = new EquationCommandGreatestCommonDenominatorInts();
-    public static final EquationCommandLeastCommonMultipleInts lcmInts = new EquationCommandLeastCommonMultipleInts();
-    public static final EquationCommandIntegerFractionSimplify integerFractionSimplify = new EquationCommandIntegerFractionSimplify();
-    public static final EquationCommandDecimalToFraction decimalToFraction = new EquationCommandDecimalToFraction();
-    public static final EquationCommandSimplifyDivideByOne divideByOne = new EquationCommandSimplifyDivideByOne();
+    public static final SimplifyTwoConstantsConstants constantsAddition = new SimplifyTwoConstants("+");
+    public static final SimplifyTwoConstants constantsSubtraction = new SimplifyTwoConstants("-");
+    public static final SimplifyTwoConstants constantsMultiplication = new SimplifyTwoConstants("*");
+    public static final SimplifyTwoConstants constantsDivision = new SimplifyTwoConstants("/");
+    public static final RemoveNestedFractionDenominator removeDenominatorFraction = new RemoveNestedFractionDenominator();
+    public static final RemoveNestedFractionNumerator removeNumeratorFraction = new RemoveNestedFractionNumerator();
+    public static final RemoveNestedFractions removeNestedFractions = new RemoveNestedFractions();
+    public static final CondenceConstants condenceConstants = new CondenceConstants();
+    public static final GreatestCommonDenominatorInts gcdInts = new GreatestCommonDenominatorInts();
+    public static final LeastCommonMultipleInts lcmInts = new LeastCommonMultipleInts();
+    public static final IntegerFractionSimplify integerFractionSimplify = new IntegerFractionSimplify();
+    public static final DecimalToFraction decimalToFraction = new DecimalToFraction();
+    public static final SimplifyDivideByOne divideByOne = new SimplifyDivideByOne();
     public EquationCommandDatabase(){
     }
-    public static class EquationCommandSimplifyConstants extends EquationCommand{
+    public static class SimplifyTwoConstants extends EquationCommand{
         public final String operation;
         public EquationCommandSimplifyConstants(String operation){
             this.operation = operation;
@@ -85,7 +83,7 @@ public class EquationCommandDatabase {
             return equation;
         }
     }
-    public static class EquationCommandRemoveNestedFractionDenominator extends EquationCommand{
+    public static class RemoveNestedFractionDenominator extends EquationCommand{
         public Equation run(Equation equation) {
             //First remove fractions in the denominator.
             // (x / (y / z) = x * (z / y)
@@ -104,7 +102,7 @@ public class EquationCommandDatabase {
             return equation;
         }
     }
-    public static class EquationCommandRemoveNestedFractionNumerator extends EquationCommand{
+    public static class RemoveNestedFractionNumerator extends EquationCommand{
         public Equation run(Equation equation){
             // (x / y) / z = (x / (y * z))
             PatternEquation pattern = builder.makePatternEquation("EXPRESSION{FRACTION} / EXPRESSION");
@@ -124,7 +122,7 @@ public class EquationCommandDatabase {
             return equation;
         }
     }
-    public static class EquationCommandRemoveNestedFractions extends EquationCommand {
+    public static class RemoveNestedFractions extends EquationCommand {
         public Equation run(Equation equation){
             try{
                 equation = removeNumeratorFraction.simplify(equation);
@@ -139,7 +137,7 @@ public class EquationCommandDatabase {
             return equation;
         }
     }
-    public static class EquationCommandCondenceConstants extends EquationCommand {
+    public static class CondenceConstants extends EquationCommand {
         public Equation run(Equation equation){
             equation = removeNestedFractions.simplifyAll(equation);
             equation = decimalToFraction.simplifyAll(equation);
@@ -159,7 +157,7 @@ public class EquationCommandDatabase {
             return equation;
         }
     }
-    public static class EquationCommandGreatestCommonDenominatorInts extends EquationCommand {
+    public static class GreatestCommonDenominatorInts extends EquationCommand {
         public Equation run(Equation equation){
             Equation recur = doRecursiveFunction(2, this, equation);
             if(recur != null){
@@ -184,7 +182,7 @@ public class EquationCommandDatabase {
             }
         }
     }
-    public static class EquationCommandLeastCommonMultipleInts extends EquationCommand {
+    public static class LeastCommonMultipleInts extends EquationCommand {
         public Equation run(Equation equation){
             Equation recur = doRecursiveFunction(2, this, equation);
             if(recur != null){
@@ -201,7 +199,7 @@ public class EquationCommandDatabase {
             return new Equation(new Tree(new MathNumber(abs.divide(gcd))));
         }
     }
-    public static class EquationCommandIntegerFractionSimplify extends EquationCommand {
+    public static class IntegerFractionSimplify extends EquationCommand {
         public Equation run(Equation equation){
             if(!equation.isType(EquationType.INTEGERFRACTION)) {
                 throw makeBadTypeException(EquationType.INTEGERFRACTION, equation);
@@ -225,7 +223,7 @@ public class EquationCommandDatabase {
             return null;
         }
     }
-    public static class EquationCommandSimplifyDivideByOne extends EquationCommand{
+    public static class SimplifyDivideByOne extends EquationCommand{
         public Equation run(Equation equation){
             PatternEquation pattern = builder.makePatternEquation("EXPRESSION / 1");
             if(!equation.isPattern(pattern)){
@@ -251,7 +249,7 @@ public class EquationCommandDatabase {
             return null;
         }
     }
-    public static class EquationCommandDecimalToFraction extends EquationCommand{
+    public static class DecimalToFraction extends EquationCommand{
         public Equation run(Equation equation){
             if(!equation.isType(EquationType.CONSTANT)){
                 throw makeBadTypeException(EquationType.CONSTANT, equation);
@@ -268,6 +266,11 @@ public class EquationCommandDatabase {
             fraction.addChild(new MathNumber(newNumDec.toString()));
             fraction.addChild(new MathNumber(Math.pow(10, scale)));
             return new Equation(fraction);
+        }
+    }
+    public static class CondenceFractions extends EquationCommand{
+        public Equation run(Equation equation){
+            return null; //WORK ON THIS LATER
         }
     }
     private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation

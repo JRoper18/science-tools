@@ -76,7 +76,6 @@ public class EquationCommandDatabaseTest {
         Equation input1 = builder.makeEquation("( 1 + 2 ) - 3");
         Equation input2 = builder.makeEquation("( 1 * 2 ) - ( 4 + ( 3 * 6 ) )");
         Equation input3 = builder.makeEquation("( 2 + 3 ) - ( 2 / 4 )");
-        database.condenceConstants.simplifyAll(input3).printTree();
         Equation expected1 = builder.makeEquation("0");
         Equation expected2 = builder.makeEquation("-20");
         assertEquals(expected1, database.condenceConstants.simplifyAll(input1));
