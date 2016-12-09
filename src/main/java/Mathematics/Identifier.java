@@ -15,7 +15,18 @@ public class Identifier {
     public Identifier(){
 
     }
-
+    public static Equation getFractionDenominator(Equation eq){
+        if(!eq.isType(EquationType.FRACTION)){
+            throw new BadEquationTypeException(EquationType.FRACTION, eq);
+        }
+        return new Equation(eq.equationTerms.getChild(1));
+    }
+    public static Equation getFractionNumerator(Equation eq){
+        if(!eq.isType(EquationType.FRACTION)){
+            throw new BadEquationTypeException(EquationType.FRACTION, eq);
+        }
+        return new Equation(eq.equationTerms.getChild(0));
+    }
     /**
      * Checks if an equation fits every possible type of equation
      * @param eq The equation to check
@@ -28,7 +39,6 @@ public class Identifier {
         }
         return toReturn;
     }
-
     /**
      * Checks if an equation fits the specified EquationType
      * @param eq The equation to check

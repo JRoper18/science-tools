@@ -182,10 +182,8 @@ public class EquationCommandDatabase {
             else{
                 MathNumber remainder = new MathNumber(((MathNumber) eq1.equationTerms.data).number.remainder(((MathNumber) eq2.equationTerms.data).number));
                 Tree<MathObject> subEqTree = new Tree<>();
-                subEqTree.data = new GreatestCommonDenominator();
-                subEqTree.addChild(eq2.equationTerms.data);
-                subEqTree.addChild(remainder);
-                return this.simplify(new Equation(subEqTree));
+                Equation subGCD = combineEquationsWithOperation(new GreatestCommonDenominator(), eq2, new Equation(new Tree(remainder)));
+                return this.simplify(subGCD);
             }
         }
     }
@@ -198,11 +196,8 @@ public class EquationCommandDatabase {
             Equation eq1 = new Equation(equation.equationTerms.getChild(0));
             Equation eq2 = new Equation(equation.equationTerms.getChild(1));
             BigDecimal abs = ((MathNumber) eq2.equationTerms.data).number.multiply(((MathNumber) eq1.equationTerms.data).number).abs();
-            Tree<MathObject> newTree = new Tree<>();
-            newTree.data = new GreatestCommonDenominator();
-            newTree.addChild(eq1.equationTerms);
-            newTree.addChild(eq2.equationTerms);
-            BigDecimal gcd = ((MathNumber) gcdInts.simplify(new Equation(newTree)).equationTerms.data).number;
+            Equation newEquation = combineEquationsWithOperation(new GreatestCommonDenominator(), eq1, eq2);
+            BigDecimal gcd = ((MathNumber) gcdInts.simplify(newEquation).equationTerms.data).number;
             return new Equation(new Tree(new MathNumber(abs.divide(gcd))));
         }
     }
@@ -211,19 +206,16 @@ public class EquationCommandDatabase {
             if(!equation.isType(EquationType.INTEGERFRACTION)) {
                 throw makeBadTypeException(EquationType.INTEGERFRACTION, equation);
             }
-            Equation numerator = new Equation(equation.equationTerms.getChild(0));
-            Equation demoninator = new Equation(equation.equationTerms.getChild(1));
-            Tree<MathObject> gcdTree = new Tree<>();
-            gcdTree.data = new GreatestCommonDenominator();
-            gcdTree.addChild(numerator.equationTerms);
-            gcdTree.addChild(demoninator.equationTerms);
-            Equation gcd = gcdInts.simplify(new Equation(gcdTree));
+            Equation numerator = iden.getFractionNumerator(equation);
+            Equation denominator = iden.getFractionDenominator(equation);
+            Equation gcdUnsimplified = combineEquationsWithOperation(new GreatestCommonDenominator(), numerator, denominator);
+            Equation gcd = gcdInts.simplify(gcdUnsimplified);
             if(((MathNumber) gcd.equationTerms.data).number.doubleValue() == 1){
                 return equation; //Already simplified.
             }
             if(gcd.isType(EquationType.INTEGERCONSTANT)){ //We have a constant, so just divide the top and bottom by it.
                 BigDecimal newNumeratorDec = ((MathNumber) numerator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
-                BigDecimal newDenominatorDec = ((MathNumber) demoninator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
+                BigDecimal newDenominatorDec = ((MathNumber) denominator.equationTerms.data).number.divide(((MathNumber) gcd.equationTerms.data).number);
                 Equation newEq = builder.makeEquation(Arrays.asList(new MathSyntax(newNumeratorDec), new MathSyntax(MathSyntaxExpression.DIVIDE), new MathSyntax(newDenominatorDec)));
                 return newEq;
             }
@@ -236,7 +228,7 @@ public class EquationCommandDatabase {
             if(!equation.isPattern(pattern)){
                 throw makeBadTypeException(pattern, equation);
             }
-            return new Equation(equation.equationTerms.getChild(0));
+            return iden.getFractionNumerator(equation);
         }
     }
     public static class DecimalToFraction extends EquationCommand{
@@ -288,8 +280,7 @@ public class EquationCommandDatabase {
             List<Tree> otherChildren = equation.equationTerms.getChildren().subList(1, equation.equationTerms.getChildren().size());
             subEquationTree.addTreeChildren(otherChildren);
             Equation subEquationCalc = command.simplify(new Equation(subEquationTree));
-            Tree newEquationTree = new Tree();
-            newEquationTree.data = equation.equationTerms.data;
+            Equation newEquation = combineEquationsWithOperation(((Expression) equation.equationTerms.data), subEquationCalc, new Equation(equation.equationTerms.getChild(0)));
             newEquationTree.addChild(subEquationCalc.equationTerms);
             newEquationTree.addChild(equation.equationTerms.getChild(0));
             return command.simplify(new Equation(newEquationTree));
@@ -302,6 +293,13 @@ public class EquationCommandDatabase {
         public Equation run(Equation equation){
             return null; //WORK ON THIS LATER
         }
+    }
+    public static Equation combineEquationsWithOperation(Expression expression, Equation eq1, Equation eq2){
+        Tree<MathObject> newTree = new Tree<>();
+        newTree.data = expression;
+        newTree.addChild(eq1.equationTerms);
+        newTree.addChild(eq2.equationTerms);
+        return new Equation(newTree);
     }
     private static BadEquationTypeException makeBadTypeException(EquationType type, Equation eq1, Equation eq2){ //TO ME IN THE FUTURE: In case you forget, this just checks both inputs of an equation
         //And throws an error for whichever one is the bad type. It's really not too complicated.

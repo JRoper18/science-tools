@@ -13,6 +13,7 @@ import java.io.UncheckedIOException;
 public abstract class EquationCommand{
     public final Cloner cloner = new Cloner();
     public final EquationBuilder builder = new EquationBuilder();
+    public final Identifier iden = new Identifier();
     public EquationCommand(){
 
     }
